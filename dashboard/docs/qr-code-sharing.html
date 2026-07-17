@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Sharing — Free X/Twitter Account Management Tool | XActions</title>
+  <meta name="description" content="Generate QR codes for any X/Twitter profile — display on screen and download as PNG.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, code, sharing, account management, qr code sharing twitter, twitter qr code sharing">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="QR Code Sharing — XActions">
+  <meta property="og:description" content="Generate QR codes for any X/Twitter profile — display on screen and download as PNG.">
+  <meta property="og:url" content="https://xactions.app/docs/qr-code-sharing">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="QR Code Sharing — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Generate QR codes for any X/Twitter profile — display on screen and download as PNG.">
+
+  <link rel="canonical" href="https://xactions.app/docs/qr-code-sharing">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "QR Code Sharing — Free X/Twitter Account Management Tool | XActions",
+    "description": "Generate QR codes for any X/Twitter profile — display on screen and download as PNG.",
+    "url": "https://xactions.app/docs/qr-code-sharing",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/qr-code-sharing",
+    "articleSection": "Account Management",
+    "keywords": "xactions, twitter automation, x automation, free, code, sharing, account management, qr code sharing twitter, twitter qr code sharing"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "QR Code Sharing", "item": "https://xactions.app/docs/qr-code-sharing" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use QR Code Sharing",
+    "description": "Generate QR codes for any X/Twitter profile — display on screen and download as PNG.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions QR Code Sharing script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📱 QR Code Sharing</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › QR Code Sharing
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Account Management</span>
+        <h1>📱 QR Code Sharing</h1>
+<p>Generate QR codes for any X/Twitter profile — display on screen and download as PNG.</p>
+<hr>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Takes a username or the current profile page</li>
+<li>Generates a QR code pointing to the profile URL</li>
+<li>Displays the QR code as an overlay on the page</li>
+<li>Provides a download button to save as PNG</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to any page on <code>x.com</code></li>
+<li>Edit CONFIG with the target username (or leave blank to use current page)</li>
+<li>Open console (F12) and paste <code>src/qrCodeSharing.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  username: &#39;nichxbt&#39;,
+  size: 300,
+  darkColor: &#39;000000&#39;,
+  lightColor: &#39;ffffff&#39;,
+};
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/qrCodeSharing.js</code> — QR code generator and display</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Uses the free <code>api.qrserver.com</code> API (no signup needed)</li>
+<li>QR code encodes the URL <code>https://x.com/username</code></li>
+<li>The overlay can be closed by clicking the X button</li>
+<li>Size is in pixels (default 300×300)</li>
+<li>Colors are hex without the <code>#</code> prefix</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try QR Code Sharing?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/backup-account">💾 Backup Account</a>
+        <a href="/docs/download-account-data">📥 Download Account Data</a>
+        <a href="/docs/edit-profile">✏️ Edit Profile</a>
+        <a href="/docs/manage-settings">⚙️ Manage Settings</a>
+        <a href="/docs/multi-account">👥 Multi Account</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

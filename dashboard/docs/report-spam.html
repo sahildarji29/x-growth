@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>� Report Spam — Free X/Twitter Safety &amp; Privacy Tool | XActions</title>
+  <meta name="description" content="Report multiple accounts for spam, abuse, or fake/impersonation.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, report, spam, safety &amp; privacy, report spam twitter, twitter report spam">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="� Report Spam — XActions">
+  <meta property="og:description" content="Report multiple accounts for spam, abuse, or fake/impersonation.">
+  <meta property="og:url" content="https://xactions.app/docs/report-spam">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="� Report Spam — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Report multiple accounts for spam, abuse, or fake/impersonation.">
+
+  <link rel="canonical" href="https://xactions.app/docs/report-spam">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "\udea8 Report Spam — Free X/Twitter Safety & Privacy Tool | XActions",
+    "description": "Report multiple accounts for spam, abuse, or fake/impersonation.",
+    "url": "https://xactions.app/docs/report-spam",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/report-spam",
+    "articleSection": "Safety & Privacy",
+    "keywords": "xactions, twitter automation, x automation, free, report, spam, safety & privacy, report spam twitter, twitter report spam"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "\udea8 Report Spam", "item": "https://xactions.app/docs/report-spam" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use � Report Spam",
+    "description": "Report multiple accounts for spam, abuse, or fake/impersonation.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions � Report Spam script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>⚠️ � Report Spam</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › � Report Spam
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Safety &amp; Privacy</span>
+        <h1>🚨 Report Spam</h1>
+<p>Report multiple accounts for spam, abuse, or fake/impersonation.</p>
+<hr>
+<h2>⚠️ WARNING</h2>
+<blockquote>
+<p><strong>Only report accounts that genuinely violate X&#39;s rules!</strong></p>
+<ul>
+<li>False reporting can result in your own account being actioned</li>
+<li>Always run with <code>dryRun: true</code> first</li>
+</ul>
+</blockquote>
+<hr>
+<h2>📋 What It Does</h2>
+<ol>
+<li>For each target username, navigates to their profile</li>
+<li>Clicks the &quot;…&quot; menu → Report</li>
+<li>Selects the appropriate report reason</li>
+<li>Submits the report</li>
+<li>Moves to the next account</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to any page on <code>x.com</code></li>
+<li>Edit CONFIG with target accounts and reason</li>
+<li>Set <code>dryRun: false</code> when ready</li>
+<li>Open console (F12) and paste <code>src/reportSpam.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  accounts: [&#39;spambot1&#39;, &#39;fakeaccount2&#39;],
+  reason: &#39;spam&#39;,  // &#39;spam&#39;, &#39;abuse&#39;, &#39;fake&#39;
+  delayBetweenReports: 5000,
+  dryRun: true,
+};
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/reportSpam.js</code> — Spam/abuse reporter</li>
+<li><code>src/blockBots.js</code> — Detect bots first (companion)</li>
+<li><code>src/massBlock.js</code> — Block accounts (companion)</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>The script navigates between profiles, so don&#39;t interact while it runs</li>
+<li>X may rate-limit reporting — use long delays (5+ seconds)</li>
+<li>Use <code>src/blockBots.js</code> or <code>src/auditFollowers.js</code> first to identify targets</li>
+<li>Reports are anonymous — the reported user won&#39;t know who reported them</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try � Report Spam?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/block-bots">🤖 Block Bots</a>
+        <a href="/docs/manage-muted-words">🔇 Manage Muted Words</a>
+        <a href="/docs/mass-block-unblock">🚫 Mass Block Unblock</a>
+        <a href="/docs/mass-block">🚫 Mass Block</a>
+        <a href="/docs/mass-unblock">🔓 Mass Unblock</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

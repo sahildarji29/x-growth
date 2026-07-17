@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>� Auto Repost — Free X/Twitter Engagement Tool | XActions</title>
+  <meta name="description" content="Automatically retweet posts matching keyword/user filters from your timeline.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, auto, repost, engagement, auto repost twitter, twitter auto repost">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="� Auto Repost — XActions">
+  <meta property="og:description" content="Automatically retweet posts matching keyword/user filters from your timeline.">
+  <meta property="og:url" content="https://xactions.app/docs/auto-repost">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="� Auto Repost — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Automatically retweet posts matching keyword/user filters from your timeline.">
+
+  <link rel="canonical" href="https://xactions.app/docs/auto-repost">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "\udd04 Auto Repost — Free X/Twitter Engagement Tool | XActions",
+    "description": "Automatically retweet posts matching keyword/user filters from your timeline.",
+    "url": "https://xactions.app/docs/auto-repost",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/auto-repost",
+    "articleSection": "Engagement",
+    "keywords": "xactions, twitter automation, x automation, free, auto, repost, engagement, auto repost twitter, twitter auto repost"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "\udd04 Auto Repost", "item": "https://xactions.app/docs/auto-repost" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use � Auto Repost",
+    "description": "Automatically retweet posts matching keyword/user filters from your timeline.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions � Auto Repost script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🔁 � Auto Repost</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › � Auto Repost
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Engagement</span>
+        <h1>🔄 Auto Repost</h1>
+<p>Automatically retweet posts matching keyword/user filters from your timeline.</p>
+<hr>
+<h2>⚠️ WARNING</h2>
+<blockquote>
+<p><strong>Automated retweeting can trigger spam detection!</strong></p>
+<ul>
+<li>Start with strict filters and small batches</li>
+<li>Set <code>dryRun: true</code> first to preview what would be reposted</li>
+<li>Use minimum-likes thresholds to only repost quality content</li>
+</ul>
+</blockquote>
+<hr>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Scrolls through the timeline collecting tweets</li>
+<li>Filters by keywords, specific users, and minimum like count</li>
+<li>Clicks the retweet button on matching tweets</li>
+<li>Tracks reposted tweet IDs in localStorage to avoid duplicates</li>
+<li>Respects configurable session limits</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to <code>x.com/home</code> (or any timeline)</li>
+<li>Edit CONFIG with your filters</li>
+<li>Set <code>dryRun: false</code> when ready</li>
+<li>Open console (F12) and paste <code>src/autoRepost.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  filters: {
+    keywords: [&#39;web3&#39;, &#39;open source&#39;],
+    fromUsers: [&#39;@elonmusk&#39;, &#39;@nichxbt&#39;],
+    minLikes: 50,
+  },
+  limits: {
+    maxPerSession: 20,
+    scrollCycles: 10,
+    delayBetweenReposts: 3000,
+  },
+  dryRun: true,
+};
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/autoRepost.js</code> — Browser console auto-repost script</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Keyword matching is case-insensitive and checks tweet text</li>
+<li><code>fromUsers</code> can be with or without the <code>@</code> prefix</li>
+<li>Already-reposted tweets (green retweet icon) are automatically skipped</li>
+<li>Repost history persists in <code>localStorage</code> under <code>xactions_auto_repost</code></li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try � Auto Repost?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/auto-commenter">💬 Auto Commenter</a>
+        <a href="/docs/auto-engage">⚡ Auto Engage</a>
+        <a href="/docs/auto-liker">❤️ Auto Liker</a>
+        <a href="/docs/auto-plug-replies">🔌 Auto Plug Replies</a>
+        <a href="/docs/auto-reply">💬 Auto Reply</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

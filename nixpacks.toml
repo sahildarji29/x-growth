@@ -1,0 +1,18 @@
+# Nixpacks configuration for Railway
+[phases.setup]
+nixPkgs = ["nodejs_20", "chromium"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npx prisma generate"]
+
+# Runtime variables (non-sensitive only)
+[variables]
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+PUPPETEER_EXECUTABLE_PATH = "/run/current-system/sw/bin/chromium"
+PUPPETEER_NO_SANDBOX = "true"
+NODE_ENV = "production"
+# Note: Sensitive variables (JWT_SECRET, SESSION_SECRET, DATABASE_URL, etc.)
+# must be set via Railway dashboard, not in config files

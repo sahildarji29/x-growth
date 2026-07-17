@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Time to Post — Free X/Twitter Analytics Tool | XActions</title>
+  <meta name="description" content="Analyze your tweet history to find the optimal times for maximum engagement.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, best, time, post, analytics, best time to post twitter, twitter best time to post">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Best Time to Post — XActions">
+  <meta property="og:description" content="Analyze your tweet history to find the optimal times for maximum engagement.">
+  <meta property="og:url" content="https://xactions.app/docs/best-time-to-post">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Best Time to Post — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Analyze your tweet history to find the optimal times for maximum engagement.">
+
+  <link rel="canonical" href="https://xactions.app/docs/best-time-to-post">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Best Time to Post — Free X/Twitter Analytics Tool | XActions",
+    "description": "Analyze your tweet history to find the optimal times for maximum engagement.",
+    "url": "https://xactions.app/docs/best-time-to-post",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/best-time-to-post",
+    "articleSection": "Analytics",
+    "keywords": "xactions, twitter automation, x automation, free, best, time, post, analytics, best time to post twitter, twitter best time to post"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Best Time to Post", "item": "https://xactions.app/docs/best-time-to-post" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Best Time to Post",
+    "description": "Analyze your tweet history to find the optimal times for maximum engagement.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Best Time to Post script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>⏰ Best Time to Post</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Best Time to Post
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Analytics</span>
+        <h1>⏰ Best Time to Post</h1>
+<p>Analyze your tweet history to find the optimal times for maximum engagement.</p>
+<hr>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Scrolls through your profile&#39;s tweets</li>
+<li>Extracts timestamps and engagement metrics (likes, retweets, replies)</li>
+<li>Builds an hour × day-of-week engagement matrix</li>
+<li>Identifies peak engagement windows</li>
+<li>Displays a visual bar chart in the console</li>
+<li>Exports the full matrix as JSON</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to your profile page (<code>x.com/yourusername</code>)</li>
+<li>Open console (F12) and paste <code>src/bestTimeToPost.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  scrollCycles: 30,
+  delayBetweenScrolls: 1500,
+};
+</code></pre>
+<hr>
+<h2>📊 Output</h2>
+<pre><code>⏰ BEST TIMES TO POST
+━━━━━━━━━━━━━━━━━━━━■
+
+📅 Top 5 Time Slots:
+1. Wednesday 2PM  → avg 1,250 engagements
+2. Tuesday 10AM   → avg 1,100 engagements
+3. Thursday 6PM   → avg 980 engagements
+4. Monday 9AM     → avg 920 engagements
+5. Friday 12PM    → avg 870 engagements
+
+📊 Hour Distribution (bar chart in console)
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/bestTimeToPost.js</code> — Browser console timing analysis</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Must be on your own profile page to analyze your tweets</li>
+<li>More scroll cycles = more tweets analyzed = more accurate results</li>
+<li>Engagement is weighted: likes × 1 + retweets × 2 + replies × 1.5</li>
+<li>Times are shown in your local timezone</li>
+<li>Results download as JSON for use in other tools</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Best Time to Post?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/account-health-monitor">🏥 Account Health Monitor</a>
+        <a href="/docs/audience-demographics">📊 Audience Demographics</a>
+        <a href="/docs/audience-overlap">🔗 Audience Overlap</a>
+        <a href="/docs/competitor-analysis">🔍 Competitor Analysis</a>
+        <a href="/docs/engagement-analytics">📈 Engagement Analytics</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Server - AI Agent Integration — Free X/Twitter AI &amp; Developer Tool | XActions</title>
+  <meta name="description" content="Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, mcp, server, agent, integration, ai &amp; developer, mcp server twitter, twitter mcp server">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MCP Server - AI Agent Integration — XActions">
+  <meta property="og:description" content="Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.">
+  <meta property="og:url" content="https://xactions.app/docs/mcp-server">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="MCP Server - AI Agent Integration — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.">
+
+  <link rel="canonical" href="https://xactions.app/docs/mcp-server">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "MCP Server - AI Agent Integration — Free X/Twitter AI & Developer Tool | XActions",
+    "description": "Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.",
+    "url": "https://xactions.app/docs/mcp-server",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/mcp-server",
+    "articleSection": "AI & Developer",
+    "keywords": "xactions, twitter automation, x automation, free, mcp, server, agent, integration, ai & developer, mcp server twitter, twitter mcp server"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "MCP Server - AI Agent Integration", "item": "https://xactions.app/docs/mcp-server" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use MCP Server - AI Agent Integration",
+    "description": "Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions MCP Server - AI Agent Integration script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🤖 MCP Server - AI Agent Integration</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › MCP Server - AI Agent Integration
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">AI &amp; Developer</span>
+        <h1>🤖 MCP Server - AI Agent Integration</h1>
+<p>Integrate X/Twitter automation directly with AI assistants like Claude using the Model Context Protocol.</p>
+<hr>
+<h2>🧠 What It Is</h2>
+<p><strong>Model Context Protocol (MCP)</strong> is a cutting-edge standard that enables AI assistants to interact with external tools and services. XActions includes a fully-featured MCP server that exposes X/Twitter automation capabilities directly to AI agents.</p>
+<p><strong>This means you can:</strong></p>
+<ul>
+<li>Ask Claude to analyze your Twitter followers</li>
+<li>Have AI find accounts that don&#39;t follow you back</li>
+<li>Let AI search and analyze tweets on any topic</li>
+<li>Automate posting, following, and engagement through natural language</li>
+</ul>
+<p><strong>The future of social media automation is conversational.</strong></p>
+<blockquote>
+<p>🚀 <strong>Cutting-Edge Technology</strong></p>
+<p>MCP is the protocol powering the next generation of AI agent integrations.<br>XActions is one of the first open-source tools to offer full MCP support for X/Twitter.</p>
+</blockquote>
+<hr>
+<h2>📋 Prerequisites</h2>
+<p>Before using the MCP server:</p>
+<ol>
+<li>✅ Node.js 18+ installed</li>
+<li>✅ XActions package installed (<code>npm install xactions</code>)</li>
+<li>✅ Claude Desktop app (for Claude integration)</li>
+<li>✅ Your X/Twitter <code>auth_token</code> cookie (for authenticated operations)</li>
+</ol>
+<hr>
+<h2>🔧 Setup for Claude Desktop</h2>
+<p>To connect XActions with Claude Desktop, add the following to your <code>claude_desktop_config.json</code>:</p>
+<p><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code><br><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code><br><strong>Linux:</strong> <code>~/.config/Claude/claude_desktop_config.json</code></p>
+<h3>Configuration</h3>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;xactions&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/your/node_modules/xactions/src/mcp/server.js&quot;],
+      &quot;env&quot;: {}
+    }
+  }
+}
+</code></pre>
+<p><strong>Or if you cloned the repository:</strong></p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;xactions&quot;: {
+      &quot;command&quot;: &quot;node&quot;,
+      &quot;args&quot;: [&quot;/path/to/xactions/src/mcp/server.js&quot;],
+      &quot;env&quot;: {}
+    }
+  }
+}
+</code></pre>
+<p><strong>Using npx (easiest):</strong></p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;xactions&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;xactions&quot;, &quot;mcp&quot;],
+      &quot;env&quot;: {}
+    }
+  }
+}
+</code></pre>
+<p>After saving, restart Claude Desktop to load the MCP server.</p>
+<hr>
+<h2>🛠️ Available Tools</h2>
+<p>The XActions MCP server exposes <strong>12 powerful tools</strong> for X/Twitter automation:</p>
+<h3>🔐 Authentication</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_login</code></td>
+<td>Login to X/Twitter using a session cookie (<code>auth_token</code>). Required before authenticated operations.</td>
+</tr>
+</tbody></table>
+<h3>📊 Data Scraping</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_get_profile</code></td>
+<td>Get profile information for any user including bio, follower count, location, website, and join date.</td>
+</tr>
+<tr>
+<td><code>x_get_followers</code></td>
+<td>Scrape followers for an account. Returns usernames, display names, and bios.</td>
+</tr>
+<tr>
+<td><code>x_get_following</code></td>
+<td>Scrape accounts a user follows. Includes whether they follow back.</td>
+</tr>
+<tr>
+<td><code>x_get_non_followers</code></td>
+<td>Find accounts you follow that don&#39;t follow you back.</td>
+</tr>
+<tr>
+<td><code>x_get_tweets</code></td>
+<td>Scrape recent tweets from any user&#39;s profile with engagement stats.</td>
+</tr>
+<tr>
+<td><code>x_search_tweets</code></td>
+<td>Search for tweets matching any query. Supports advanced operators.</td>
+</tr>
+</tbody></table>
+<h3>⚡ Actions</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_follow</code></td>
+<td>Follow an X/Twitter user.</td>
+</tr>
+<tr>
+<td><code>x_unfollow</code></td>
+<td>Unfollow an X/Twitter user.</td>
+</tr>
+<tr>
+<td><code>x_post_tweet</code></td>
+<td>Post a new tweet (max 280 characters).</td>
+</tr>
+<tr>
+<td><code>x_like</code></td>
+<td>Like a tweet by its URL.</td>
+</tr>
+<tr>
+<td><code>x_retweet</code></td>
+<td>Retweet a tweet by its URL.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📖 Tool Reference</h2>
+<h3>x_login</h3>
+<p>Login using your session cookie. Required before most operations.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>cookie</code> (required): Your <code>auth_token</code> cookie value from X.com</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>&quot;Login to X with cookie abc123xyz...&quot;
+</code></pre>
+<hr>
+<h3>x_get_profile</h3>
+<p>Get detailed profile information for any X user.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Twitter username without @</li>
+</ul>
+<p><strong>Returns:</strong> Name, username, bio, location, website, join date, follower count, following count</p>
+<hr>
+<h3>x_get_followers</h3>
+<p>Scrape a user&#39;s followers list.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Twitter username without @</li>
+<li><code>limit</code> (optional): Maximum followers to scrape (default: 100)</li>
+</ul>
+<p><strong>Returns:</strong> Array of followers with username, name, and bio</p>
+<hr>
+<h3>x_get_following</h3>
+<p>Scrape accounts a user follows.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Twitter username without @</li>
+<li><code>limit</code> (optional): Maximum to scrape (default: 100)</li>
+</ul>
+<p><strong>Returns:</strong> Array with username, name, and whether they follow back</p>
+<hr>
+<h3>x_get_non_followers</h3>
+<p>Find accounts you follow that don&#39;t follow back.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Your Twitter username without @</li>
+</ul>
+<p><strong>Returns:</strong> Total following count, list of non-followers, non-follower count</p>
+<hr>
+<h3>x_get_tweets</h3>
+<p>Scrape recent tweets from a user&#39;s profile.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Twitter username without @</li>
+<li><code>limit</code> (optional): Maximum tweets (default: 50)</li>
+</ul>
+<p><strong>Returns:</strong> Array of tweets with text, timestamp, likes, retweets, replies, and URL</p>
+<hr>
+<h3>x_search_tweets</h3>
+<p>Search for tweets matching a query.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>query</code> (required): Search query (supports operators like <code>from:</code>, <code>to:</code>, <code>#hashtag</code>)</li>
+<li><code>limit</code> (optional): Maximum results (default: 50)</li>
+</ul>
+<p><strong>Returns:</strong> Array of tweets with text, author, timestamp, and URL</p>
+<hr>
+<h3>x_follow</h3>
+<p>Follow a user on X/Twitter.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Username to follow without @</li>
+</ul>
+<p><strong>Returns:</strong> Success/failure status</p>
+<hr>
+<h3>x_unfollow</h3>
+<p>Unfollow a user on X/Twitter.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>username</code> (required): Username to unfollow without @</li>
+</ul>
+<p><strong>Returns:</strong> Success/failure status</p>
+<hr>
+<h3>x_post_tweet</h3>
+<p>Post a new tweet.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>text</code> (required): Tweet content (max 280 characters)</li>
+</ul>
+<p><strong>Returns:</strong> Success/failure status</p>
+<hr>
+<h3>x_like</h3>
+<p>Like a tweet by URL.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>url</code> (required): Full URL of the tweet</li>
+</ul>
+<p><strong>Returns:</strong> Success/failure status</p>
+<hr>
+<h3>x_retweet</h3>
+<p>Retweet a tweet by URL.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>url</code> (required): Full URL of the tweet</li>
+</ul>
+<p><strong>Returns:</strong> Success/failure status</p>
+<hr>
+<h2>💬 Example Prompts for Claude</h2>
+<p>Once configured, you can interact with X/Twitter through natural conversation:</p>
+<h3>Finding Non-Followers</h3>
+<pre><code>&quot;Find everyone I follow who doesn&#39;t follow me back. My username is johndoe.&quot;
+</code></pre>
+<pre><code>&quot;Who are my non-followers? I&#39;m @techfounder&quot;
+</code></pre>
+<h3>Searching Tweets</h3>
+<pre><code>&quot;Search for tweets about AI startups from the last week&quot;
+</code></pre>
+<pre><code>&quot;Find tweets mentioning #buildinpublic from indie hackers&quot;
+</code></pre>
+<pre><code>&quot;Search for tweets from @elonmusk about AI&quot;
+</code></pre>
+<h3>Profile Analysis</h3>
+<pre><code>&quot;Get profile info for @elonmusk&quot;
+</code></pre>
+<pre><code>&quot;What does Elon Musk&#39;s Twitter bio say? How many followers?&quot;
+</code></pre>
+<pre><code>&quot;Analyze the profile of @paulg - what topics does he tweet about?&quot;
+</code></pre>
+<h3>Scraping Followers/Following</h3>
+<pre><code>&quot;Get the first 50 followers of @ycombinator&quot;
+</code></pre>
+<pre><code>&quot;Who is @naval following? Show me the first 100 accounts.&quot;
+</code></pre>
+<h3>Posting &amp; Engagement</h3>
+<pre><code>&quot;Post a tweet saying: Just discovered XActions - the best X automation toolkit! 🚀&quot;
+</code></pre>
+<pre><code>&quot;Like this tweet: https://x.com/user/status/123456789&quot;
+</code></pre>
+<pre><code>&quot;Retweet the latest announcement from @OpenAI&quot;
+</code></pre>
+<h3>Advanced Analysis</h3>
+<pre><code>&quot;Scrape the last 50 tweets from @pmarca and summarize the main topics&quot;
+</code></pre>
+<pre><code>&quot;Find my non-followers and analyze their profiles - which ones are bots?&quot;
+</code></pre>
+<pre><code>&quot;Search for tweets about &#39;YC startup&#39; and identify the most engaged ones&quot;
+</code></pre>
+<hr>
+<h2>🚀 Running the MCP Server</h2>
+<h3>Via npm script</h3>
+<pre><code class="language-bash">npm run mcp
+</code></pre>
+<h3>Direct execution</h3>
+<pre><code class="language-bash">node src/mcp/server.js
+</code></pre>
+<h3>Via npx</h3>
+<pre><code class="language-bash">npx xactions mcp
+</code></pre>
+<p>The server runs on <strong>stdio</strong> (standard input/output) which is the transport Claude Desktop uses to communicate with MCP servers.</p>
+<hr>
+<h2>🔐 Authentication Flow</h2>
+<p>The MCP server uses session cookie authentication:</p>
+<ol>
+<li><p><strong>Get your auth_token:</strong></p>
+<ul>
+<li>Open X.com in your browser</li>
+<li>Open Developer Tools (F12)</li>
+<li>Go to Application → Cookies → x.com</li>
+<li>Find <code>auth_token</code> and copy the value</li>
+</ul>
+</li>
+<li><p><strong>Login via Claude:</strong></p>
+<pre><code>&quot;Login to X with this auth token: [your_token_here]&quot;
+</code></pre>
+</li>
+<li><p><strong>Use any tool:</strong><br>Once logged in, all authenticated operations will work.</p>
+</li>
+</ol>
+<blockquote>
+<p>⚠️ <strong>Security Note:</strong><br>Your auth_token is sensitive. Never share it publicly. The MCP server only stores it in memory during the session.</p>
+</blockquote>
+<hr>
+<h2>🏗️ Architecture</h2>
+<pre><code>┌─────────────────┐         ┌──────────────────┐         ┌─────────────┐
+│  Claude Desktop │ ──MCP── │  XActions Server │ ──HTTP──│   X.com     │
+│   (AI Agent)    │  stdio  │   (Puppeteer)    │         │  (Twitter)  │
+└─────────────────┘         └──────────────────┘         └─────────────┘
+</code></pre>
+<p>The XActions MCP server uses:</p>
+<ul>
+<li><strong>Puppeteer</strong> with stealth plugins to avoid detection</li>
+<li><strong>Human-like delays</strong> between actions</li>
+<li><strong>Session persistence</strong> for authenticated operations</li>
+<li><strong>Headless Chrome</strong> for efficient scraping</li>
+</ul>
+<hr>
+<h2>⚡ Rate Limiting</h2>
+<p>The MCP server includes built-in rate limiting:</p>
+<ul>
+<li>Random delays between 1-3 seconds per action</li>
+<li>Automatic retry logic for scraping</li>
+<li>Scroll-based pagination for large lists</li>
+</ul>
+<p>This mimics human behavior and helps avoid rate limits from X/Twitter.</p>
+<hr>
+<h2>🐛 Troubleshooting</h2>
+<h3>Server not connecting to Claude</h3>
+<ol>
+<li>Check the path in <code>claude_desktop_config.json</code> is correct</li>
+<li>Ensure Node.js 18+ is installed</li>
+<li>Restart Claude Desktop after config changes</li>
+</ol>
+<h3>Authentication failing</h3>
+<ol>
+<li>Make sure your <code>auth_token</code> cookie is current (cookies expire)</li>
+<li>Get a fresh cookie from X.com</li>
+<li>Ensure you&#39;re logged into X.com in your browser first</li>
+</ol>
+<h3>Scraping returns empty results</h3>
+<ol>
+<li>The account might be private</li>
+<li>X.com might have rate limited your session</li>
+<li>Try with a smaller <code>limit</code> parameter</li>
+</ol>
+<h3>&quot;Cannot find module&quot; errors</h3>
+<pre><code class="language-bash">cd /path/to/xactions
+npm install
+</code></pre>
+<hr>
+<h2>📚 Learn More</h2>
+<ul>
+<li><a href="https://spec.modelcontextprotocol.io/">Model Context Protocol Specification</a></li>
+<li><a href="https://docs.anthropic.com/claude/docs/mcp">Claude Desktop MCP Guide</a></li>
+<li><a href="https://xactions.app/docs">XActions Documentation</a></li>
+</ul>
+<hr>
+<h2>👤 Author</h2>
+<p><strong>nich</strong> (<a href="https://x.com/nichxbt">@nichxbt</a>) - Creator of XActions</p>
+<hr>
+<h2>📄 License</h2>
+<p>MIT License - Use freely in your own projects.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try MCP Server - AI Agent Integration?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/grok-ai">🧠 Grok Ai</a>
+        <a href="/docs/grok-integration">🧠 Grok Integration</a>
+        <a href="/docs/smart-unfollow">🧠 Smart Unfollow</a>
+        <a href="/docs/detect-unfollowers">🔍 Detect Unfollowers</a>
+        <a href="/docs/video-downloader">🎬 Video Downloader</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

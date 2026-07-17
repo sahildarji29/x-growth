@@ -1,0 +1,10 @@
+# One original-post angle per line. Blank lines and # comments are ignored.
+# Copy to config/post_angles.txt and rewrite for YOUR field.
+# The bot picks one at random for each original tweet it composes.
+a specific lesson learned from your recent work (low-key, no pitch)
+an opinion about a common approach in your field vs. how you do it
+a concrete tip or observation from your domain
+a take on the tools or workflow in your space
+a short reflection on leadership or hiring in your field
+a trade-off you've personally hit between speed and quality
+an honest opinion about the current state of your industry

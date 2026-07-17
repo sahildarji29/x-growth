@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Script Configs | XActions</title>
+  <meta name="description" content="Scrolls your profile and analyzes engagement metrics across your recent posts.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, analytics, insights, script, configs, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Analytics Script Configs — XActions">
+  <meta property="og:description" content="Scrolls your profile and analyzes engagement metrics across your recent posts.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/analytics-insights-script-configs">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Analytics Script Configs — XActions">
+  <meta name="twitter:description" content="Scrolls your profile and analyzes engagement metrics across your recent posts.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/analytics-insights-script-configs">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Analytics Script Configs | XActions",
+    "description": "Scrolls your profile and analyzes engagement metrics across your recent posts.",
+    "url": "https://xactions.app/docs/skills/analytics-insights-script-configs",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/analytics-insights-script-configs",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, analytics, insights, script, configs, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Analytics Script Configs", "item": "https://xactions.app/docs/skills/analytics-insights-script-configs" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Analytics Script Configs</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Analytics Script Configs
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Analytics Script Configs</h1>
+<h2>Contents</h2>
+<ul>
+<li><a href="#engagement-analytics">Engagement Analytics</a></li>
+<li><a href="#best-time-to-post">Best Time to Post</a></li>
+<li><a href="#hashtag-analytics">Hashtag Analytics</a></li>
+<li><a href="#competitor-analysis">Competitor Analysis</a></li>
+<li><a href="#audit-followers">Audit Followers</a></li>
+</ul>
+<h2>Engagement Analytics</h2>
+<p><strong>File:</strong> <code>src/engagementAnalytics.js</code></p>
+<p>Scrolls your profile and analyzes engagement metrics across your recent posts.</p>
+<h3>What it reports</h3>
+<ul>
+<li>Total likes, retweets, replies, views</li>
+<li>Average engagement rate</li>
+<li>Top 5 posts by likes</li>
+<li>Top 5 posts by total engagement</li>
+<li>Best posting hour and day</li>
+</ul>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to <code>x.com/YOUR_USERNAME</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Wait for it to scroll and analyze</li>
+</ol>
+<h3>Output</h3>
+<p>Exports a full JSON report with per-post data including engagement rates, best times, and rankings.</p>
+<h2>Best Time to Post</h2>
+<p><strong>File:</strong> <code>src/bestTimeToPost.js</code></p>
+<p>Analyzes your posting history to determine when your audience is most engaged.</p>
+<h3>What it reports</h3>
+<ul>
+<li>Best days of the week (ranked by average engagement)</li>
+<li>Best hours of the day (ranked by average engagement)</li>
+<li>Best day+hour combinations</li>
+<li>Visual bar charts in console</li>
+<li>Specific recommendation: &quot;Post on [Day] around [Hour]&quot;</li>
+</ul>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to <code>x.com/YOUR_USERNAME</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Results export as JSON</li>
+</ol>
+<h2>Hashtag Analytics</h2>
+<p><strong>File:</strong> <code>src/hashtagAnalytics.js</code></p>
+<p>Analyze the performance of any hashtag: top posts, top contributors, hourly distribution.</p>
+<h3>How to use</h3>
+<ol>
+<li>Search a hashtag: <code>x.com/search?q=%23yourhashtag</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+</ol>
+<h3>What it reports</h3>
+<ul>
+<li>Total engagement metrics across all posts</li>
+<li>Unique users posting the hashtag</li>
+<li>Top 5 posts by engagement</li>
+<li>Top 10 contributors</li>
+<li>Peak posting hours</li>
+</ul>
+<h2>Competitor Analysis</h2>
+<p><strong>File:</strong> <code>src/competitorAnalysis.js</code></p>
+<p>Compare engagement metrics between multiple X accounts.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  accounts: [&#39;elonmusk&#39;, &#39;nichxbt&#39;, &#39;openai&#39;],
+  postsToAnalyze: 20,
+};
+</code></pre>
+<h3>What it reports</h3>
+<ul>
+<li>Follower/following counts and ratios</li>
+<li>Average likes and engagement per post</li>
+<li>Engagement rate percentage</li>
+<li>Rankings sorted by engagement</li>
+</ul>
+<p>Each account takes ~15-30 seconds to analyze as the script navigates between profile pages.</p>
+<h2>Audit Followers</h2>
+<p><strong>File:</strong> <code>src/auditFollowers.js</code></p>
+<p>Scan your followers list and categorize accounts as legitimate, suspicious, or likely-fake.</p>
+<h3>Detection heuristics</h3>
+<ul>
+<li>Default/missing avatar → suspicious</li>
+<li>No bio → suspicious</li>
+<li>High digit-to-letter ratio in username → likely bot</li>
+<li>Template-looking display names → suspicious</li>
+</ul>
+<h3>Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Score</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Legitimate</td>
+<td>0-1</td>
+<td>Normal account</td>
+</tr>
+<tr>
+<td>Suspicious</td>
+<td>2</td>
+<td>Some red flags</td>
+</tr>
+<tr>
+<td>Likely Fake</td>
+<td>3+</td>
+<td>Multiple red flags</td>
+</tr>
+</tbody></table>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to <code>x.com/YOUR_USERNAME/followers</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Report exports as JSON</li>
+</ol>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

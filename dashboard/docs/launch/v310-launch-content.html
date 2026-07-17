@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XActions v3.1.0 — Launch Content | XActions</title>
+  <meta name="description" content="Ready-to-post content for X, Reddit, Hacker News, and Product Hunt.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, v310, launch, content, v3.1.0, launch &amp; releases">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="XActions v3.1.0 — Launch Content — XActions">
+  <meta property="og:description" content="Ready-to-post content for X, Reddit, Hacker News, and Product Hunt.">
+  <meta property="og:url" content="https://xactions.app/docs/launch/v310-launch-content">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="XActions v3.1.0 — Launch Content — XActions">
+  <meta name="twitter:description" content="Ready-to-post content for X, Reddit, Hacker News, and Product Hunt.">
+
+  <link rel="canonical" href="https://xactions.app/docs/launch/v310-launch-content">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "XActions v3.1.0 — Launch Content | XActions",
+    "description": "Ready-to-post content for X, Reddit, Hacker News, and Product Hunt.",
+    "url": "https://xactions.app/docs/launch/v310-launch-content",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/launch/v310-launch-content",
+    "articleSection": "Launch & Releases",
+    "keywords": "xactions, twitter automation, x automation, free, open source, v310, launch, content, v3.1.0, launch & releases"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Launch & Releases", "item": "https://xactions.app/docs/launch" },
+      { "@type": "ListItem", "position": 4, "name": "XActions v3.1.0 — Launch Content", "item": "https://xactions.app/docs/launch/v310-launch-content" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🚀 XActions v3.1.0 — Launch Content</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/launch">Launch &amp; Releases</a> › XActions v3.1.0 — Launch Content
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Launch &amp; Releases</span>
+        <h1>XActions v3.1.0 — Launch Content</h1>
+<p>Ready-to-post content for X, Reddit, Hacker News, and Product Hunt.</p>
+<p><strong>Tweet 1 (Hook)</strong></p>
+<p>just shipped the biggest update to XActions ever</p>
+<p>58,000+ lines of new code. 115 new files.</p>
+<p>XActions is now the most complete open-source X/Twitter toolkit on GitHub.</p>
+<p>plugins. workflows. cross-platform. real-time streaming. social graphs. sentiment analysis. browser extension.</p>
+<p>all free. thread 🧵</p>
+<hr>
+<p><strong>Tweet 2 (Plugin System)</strong></p>
+<p>1/ Plugin System</p>
+<p>anyone can now extend XActions with npm packages</p>
+<p>create xactions-plugin-yourname → add scrapers, MCP tools, automations, API routes</p>
+<p>community plugins auto-register in the MCP server so AI agents discover them instantly</p>
+<hr>
+<p><strong>Tweet 3 (Cross-Platform)</strong></p>
+<p>2/ Cross-Platform Scrapers</p>
+<p>XActions now scrapes Bluesky, Mastodon, and Threads — not just Twitter</p>
+<p>Bluesky uses AT Protocol (no browser needed)<br>Mastodon uses public REST API (any instance)<br>Threads uses Puppeteer like Twitter</p>
+<p>one unified interface:<br>scrape(&#39;bluesky&#39;, &#39;profile&#39;, { username: &#39;user.bsky.social&#39; })</p>
+<hr>
+<p><strong>Tweet 4 (Workflows)</strong></p>
+<p>3/ Workflow Engine</p>
+<p>define automation pipelines as JSON:</p>
+<p>trigger: every 30 min<br>→ scrape @competitor&#39;s latest tweet<br>→ if posted &lt; 30 min ago<br>→ summarize with AI<br>→ post your take</p>
+<p>set it and forget it. runs on cron via Bull queue.</p>
+<hr>
+<p><strong>Tweet 5 (Streaming)</strong></p>
+<p>4/ Real-Time Streaming</p>
+<p>subscribe to any account&#39;s tweets, follower changes, or mentions</p>
+<p>polls via Puppeteer → deduplicates in Redis → pushes events over Socket.IO</p>
+<p>your dashboard updates live. no API key. no webhook setup.</p>
+<hr>
+<p><strong>Tweet 6 (Sentiment + Graph)</strong></p>
+<p>5/ Sentiment Analysis + Social Graph</p>
+<p>built-in sentiment analyzer works completely offline — no API keys</p>
+<p>monitor your reputation over time. get alerts when sentiment drops.</p>
+<p>plus: map your entire social graph. find clusters, bridge accounts, influence scores. export to D3.js or Gephi.</p>
+<hr>
+<p><strong>Tweet 7 (Portability)</strong></p>
+<p>6/ Account Portability</p>
+<p>export your ENTIRE Twitter life:</p>
+<ul>
+<li>all tweets</li>
+<li>followers &amp; following lists</li>
+<li>bookmarks &amp; likes</li>
+<li>DMs</li>
+</ul>
+<p>formats: JSON, CSV, Markdown, self-contained HTML archive</p>
+<p>migration stubs ready for Bluesky &amp; Mastodon</p>
+<hr>
+<p><strong>Tweet 8 (Extension)</strong></p>
+<p>7/ Browser Extension</p>
+<p>no more pasting scripts in the console</p>
+<p>Chrome/Firefox extension with a popup UI:</p>
+<ul>
+<li>toggle automations on/off</li>
+<li>configure settings</li>
+<li>live activity log</li>
+<li>works on x.com, standalone, no server needed</li>
+</ul>
+<hr>
+<p><strong>Tweet 9 (Numbers)</strong></p>
+<p>by the numbers:</p>
+<p>140+ MCP tools (most of any Twitter MCP server)<br>4 platforms (Twitter, Bluesky, Mastodon, Threads)<br>50+ browser scripts<br>29 API route modules<br>26 agent skills<br>22 Claude tutorials<br>6 new systems (plugins, streaming, workflows, analytics, portability, graph)</p>
+<hr>
+<p><strong>Tweet 10 (CTA)</strong></p>
+<p>all of this is 100% free and open source.</p>
+<p>no API keys. no subscriptions. no paywalls.</p>
+<p>⭐ github.com/nirholas/XActions<br>📦 npm install xactions</p>
+<p>if this saved you from paying $100/mo for Twitter&#39;s API, star the repo</p>
+<p>built by @nichxbt</p>
+<hr>
+<h2>Hacker News Post</h2>
+<p><strong>Title:</strong> Show HN: XActions – Open-source X/Twitter automation with MCP, cross-platform scrapers, and workflow engine</p>
+<p><strong>Text:</strong></p>
+<p>Hey HN,</p>
+<p>I&#39;ve been building XActions — an open-source toolkit for X/Twitter automation. Just shipped v3.1.0 with some features I haven&#39;t seen in any other project:</p>
+<ul>
+<li><strong>Plugin system</strong> — community npm packages that extend scrapers, MCP tools, and automations</li>
+<li><strong>Cross-platform scrapers</strong> — Twitter + Bluesky (AT Protocol) + Mastodon (REST API) + Threads behind one interface</li>
+<li><strong>Workflow engine</strong> — declarative JSON pipelines with cron triggers, conditions, and chained actions</li>
+<li><strong>Real-time streaming</strong> — subscribe to tweet/follower/mention events via Socket.IO polling</li>
+<li><strong>Social graph analysis</strong> — map relationships, detect clusters, find bridge accounts with D3.js visualization</li>
+<li><strong>140+ MCP tools</strong> — largest free MCP server for Twitter, works with Claude/GPT/Cursor</li>
+<li><strong>Sentiment analysis</strong> — built-in rule-based analyzer (works offline) + optional LLM mode</li>
+<li><strong>Account portability</strong> — export your entire Twitter life to JSON/CSV/HTML, migration stubs for Bluesky</li>
+</ul>
+<p>Everything runs via browser scripts (paste in console), CLI, Node.js library, or MCP server for AI agents. No Twitter API key needed — it uses Puppeteer with stealth mode.</p>
+<p>GitHub: <a href="https://github.com/nirholas/XActions">https://github.com/nirholas/XActions</a><br>npm: <a href="https://www.npmjs.com/package/xactions">https://www.npmjs.com/package/xactions</a></p>
+<p>100% MIT licensed. Would love feedback on the architecture, especially the plugin system and workflow engine.</p>
+<hr>
+<h2>Reddit Posts</h2>
+<h3>r/javascript</h3>
+<p><strong>Title:</strong> XActions v3.1.0 — Open-source X/Twitter toolkit with plugin system, workflow engine, and cross-platform scrapers (Bluesky, Mastodon, Threads)</p>
+<p><strong>Body:</strong></p>
+<p>Built an open-source Node.js toolkit for X/Twitter automation. Just shipped the biggest update with 58K+ lines of new code:</p>
+<p><strong>What&#39;s new:</strong></p>
+<ul>
+<li>Plugin system — npm packages (<code>xactions-plugin-*</code>) that add scrapers, MCP tools, API routes</li>
+<li>Cross-platform — Bluesky (AT Protocol), Mastodon (REST API), Threads via unified <code>scrape()</code> interface</li>
+<li>Workflow engine — JSON pipelines with cron triggers and conditions</li>
+<li>Real-time streaming — Socket.IO + Puppeteer polling + Redis deduplication</li>
+<li>Social graph — D3.js visualization, cluster detection, influence scoring</li>
+<li>140+ MCP tools for AI agents (Claude, GPT, Cursor)</li>
+</ul>
+<p><strong>Stack:</strong> Node.js 18+, ESM, Puppeteer + stealth, Express, Prisma/PostgreSQL, Bull, Socket.IO, Redis</p>
+<p>No Twitter API key needed. MIT licensed.</p>
+<p>GitHub: <a href="https://github.com/nirholas/XActions">https://github.com/nirholas/XActions</a></p>
+<hr>
+<h3>r/ChatGPT or r/ClaudeAI</h3>
+<p><strong>Title:</strong> Built a free MCP server with 140+ tools for Twitter/X automation — works with Claude Desktop, Cursor, GPT</p>
+<p><strong>Body:</strong></p>
+<p>XActions just shipped v3.1.0 with 140+ MCP tools for X/Twitter — biggest free MCP server for social media.</p>
+<p>What you can do with Claude/Cursor:</p>
+<ul>
+<li>&quot;Analyze @paulg&#39;s writing style and write tweets in his voice&quot;</li>
+<li>&quot;Find everyone I follow who doesn&#39;t follow me back&quot;</li>
+<li>&quot;Monitor @competitor and alert me when they post about AI&quot;</li>
+<li>&quot;Export my Twitter bookmarks to CSV&quot;</li>
+<li>&quot;Build a social graph of accounts in the AI niche&quot;</li>
+</ul>
+<p>New in v3.1.0:</p>
+<ul>
+<li>Workflow engine — define automation pipelines as JSON, run on cron</li>
+<li>Cross-platform — also scrapes Bluesky, Mastodon, and Threads</li>
+<li>Real-time streaming — subscribe to live events</li>
+<li>Sentiment analysis — monitor reputation with alerts</li>
+<li>Plugin system — community can add new MCP tools via npm</li>
+</ul>
+<p>Setup: add 3 lines to your Claude Desktop config, no API key needed.</p>
+<p>100% free, open source: <a href="https://github.com/nirholas/XActions">https://github.com/nirholas/XActions</a></p>
+<hr>
+<h2>Product Hunt Tagline</h2>
+<p><strong>Tagline:</strong> The complete open-source X/Twitter automation toolkit — scrapers, MCP server for AI agents, workflows, and cross-platform support. No API key needed.</p>
+<p><strong>Description:</strong></p>
+<p>XActions is the most complete open-source toolkit for X/Twitter automation.</p>
+<p>🔧 <strong>4 ways to use it:</strong> Browser console scripts, CLI, Node.js library, MCP server for AI agents</p>
+<p>🤖 <strong>140+ MCP tools</strong> — largest free Twitter MCP server, works with Claude, GPT, Cursor</p>
+<p>🌐 <strong>Cross-platform</strong> — Twitter + Bluesky + Mastodon + Threads behind one unified interface</p>
+<p>⚡ <strong>Workflow engine</strong> — declarative JSON pipelines with cron triggers and conditions</p>
+<p>📊 <strong>Built-in analytics</strong> — sentiment analysis, social graph mapping, reputation monitoring</p>
+<p>🔌 <strong>Plugin system</strong> — extend with community npm packages</p>
+<p>💰 <strong>100% free</strong> — no API keys, no subscriptions, no paywalls. MIT licensed.</p>
+<p>v3.1.0 ships with 58,000+ lines of new code across plugins, streaming, workflows, cross-platform scrapers, sentiment analysis, social graph visualization, account portability, and a browser extension.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+        <a href="/docs">Browse all docs</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

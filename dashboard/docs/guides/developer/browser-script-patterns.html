@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Script Patterns | XActions</title>
+  <meta name="description" content="XActions browser scripts run in DevTools console on x.com. They are NOT Node.js scripts.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, browser, script, patterns, developer guides">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Browser Script Patterns — XActions">
+  <meta property="og:description" content="XActions browser scripts run in DevTools console on x.com. They are NOT Node.js scripts.">
+  <meta property="og:url" content="https://xactions.app/docs/guides/developer/browser-script-patterns">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Browser Script Patterns — XActions">
+  <meta name="twitter:description" content="XActions browser scripts run in DevTools console on x.com. They are NOT Node.js scripts.">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/developer/browser-script-patterns">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Browser Script Patterns | XActions",
+    "description": "XActions browser scripts run in DevTools console on x.com. They are NOT Node.js scripts.",
+    "url": "https://xactions.app/docs/guides/developer/browser-script-patterns",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/developer/browser-script-patterns",
+    "articleSection": "Developer Guides",
+    "keywords": "xactions, twitter automation, x automation, free, open source, browser, script, patterns, developer guides"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Developer Guides", "item": "https://xactions.app/docs/guides/developer" },
+      { "@type": "ListItem", "position": 4, "name": "Browser Script Patterns", "item": "https://xactions.app/docs/guides/developer/browser-script-patterns" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🛠️ Browser Script Patterns</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides/developer">Developer Guides</a> › Browser Script Patterns
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Developer Guides</span>
+        <h1>Browser Script Patterns</h1>
+<p>XActions browser scripts run in DevTools console on x.com. They are NOT Node.js scripts.</p>
+<h2>Standard IIFE Pattern</h2>
+<pre><code class="language-javascript">(() =&gt; {
+  const $button = &#39;[data-testid=&quot;someButton&quot;]&#39;;
+  const sleep = (ms) =&gt; new Promise(r =&gt; setTimeout(r, ms));
+
+  const run = async () =&gt; {
+    // Script logic with await sleep(1000) between actions
+  };
+
+  run();
+})();
+</code></pre>
+<h2>State Persistence</h2>
+<p>Scripts stop on page navigation. Use <code>sessionStorage</code> to track progress across re-runs:</p>
+<pre><code class="language-javascript">const getProcessed = () =&gt; {
+  try { return JSON.parse(sessionStorage.getItem(&#39;xactions_key&#39;) || &#39;[]&#39;); }
+  catch { return []; }
+};
+
+const markProcessed = (id) =&gt; {
+  const items = getProcessed();
+  if (!items.includes(id)) {
+    items.push(id);
+    sessionStorage.setItem(&#39;xactions_key&#39;, JSON.stringify(items));
+  }
+};
+</code></pre>
+<h2>Rate Limiting</h2>
+<ul>
+<li>1-3 second delays between individual actions (clicks, scrolls)</li>
+<li>30+ second delays for bulk DMs</li>
+<li>Re-run script if it finishes but items remain (DOM loads in batches)</li>
+<li>X may temporarily restrict actions under heavy automation</li>
+</ul>
+<h2>Scroll + Collect Pattern</h2>
+<p>Most scripts scroll the page to load more content, then process visible elements:</p>
+<pre><code class="language-javascript">const collectAndProcess = async () =&gt; {
+  let retries = 3;
+  while (retries &gt; 0) {
+    const items = document.querySelectorAll(selector);
+    if (items.length === 0) { retries--; await sleep(2000); continue; }
+    retries = 3;
+    for (const item of items) {
+      // process item
+      await sleep(1000);
+    }
+    window.scrollBy(0, 500);
+    await sleep(2000);
+  }
+};
+</code></pre>
+<h2>Confirmation Dialog Pattern</h2>
+<p>Many actions (unfollow, block, leave community) require a confirmation click:</p>
+<pre><code class="language-javascript">button.click();
+await sleep(500);
+const confirm = document.querySelector(&#39;[data-testid=&quot;confirmationSheetConfirm&quot;]&#39;);
+if (confirm) confirm.click();
+</code></pre>
+<h2>Dependencies</h2>
+<p>Some scripts in <code>src/automation/</code> require pasting <code>src/automation/core.js</code> first. The SKILL.md for each script notes this when applicable.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/developer/contributing-features">🛠️ Adding New Features</a>
+        <a href="/docs/guides/developer/selectors">🛠️ X/Twitter DOM Selectors Reference</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

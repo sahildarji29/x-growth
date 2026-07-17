@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Guide | XActions</title>
+  <meta name="description" content="Track followers, unfollowers, and account activity on X (Twitter).">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, monitoring, guide, guides &amp; reference">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Monitoring Guide — XActions">
+  <meta property="og:description" content="Track followers, unfollowers, and account activity on X (Twitter).">
+  <meta property="og:url" content="https://xactions.app/docs/guides/monitoring">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Monitoring Guide — XActions">
+  <meta name="twitter:description" content="Track followers, unfollowers, and account activity on X (Twitter).">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/monitoring">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Monitoring Guide | XActions",
+    "description": "Track followers, unfollowers, and account activity on X (Twitter).",
+    "url": "https://xactions.app/docs/guides/monitoring",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/monitoring",
+    "articleSection": "Guides & Reference",
+    "keywords": "xactions, twitter automation, x automation, free, open source, monitoring, guide, guides & reference"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Guides & Reference", "item": "https://xactions.app/docs/guides" },
+      { "@type": "ListItem", "position": 4, "name": "Monitoring Guide", "item": "https://xactions.app/docs/guides/monitoring" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📖 Monitoring Guide</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides">Guides &amp; Reference</a> › Monitoring Guide
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Guides &amp; Reference</span>
+        <h1>Monitoring Guide</h1>
+<p>Track followers, unfollowers, and account activity on X (Twitter).</p>
+<p>-----|----------|----------------|<br>| <code>detectUnfollowers.js</code> | See who unfollowed you | Your <code>/followers</code> page |<br>| <code>newFollowersAlert.js</code> | Track new followers | Your <code>/followers</code> page |<br>| <code>monitorAccount.js</code> | Watch any public account | Any <code>/followers</code> or <code>/following</code> page |<br>| <code>continuousMonitor.js</code> | Auto-monitoring with alerts | Any <code>/followers</code> or <code>/following</code> page |</p>
+<hr>
+<h2>📊 Detect Who Unfollowed You</h2>
+<p>Want to know who stopped following you? Here&#39;s how:</p>
+<h3>Step 1: Go to Your Followers Page</h3>
+<pre><code>https://x.com/YOUR_USERNAME/followers
+</code></pre>
+<h3>Step 2: Run the Script</h3>
+<p>Open Developer Console and paste the contents of <a href="../src/detectUnfollowers.js"><code>src/detectUnfollowers.js</code></a></p>
+<h3>Step 3: Run Again Later</h3>
+<p>The script saves a snapshot. Run it again (hours, days, weeks later) to see:</p>
+<ul>
+<li>🚨 Who unfollowed you</li>
+<li>🎉 Who started following you</li>
+</ul>
+<h3>How It Works</h3>
+<pre><code>First run:  📸 Takes snapshot of all your followers
+            💾 Saves to browser localStorage
+
+Later runs: 📸 Takes new snapshot
+            📊 Compares with previous
+            📋 Shows who left / who&#39;s new
+            📥 Downloads list of unfollowers
+</code></pre>
+<hr>
+<h2>🎉 Track New Followers</h2>
+<p>Use <code>newFollowersAlert.js</code> to see your new followers:</p>
+<ol>
+<li>Go to <code>https://x.com/YOUR_USERNAME/followers</code></li>
+<li>Paste the script and run</li>
+<li>First run saves your current followers</li>
+<li>Run again later to see who&#39;s new!</li>
+</ol>
+<p><strong>Bonus features:</strong></p>
+<ul>
+<li>Shows display names alongside usernames</li>
+<li>Generates welcome message templates</li>
+<li>Also shows who unfollowed you</li>
+</ul>
+<hr>
+<h2>🔍 Monitor ANY Public Account</h2>
+<p>Want to track someone else&#39;s followers or following list? Use <code>monitorAccount.js</code>:</p>
+<h3>Track Who Follows Someone</h3>
+<pre><code>https://x.com/elonmusk/followers
+→ Run script
+→ See who starts/stops following them
+</code></pre>
+<h3>Track Who Someone Follows</h3>
+<pre><code>https://x.com/elonmusk/following
+→ Run script  
+→ See who they follow/unfollow
+</code></pre>
+<h3>Example Use Cases</h3>
+<ul>
+<li>Track a competitor&#39;s new followers</li>
+<li>See who a celebrity unfollowed</li>
+<li>Monitor your favorite creator&#39;s following activity</li>
+<li>Research influencer engagement patterns</li>
+</ul>
+<h3>Privacy Note</h3>
+<p>This only works on <strong>public accounts</strong>. Private accounts hide their follower/following lists.</p>
+<hr>
+<h2>🔄 Continuous Monitoring</h2>
+<p>Want real-time alerts? Use <code>continuousMonitor.js</code>:</p>
+<h3>Features</h3>
+<ul>
+<li>⏰ Automatic checking (default: every 5 minutes)</li>
+<li>🔔 Browser notifications</li>
+<li>🔊 Sound alerts</li>
+<li>📊 Console logging</li>
+</ul>
+<h3>Configuration</h3>
+<p>Edit these values at the top of the script:</p>
+<pre><code class="language-js">const CONFIG = {
+  CHECK_INTERVAL_MINUTES: 5,     // How often to check
+  ENABLE_NOTIFICATIONS: true,    // Browser notifications
+  ENABLE_SOUND: true,           // Sound on changes
+  AUTO_SCROLL: true,            // Load all users (slower but complete)
+};
+</code></pre>
+<h3>How to Use</h3>
+<ol>
+<li>Go to any <code>/followers</code> or <code>/following</code> page</li>
+<li>Paste the script</li>
+<li><strong>Keep the tab open</strong> — it checks automatically</li>
+<li>Get notified when someone follows/unfollows!</li>
+</ol>
+<h3>Stop Monitoring</h3>
+<p>Run this in the console:</p>
+<pre><code class="language-js">stopXActionsMonitor()
+</code></pre>
+<hr>
+<h2>💾 Data Storage</h2>
+<p>All monitoring data is stored in your browser&#39;s <code>localStorage</code>:</p>
+<ul>
+<li>Data stays on YOUR computer</li>
+<li>Nothing is sent to any server</li>
+<li>Persists between browser sessions</li>
+<li>Clears if you clear browser data</li>
+</ul>
+<h3>View Stored Data</h3>
+<pre><code class="language-js">// See all XActions data
+Object.keys(localStorage)
+  .filter(k =&gt; k.startsWith(&#39;xactions&#39;))
+  .forEach(k =&gt; console.log(k, JSON.parse(localStorage[k])));
+</code></pre>
+<h3>Clear All Data</h3>
+<pre><code class="language-js">// Remove all XActions snapshots
+Object.keys(localStorage)
+  .filter(k =&gt; k.startsWith(&#39;xactions&#39;))
+  .forEach(k =&gt; localStorage.removeItem(k));
+</code></pre>
+<hr>
+<h2>⚠️ Limitations</h2>
+<ol>
+<li><p><strong>Rate Limits</strong>: Scrolling too fast may trigger X&#39;s protections. The scripts have built-in delays.</p>
+</li>
+<li><p><strong>Large Accounts</strong>: Accounts with 100k+ followers take a long time to scan. Consider using <code>AUTO_SCROLL: false</code> for quicker (partial) scans.</p>
+</li>
+<li><p><strong>Private Accounts</strong>: Can&#39;t monitor private accounts — their lists are hidden.</p>
+</li>
+<li><p><strong>Page Must Stay Open</strong>: For continuous monitoring, keep the browser tab open and active.</p>
+</li>
+<li><p><strong>Browser Data</strong>: If you clear your browser data, snapshots are lost.</p>
+</li>
+</ol>
+<hr>
+<h2>🤔 FAQ</h2>
+<p><strong>Q: Is this against Twitter&#39;s rules?</strong><br>A: These scripts only read public information that&#39;s visible to anyone. They don&#39;t use any APIs or automation that would violate terms of service.</p>
+<p><strong>Q: Can people see that I&#39;m monitoring them?</strong><br>A: No. You&#39;re just viewing public pages — same as any visitor.</p>
+<p><strong>Q: Why doesn&#39;t it show all followers?</strong><br>A: Large accounts take time to scroll through. Let the script run longer, or run it multiple times.</p>
+<p><strong>Q: The unfollower count seems wrong?</strong><br>A: Some accounts may have been suspended or deleted. They won&#39;t appear in the current scan.</p>
+<hr>
+<h2>💡 Pro Tips</h2>
+<ol>
+<li><p><strong>Schedule checks</strong>: Run the detection script at the same time each day/week for consistent tracking.</p>
+</li>
+<li><p><strong>Export data</strong>: The scripts download <code>.txt</code> files of unfollowers. Save these for long-term records.</p>
+</li>
+<li><p><strong>Multiple accounts</strong>: Each account&#39;s data is stored separately, so you can monitor multiple accounts.</p>
+</li>
+<li><p><strong>Use incognito</strong>: If you don&#39;t want data persisting, run in incognito mode (data clears when closed).</p>
+</li>
+</ol>
+<hr>
+<p>Happy monitoring! 🔭</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/getting-started">📖 Getting Started with XActions</a>
+        <a href="/docs/guides/usage">📖 Usage</a>
+        <a href="/docs/guides/automation">📖 XActions Automation Framework Guide</a>
+        <a href="/docs/guides/cli-reference">📖 XActions CLI Reference</a>
+        <a href="/docs/guides/ai-api">📖 XActions AI API Documentation</a>
+        <a href="/docs/guides/api-reference">📖 XActions — API Reference</a>
+        <a href="/docs/guides/deployment">📖 Deployment Guide</a>
+        <a href="/docs/guides/dom-selectors">📖 X/Twitter DOM Selector Reference</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

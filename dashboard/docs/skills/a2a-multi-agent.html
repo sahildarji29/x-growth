@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill: A2A Multi-Agent Orchestration | XActions</title>
+  <meta name="description" content="Turn XActions into an A2A-compatible agent that can discover, communicate with, and delegate tasks to other AI agents using Google's Agent-to-Agent protocol.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, a2a, multi, agent, skill:, multi-agent, orchestration, agent skills">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Skill: A2A Multi-Agent Orchestration — XActions">
+  <meta property="og:description" content="Turn XActions into an A2A-compatible agent that can discover, communicate with, and delegate tasks to other AI agents using Google's Agent-to-Agent protocol.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/a2a-multi-agent">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Skill: A2A Multi-Agent Orchestration — XActions">
+  <meta name="twitter:description" content="Turn XActions into an A2A-compatible agent that can discover, communicate with, and delegate tasks to other AI agents using Google's Agent-to-Agent protocol.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/a2a-multi-agent">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Skill: A2A Multi-Agent Orchestration | XActions",
+    "description": "Turn XActions into an A2A-compatible agent that can discover, communicate with, and delegate tasks to other AI agents using Google's Agent-to-Agent protocol.",
+    "url": "https://xactions.app/docs/skills/a2a-multi-agent",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/a2a-multi-agent",
+    "articleSection": "Agent Skills",
+    "keywords": "xactions, twitter automation, x automation, free, open source, a2a, multi, agent, skill:, multi-agent, orchestration, agent skills"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Agent Skills", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Skill: A2A Multi-Agent Orchestration", "item": "https://xactions.app/docs/skills/a2a-multi-agent" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎯 Skill: A2A Multi-Agent Orchestration</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Agent Skills</a> › Skill: A2A Multi-Agent Orchestration
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Agent Skills</span>
+        <h1>Skill: A2A Multi-Agent Orchestration</h1>
+<blockquote>
+<p>Turn XActions into an A2A-compatible agent that can discover, communicate with, and delegate tasks to other AI agents using Google&#39;s Agent-to-Agent protocol.</p>
+</blockquote>
+<h2>When to Use</h2>
+<ul>
+<li>User wants to connect XActions with external AI agents</li>
+<li>User needs multi-agent orchestration (decompose → delegate → aggregate)</li>
+<li>User asks about A2A protocol, agent cards, or inter-agent communication</li>
+<li>User wants to run the A2A server or manage agent discovery</li>
+<li>User needs real-time task streaming between agents</li>
+</ul>
+<h2>Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src/a2a/types.js</code></td>
+<td>Shared constants, factories, validators</td>
+</tr>
+<tr>
+<td><code>src/a2a/skillRegistry.js</code></td>
+<td>MCP tool → A2A skill bridge</td>
+</tr>
+<tr>
+<td><code>src/a2a/agentCard.js</code></td>
+<td>Agent Card generation (<code>.well-known/agent.json</code>)</td>
+</tr>
+<tr>
+<td><code>src/a2a/taskManager.js</code></td>
+<td>Task lifecycle (create, transition, execute)</td>
+</tr>
+<tr>
+<td><code>src/a2a/bridge.js</code></td>
+<td>A2A ↔ MCP translation layer + NLP</td>
+</tr>
+<tr>
+<td><code>src/a2a/streaming.js</code></td>
+<td>SSE streaming for real-time updates</td>
+</tr>
+<tr>
+<td><code>src/a2a/push.js</code></td>
+<td>Webhook push notifications</td>
+</tr>
+<tr>
+<td><code>src/a2a/auth.js</code></td>
+<td>API key + JWT inter-agent auth</td>
+</tr>
+<tr>
+<td><code>src/a2a/discovery.js</code></td>
+<td>Agent registry, skill matching, trust scoring</td>
+</tr>
+<tr>
+<td><code>src/a2a/orchestrator.js</code></td>
+<td>Task decomposer + delegator + orchestrator</td>
+</tr>
+<tr>
+<td><code>src/a2a/server.js</code></td>
+<td>Express HTTP server (port 3100)</td>
+</tr>
+<tr>
+<td><code>src/a2a/index.js</code></td>
+<td>Barrel export + CLI commands + factory</td>
+</tr>
+<tr>
+<td><code>dashboard/a2a.html</code></td>
+<td>Web dashboard for monitoring</td>
+</tr>
+</tbody></table>
+<h2>Quick Start</h2>
+<h3>Start the A2A server</h3>
+<pre><code class="language-bash"># Via CLI
+xactions a2a start --port 3100
+
+# Directly
+node src/a2a/server.js
+
+# With session cookie for browser automation
+node src/a2a/server.js --cookie &quot;YOUR_X_SESSION_COOKIE&quot;
+</code></pre>
+<h3>Check health</h3>
+<pre><code class="language-bash">curl http://localhost:3100/a2a/health
+</code></pre>
+<h3>View Agent Card</h3>
+<pre><code class="language-bash">curl http://localhost:3100/.well-known/agent.json
+</code></pre>
+<h3>Send a task</h3>
+<pre><code class="language-bash">curl -X POST http://localhost:3100/a2a/tasks \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;tasks/send&quot;,
+    &quot;params&quot;: {
+      &quot;message&quot;: {
+        &quot;role&quot;: &quot;user&quot;,
+        &quot;parts&quot;: [{&quot;type&quot;: &quot;text&quot;, &quot;text&quot;: &quot;get profile for @nichxbt&quot;}]
+      }
+    },
+    &quot;id&quot;: &quot;1&quot;
+  }&#39;
+</code></pre>
+<h3>Discover an agent</h3>
+<pre><code class="language-bash">xactions a2a discover https://other-agent.example.com
+</code></pre>
+<h3>List skills</h3>
+<pre><code class="language-bash">xactions a2a skills
+xactions a2a skills --query &quot;scrape&quot;
+</code></pre>
+<h2>Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│                   A2A Protocol Layer                 │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────┐  │
+│  │  Agent    │  │   Task   │  │   Streaming /    │  │
+│  │  Card     │  │  Manager │  │   Push Notify    │  │
+│  └────┬─────┘  └────┬─────┘  └────────┬─────────┘  │
+│       │              │                 │             │
+│  ┌────┴──────────────┴─────────────────┴──────────┐ │
+│  │              HTTP Server (Express)              │ │
+│  └────────────────────┬────────────────────────────┘ │
+│                       │                              │
+│  ┌────────────────────┴────────────────────────────┐ │
+│  │        Bridge (A2A ↔ MCP Translation)           │ │
+│  └────────────────────┬────────────────────────────┘ │
+│                       │                              │
+│  ┌────────────────────┴────────────────────────────┐ │
+│  │           Skill Registry (140+ tools)           │ │
+│  └─────────────────────────────────────────────────┘ │
+│                                                      │
+│  ┌─────────────┐  ┌────────────┐  ┌──────────────┐  │
+│  │  Discovery  │  │   Auth     │  │ Orchestrator │  │
+│  │  + Trust    │  │  (JWT/Key) │  │ (Decompose)  │  │
+│  └─────────────┘  └────────────┘  └──────────────┘  │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<h2>Key Concepts</h2>
+<h3>Agent Card</h3>
+<p>Every A2A agent publishes a JSON document at <code>/.well-known/agent.json</code> describing its capabilities, skills, and supported protocols.</p>
+<h3>Skills</h3>
+<p>XActions converts its 140+ MCP tools into A2A skills, each with a unique ID (<code>xactions.&lt;tool_name&gt;</code>), description, input schema, and category tags.</p>
+<h3>Task Lifecycle</h3>
+<pre><code>submitted → working → completed
+                   → failed
+         → canceled
+         → input-required → working
+</code></pre>
+<h3>Trust Scoring</h3>
+<p>Remote agents are scored 0-100 based on success ratio (40%), longevity (20%), recency (20%), and volume (20%).</p>
+<h3>Task Decomposition</h3>
+<p>Complex natural-language tasks are automatically broken into ordered sub-tasks with dependency tracking (<code>$step1</code>, <code>$step2.field</code>).</p>
+<h2>Endpoints</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/.well-known/agent.json</code></td>
+<td>Agent Card</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/tasks</code></td>
+<td>Create task (tasks/send or tasks/sendSubscribe)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/a2a/tasks/:id</code></td>
+<td>Get task</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/tasks/:id/cancel</code></td>
+<td>Cancel task</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/a2a/tasks/:id/stream</code></td>
+<td>SSE stream</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/tasks/:id/message</code></td>
+<td>Push notification</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/a2a/health</code></td>
+<td>Health check</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/a2a/skills</code></td>
+<td>List skills</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/orchestrate</code></td>
+<td>Execute orchestrated task</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/orchestrate/plan</code></td>
+<td>Get execution plan</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/a2a/agents</code></td>
+<td>List discovered agents</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/a2a/agents/discover</code></td>
+<td>Discover remote agents</td>
+</tr>
+</tbody></table>
+<h2>CLI Commands</h2>
+<pre><code>xactions a2a start [--port] [--cookie] [--no-auth]
+xactions a2a status [--url]
+xactions a2a skills [--query]
+xactions a2a agents [--url]
+xactions a2a discover &lt;url&gt;
+xactions a2a task &quot;&lt;description&gt;&quot;
+</code></pre>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation">🎯 Algorithm Cultivation &amp; Thought Leadership</a>
+        <a href="/docs/skills/analytics-insights">🎯 Analytics &amp; Insights</a>
+        <a href="/docs/skills/articles-longform">🎯 Articles &amp; Longform</a>
+        <a href="/docs/skills/blocking-muting-management">🎯 Blocking &amp; Muting Management</a>
+        <a href="/docs/skills/bookmarks-management">🎯 Bookmarks Management</a>
+        <a href="/docs/skills/business-ads">🎯 Business &amp; Ads Tools</a>
+        <a href="/docs/skills/community-health-monitoring">🎯 Community Health Monitoring</a>
+        <a href="/docs/skills/community-management">🎯 Community Management</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

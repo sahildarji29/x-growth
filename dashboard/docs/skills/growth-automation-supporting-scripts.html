@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supporting Automation Scripts | XActions</title>
+  <meta name="description" content="All require `src/automation/core.js` pasted first.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, growth, automation, supporting, scripts, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Supporting Automation Scripts — XActions">
+  <meta property="og:description" content="All require `src/automation/core.js` pasted first.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/growth-automation-supporting-scripts">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Supporting Automation Scripts — XActions">
+  <meta name="twitter:description" content="All require `src/automation/core.js` pasted first.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/growth-automation-supporting-scripts">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Supporting Automation Scripts | XActions",
+    "description": "All require `src/automation/core.js` pasted first.",
+    "url": "https://xactions.app/docs/skills/growth-automation-supporting-scripts",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/growth-automation-supporting-scripts",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, growth, automation, supporting, scripts, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Supporting Automation Scripts", "item": "https://xactions.app/docs/skills/growth-automation-supporting-scripts" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Supporting Automation Scripts</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Supporting Automation Scripts
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Supporting Automation Scripts</h1>
+<p>All require <code>src/automation/core.js</code> pasted first.</p>
+<h2>Quota Supervisor — <code>src/automation/quotaSupervisor.js</code></h2>
+<p>Rate limiting supervisor. Enforces hourly and daily quotas per action type (follow, like, unfollow, etc.). Includes stochastic variance and automatic sleep behavior when limits are approached. <strong>Paste before other automation scripts</strong> for safety.</p>
+<h2>Session Logger — <code>src/automation/sessionLogger.js</code></h2>
+<p>Tracks all automation actions with timestamps. Generates summary reports. Exports data to JSON or CSV. Useful for measuring automation effectiveness and auditing.</p>
+<h2>Multi-Account Manager — <code>src/automation/multiAccount.js</code></h2>
+<p>Manages multiple X accounts with rotation. Tracks account status: active, paused, limited, or suspended. Rotates between accounts to distribute actions.</p>
+<h2>Customer Service Bot — <code>src/automation/customerService.js</code></h2>
+<p>Monitors mentions and DMs for incoming messages. Auto-responds using configurable response templates. Supports business hours configuration (only responds during set hours).</p>
+<h2>Protect Active Users — <code>src/automation/protectActiveUsers.js</code></h2>
+<p>Scans your posts for users who actively engage (like, retweet, reply). Adds them to a protected list that <code>smartUnfollow.js</code> respects — prevents unfollowing your most engaged followers.</p>
+<h2>Actions Library — <code>src/automation/actions.js</code></h2>
+<p>Complete DOM actions library (~2100 lines). Provides namespaced functions:</p>
+<ul>
+<li><code>XActions.tweet.post()</code>, <code>XActions.tweet.like()</code>, <code>XActions.tweet.retweet()</code></li>
+<li><code>XActions.user.follow()</code>, <code>XActions.user.unfollow()</code></li>
+<li><code>XActions.dm.send()</code></li>
+<li><code>XActions.bookmark.add()</code></li>
+</ul>
+<p>Used internally by other automation scripts. Can also be used standalone after pasting <code>core.js</code>.</p>
+<h2>Link Scraper — <code>src/automation/linkScraper.js</code></h2>
+<p>Extracts all links shared by a user from their timeline. Filters by domain. Auto-downloads results as a file.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X/Twitter DOM Selectors Reference | XActions</title>
+  <meta name="description" content="Verified January 2026. X/Twitter frequently changes DOM. Test selectors before relying on them.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, selectors, x/twitter, reference, developer guides">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="X/Twitter DOM Selectors Reference — XActions">
+  <meta property="og:description" content="Verified January 2026. X/Twitter frequently changes DOM. Test selectors before relying on them.">
+  <meta property="og:url" content="https://xactions.app/docs/guides/developer/selectors">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="X/Twitter DOM Selectors Reference — XActions">
+  <meta name="twitter:description" content="Verified January 2026. X/Twitter frequently changes DOM. Test selectors before relying on them.">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/developer/selectors">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "X/Twitter DOM Selectors Reference | XActions",
+    "description": "Verified January 2026. X/Twitter frequently changes DOM. Test selectors before relying on them.",
+    "url": "https://xactions.app/docs/guides/developer/selectors",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/developer/selectors",
+    "articleSection": "Developer Guides",
+    "keywords": "xactions, twitter automation, x automation, free, open source, selectors, x/twitter, reference, developer guides"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Developer Guides", "item": "https://xactions.app/docs/guides/developer" },
+      { "@type": "ListItem", "position": 4, "name": "X/Twitter DOM Selectors Reference", "item": "https://xactions.app/docs/guides/developer/selectors" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🛠️ X/Twitter DOM Selectors Reference</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides/developer">Developer Guides</a> › X/Twitter DOM Selectors Reference
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Developer Guides</span>
+        <h1>X/Twitter DOM Selectors Reference</h1>
+<blockquote>
+<p>Verified January 2026. X/Twitter frequently changes DOM. Test selectors before relying on them.</p>
+</blockquote>
+<h2>Common</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tweet</td>
+<td><code>article[data-testid=&quot;tweet&quot;]</code></td>
+</tr>
+<tr>
+<td>Tweet text</td>
+<td><code>[data-testid=&quot;tweetText&quot;]</code></td>
+</tr>
+<tr>
+<td>User cell</td>
+<td><code>[data-testid=&quot;UserCell&quot;]</code></td>
+</tr>
+<tr>
+<td>Back button</td>
+<td><code>[data-testid=&quot;app-bar-back&quot;]</code></td>
+</tr>
+<tr>
+<td>Confirmation dialog</td>
+<td><code>[data-testid=&quot;confirmationSheetConfirm&quot;]</code></td>
+</tr>
+<tr>
+<td>Search input</td>
+<td><code>[data-testid=&quot;SearchBox_Search_Input&quot;]</code></td>
+</tr>
+<tr>
+<td>User actions menu</td>
+<td><code>[data-testid=&quot;userActions&quot;]</code></td>
+</tr>
+<tr>
+<td>Verification badge</td>
+<td><code>[data-testid=&quot;icon-verified&quot;]</code></td>
+</tr>
+<tr>
+<td>Toast notification</td>
+<td><code>[data-testid=&quot;toast&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Posting &amp; Compose</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Compose button</td>
+<td><code>a[data-testid=&quot;SideNav_NewTweet_Button&quot;]</code></td>
+</tr>
+<tr>
+<td>Tweet text area</td>
+<td><code>[data-testid=&quot;tweetTextarea_0&quot;]</code></td>
+</tr>
+<tr>
+<td>Post button</td>
+<td><code>[data-testid=&quot;tweetButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Thread add</td>
+<td><code>[data-testid=&quot;addButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Media button</td>
+<td><code>[data-testid=&quot;fileInput&quot;]</code></td>
+</tr>
+<tr>
+<td>Poll button</td>
+<td><code>[aria-label=&quot;Add poll&quot;]</code></td>
+</tr>
+<tr>
+<td>Schedule button</td>
+<td><code>[data-testid=&quot;scheduleOption&quot;]</code></td>
+</tr>
+<tr>
+<td>GIF button</td>
+<td><code>[aria-label=&quot;Add a GIF&quot;]</code></td>
+</tr>
+<tr>
+<td>Emoji button</td>
+<td><code>[aria-label=&quot;Add emoji&quot;]</code></td>
+</tr>
+<tr>
+<td>Alt text</td>
+<td><code>[data-testid=&quot;altTextInput&quot;]</code></td>
+</tr>
+<tr>
+<td>Inline post button</td>
+<td><code>[data-testid=&quot;tweetButtonInline&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Engagement</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Like button</td>
+<td><code>[data-testid=&quot;like&quot;]</code></td>
+</tr>
+<tr>
+<td>Unlike button</td>
+<td><code>[data-testid=&quot;unlike&quot;]</code></td>
+</tr>
+<tr>
+<td>Reply button</td>
+<td><code>[data-testid=&quot;reply&quot;]</code></td>
+</tr>
+<tr>
+<td>Retweet button</td>
+<td><code>[data-testid=&quot;retweet&quot;]</code></td>
+</tr>
+<tr>
+<td>Confirm retweet</td>
+<td><code>[data-testid=&quot;retweetConfirm&quot;]</code></td>
+</tr>
+<tr>
+<td>Unretweet</td>
+<td><code>[data-testid=&quot;unretweet&quot;]</code></td>
+</tr>
+<tr>
+<td>Confirm unretweet</td>
+<td><code>[data-testid=&quot;unretweetConfirm&quot;]</code></td>
+</tr>
+<tr>
+<td>Share button</td>
+<td><code>[data-testid=&quot;share&quot;]</code></td>
+</tr>
+<tr>
+<td>Bookmark button</td>
+<td><code>[data-testid=&quot;bookmark&quot;]</code></td>
+</tr>
+<tr>
+<td>Remove bookmark</td>
+<td><code>[data-testid=&quot;removeBookmark&quot;]</code></td>
+</tr>
+<tr>
+<td>Hide reply</td>
+<td><code>[data-testid=&quot;hideReply&quot;]</code></td>
+</tr>
+<tr>
+<td>Engagements count</td>
+<td><code>[data-testid=&quot;engagements&quot;]</code></td>
+</tr>
+<tr>
+<td>Impressions</td>
+<td><code>[data-testid=&quot;impressions&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Following &amp; Followers</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unfollow button</td>
+<td><code>[data-testid$=&quot;-unfollow&quot;]</code></td>
+</tr>
+<tr>
+<td>Follows you indicator</td>
+<td><code>[data-testid=&quot;userFollowIndicator&quot;]</code></td>
+</tr>
+<tr>
+<td>Block option</td>
+<td><code>[data-testid=&quot;block&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Profile</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edit profile button</td>
+<td><code>[data-testid=&quot;editProfileButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Avatar edit</td>
+<td><code>[data-testid=&quot;editProfileAvatar&quot;]</code></td>
+</tr>
+<tr>
+<td>Header edit</td>
+<td><code>[data-testid=&quot;editProfileHeader&quot;]</code></td>
+</tr>
+<tr>
+<td>Save button</td>
+<td><code>[data-testid=&quot;Profile_Save_Button&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Direct Messages</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>New message button</td>
+<td><code>[data-testid=&quot;NewDM_Button&quot;]</code></td>
+</tr>
+<tr>
+<td>Search people</td>
+<td><code>[data-testid=&quot;searchPeople&quot;]</code></td>
+</tr>
+<tr>
+<td>Message input</td>
+<td><code>[data-testid=&quot;dmComposerTextInput&quot;]</code></td>
+</tr>
+<tr>
+<td>Send button</td>
+<td><code>[data-testid=&quot;dmComposerSendButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Conversation list</td>
+<td><code>[data-testid=&quot;conversation&quot;]</code></td>
+</tr>
+<tr>
+<td>Message bubble</td>
+<td><code>[data-testid=&quot;messageEntry&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Communities</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Communities nav</td>
+<td><code>a[aria-label=&quot;Communities&quot;]</code></td>
+</tr>
+<tr>
+<td>Community links</td>
+<td><code>a[href^=&quot;/i/communities/&quot;]</code></td>
+</tr>
+<tr>
+<td>Community name</td>
+<td><code>[data-testid=&quot;communityName&quot;]</code></td>
+</tr>
+<tr>
+<td>Joined button</td>
+<td><code>button[aria-label^=&quot;Joined&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Lists</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Create list</td>
+<td><code>[data-testid=&quot;createList&quot;]</code></td>
+</tr>
+<tr>
+<td>List name</td>
+<td><code>[data-testid=&quot;listName&quot;]</code></td>
+</tr>
+<tr>
+<td>List description</td>
+<td><code>[data-testid=&quot;listDescription&quot;]</code></td>
+</tr>
+<tr>
+<td>Pin list</td>
+<td><code>[data-testid=&quot;pinList&quot;]</code></td>
+</tr>
+<tr>
+<td>Add member</td>
+<td><code>[data-testid=&quot;addMember&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Bookmarks</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bookmark folder</td>
+<td><code>[data-testid=&quot;bookmarkFolder&quot;]</code></td>
+</tr>
+<tr>
+<td>Create folder</td>
+<td><code>[data-testid=&quot;createBookmarkFolder&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Spaces</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Start Space</td>
+<td><code>[data-testid=&quot;SpaceButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Join Space</td>
+<td><code>[data-testid=&quot;joinSpace&quot;]</code></td>
+</tr>
+<tr>
+<td>Speaker list</td>
+<td><code>[data-testid=&quot;spaceSpeakers&quot;]</code></td>
+</tr>
+<tr>
+<td>Listener count</td>
+<td><code>[data-testid=&quot;spaceListeners&quot;]</code></td>
+</tr>
+<tr>
+<td>Recording</td>
+<td><code>[data-testid=&quot;spaceRecording&quot;]</code></td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td><code>[data-testid=&quot;scheduleSpace&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Articles</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Article compose</td>
+<td><code>a[href=&quot;/compose/article&quot;]</code></td>
+</tr>
+<tr>
+<td>Title input</td>
+<td><code>[data-testid=&quot;articleTitle&quot;]</code></td>
+</tr>
+<tr>
+<td>Body editor</td>
+<td><code>[data-testid=&quot;articleBody&quot;]</code></td>
+</tr>
+<tr>
+<td>Publish button</td>
+<td><code>[data-testid=&quot;articlePublish&quot;]</code></td>
+</tr>
+<tr>
+<td>Draft save</td>
+<td><code>[data-testid=&quot;articleSaveDraft&quot;]</code></td>
+</tr>
+<tr>
+<td>Cover image</td>
+<td><code>[data-testid=&quot;articleCoverImage&quot;]</code></td>
+</tr>
+<tr>
+<td>Toolbar</td>
+<td><code>[data-testid=&quot;articleToolbar&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Explore &amp; Discovery</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trend items</td>
+<td><code>[data-testid=&quot;trend&quot;]</code></td>
+</tr>
+<tr>
+<td>Topic follow</td>
+<td><code>[data-testid=&quot;TopicFollow&quot;]</code></td>
+</tr>
+<tr>
+<td>Search results</td>
+<td><code>[data-testid=&quot;TypeaheadListItem&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Settings &amp; Notifications</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle switch</td>
+<td><code>[data-testid=&quot;settingsSwitch&quot;]</code></td>
+</tr>
+<tr>
+<td>Protected toggle</td>
+<td><code>[data-testid=&quot;protectedTweets&quot;]</code></td>
+</tr>
+<tr>
+<td>Notification cells</td>
+<td><code>[data-testid=&quot;notification&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Grok AI</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chat input</td>
+<td><code>[data-testid=&quot;grokInput&quot;]</code></td>
+</tr>
+<tr>
+<td>Send button</td>
+<td><code>[data-testid=&quot;grokSendButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Response area</td>
+<td><code>[data-testid=&quot;grokResponse&quot;]</code></td>
+</tr>
+<tr>
+<td>New chat</td>
+<td><code>[data-testid=&quot;grokNewChat&quot;]</code></td>
+</tr>
+<tr>
+<td>Image gen</td>
+<td><code>[data-testid=&quot;grokImageGen&quot;]</code></td>
+</tr>
+<tr>
+<td>Loading indicator</td>
+<td><code>[data-testid=&quot;grokLoading&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Monetization &amp; Ads</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Revenue tab</td>
+<td><code>[data-testid=&quot;revenueTab&quot;]</code></td>
+</tr>
+<tr>
+<td>Analytics tab</td>
+<td><code>[data-testid=&quot;analyticsTab&quot;]</code></td>
+</tr>
+<tr>
+<td>Followers chart</td>
+<td><code>[data-testid=&quot;followersChart&quot;]</code></td>
+</tr>
+<tr>
+<td>Boost button</td>
+<td><code>[data-testid=&quot;boostButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Ads dashboard</td>
+<td><code>[data-testid=&quot;adsDashboard&quot;]</code></td>
+</tr>
+<tr>
+<td>Campaign list</td>
+<td><code>[data-testid=&quot;campaignList&quot;]</code></td>
+</tr>
+<tr>
+<td>Create campaign</td>
+<td><code>[data-testid=&quot;createCampaign&quot;]</code></td>
+</tr>
+<tr>
+<td>Subscription info</td>
+<td><code>[data-testid=&quot;subscriptionInfo&quot;]</code></td>
+</tr>
+</tbody></table>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/developer/browser-script-patterns">🛠️ Browser Script Patterns</a>
+        <a href="/docs/guides/developer/contributing-features">🛠️ Adding New Features</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

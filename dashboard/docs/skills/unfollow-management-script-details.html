@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unfollow Management — Script Details | XActions</title>
+  <meta name="description" content="Detailed algorithms, controls, and configurations for each unfollow script.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, unfollow, management, script, details, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Unfollow Management — Script Details — XActions">
+  <meta property="og:description" content="Detailed algorithms, controls, and configurations for each unfollow script.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/unfollow-management-script-details">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Unfollow Management — Script Details — XActions">
+  <meta name="twitter:description" content="Detailed algorithms, controls, and configurations for each unfollow script.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/unfollow-management-script-details">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Unfollow Management — Script Details | XActions",
+    "description": "Detailed algorithms, controls, and configurations for each unfollow script.",
+    "url": "https://xactions.app/docs/skills/unfollow-management-script-details",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/unfollow-management-script-details",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, unfollow, management, script, details, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Unfollow Management — Script Details", "item": "https://xactions.app/docs/skills/unfollow-management-script-details" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Unfollow Management — Script Details</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Unfollow Management — Script Details
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Unfollow Management — Script Details</h1>
+<p>Detailed algorithms, controls, and configurations for each unfollow script.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#unfolloweveryonejs">unfollowEveryone.js</a></li>
+<li><a href="#unfollowbackjs">unfollowback.js</a></li>
+<li><a href="#unfollowwdfblogjs">unfollowWDFBLog.js</a></li>
+<li><a href="#smartunfollowjs">smartUnfollow.js</a></li>
+<li><a href="#followratiomanagerjs">followRatioManager.js</a></li>
+<li><a href="#detectunfollowersjs">detectUnfollowers.js</a></li>
+<li><a href="#removefollowersjs">removeFollowers.js</a></li>
+</ul>
+<h2>unfollowEveryone.js</h2>
+<p>Bulk unfollows every account you follow. Processes in batches with scroll-and-click cycles.</p>
+<p><strong>Algorithm:</strong> Find all <code>[data-testid$=&quot;-unfollow&quot;]</code> buttons → click each → confirm in dialog → scroll down for more → repeat. Includes retry logic (3 attempts when no buttons found), progress tracking with ETA, sessionStorage persistence across page refreshes, auto JSON export of unfollowed accounts.</p>
+<p><strong>Controls:</strong></p>
+<ul>
+<li><code>window.XActions.pause()</code> — Pause execution</li>
+<li><code>window.XActions.resume()</code> — Resume</li>
+<li><code>window.XActions.abort()</code> — Stop and export results</li>
+</ul>
+<h2>unfollowback.js</h2>
+<p>Unfollows accounts that don&#39;t follow you back (non-mutual). Identifies non-followers by checking for the <strong>absence</strong> of the &quot;Follows you&quot; badge.</p>
+<p><strong>Algorithm:</strong> For each user cell, check if <code>[data-testid=&quot;userFollowIndicator&quot;]</code> exists. If NOT present → unfollow. Processes one-by-one with configurable delay.</p>
+<p><strong>Output:</strong> Console log of each unfollowed account, running count, final JSON export.</p>
+<h2>unfollowWDFBLog.js</h2>
+<p>Same non-follower detection as <code>unfollowback.js</code> but collects usernames and auto-downloads a <code>.txt</code> log file when complete. Useful for record-keeping before mass unfollowing.</p>
+<p><strong>Output:</strong> Downloaded <code>unfollowed-nonfollowers-TIMESTAMP.txt</code> file + console summary.</p>
+<h2>smartUnfollow.js</h2>
+<p><strong>Requires:</strong> Paste <code>src/automation/core.js</code> first.</p>
+<p>Uses follow timestamps from <code>keywordFollow.js</code> to only unfollow users who haven&#39;t followed you back within a configurable grace period. Supports a whitelist to protect VIP accounts.</p>
+<p><strong>Config:</strong></p>
+<ul>
+<li><code>gracePeriodDays: 7</code> — Days to wait before unfollowing</li>
+<li><code>whitelist: [&#39;account1&#39;, &#39;account2&#39;]</code> — Protected accounts</li>
+</ul>
+<h2>followRatioManager.js</h2>
+<p>Monitors and manages your follower/following ratio with actionable improvement plans.</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Letter-grade rating (S through F)</li>
+<li>Visual ratio bar</li>
+<li>Three improvement paths: unfollow accounts, gain followers, or combination</li>
+<li>Weekly growth projections</li>
+<li>localStorage history with trend tracking</li>
+<li>Cross-references other XActions scripts in recommendations</li>
+</ul>
+<p><strong>Controls:</strong></p>
+<ul>
+<li><code>XActions.setTarget(ratio)</code> — Set goal ratio (e.g., 2.0)</li>
+<li><code>XActions.track()</code> — Record current snapshot</li>
+<li><code>XActions.history()</code> — View trend over time</li>
+<li><code>XActions.plan()</code> — Generate actionable plan</li>
+</ul>
+<h2>detectUnfollowers.js</h2>
+<p>Takes snapshots of your follower list and compares to detect who unfollowed you.</p>
+<p><strong>Navigate to:</strong> <code>x.com/USERNAME/followers</code></p>
+<h2>removeFollowers.js</h2>
+<p>Removes followers from YOUR list using the block-then-unblock method.</p>
+<p><strong>Navigate to:</strong> <code>x.com/USERNAME/followers</code></p>
+<h2>DOM Selectors</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unfollow button</td>
+<td><code>[data-testid$=&quot;-unfollow&quot;]</code></td>
+<td>Appears on Following page</td>
+</tr>
+<tr>
+<td>Confirmation dialog</td>
+<td><code>[data-testid=&quot;confirmationSheetConfirm&quot;]</code></td>
+<td>Red &quot;Unfollow&quot; button</td>
+</tr>
+<tr>
+<td>Follows you indicator</td>
+<td><code>[data-testid=&quot;userFollowIndicator&quot;]</code></td>
+<td>&quot;Follows you&quot; badge</td>
+</tr>
+<tr>
+<td>User cell</td>
+<td><code>[data-testid=&quot;UserCell&quot;]</code></td>
+<td>Container for each user</td>
+</tr>
+<tr>
+<td>Username link</td>
+<td><code>a[href^=&quot;/&quot;][role=&quot;link&quot;]</code></td>
+<td>First link in cell</td>
+</tr>
+<tr>
+<td>Follower count</td>
+<td><code>a[href$=&quot;/followers&quot;] span</code></td>
+<td>On profile page</td>
+</tr>
+<tr>
+<td>Following count</td>
+<td><code>a[href$=&quot;/following&quot;] span</code></td>
+<td>On profile page</td>
+</tr>
+</tbody></table>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

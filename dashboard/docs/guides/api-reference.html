@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XActions — API Reference | XActions</title>
+  <meta name="description" content="Complete function reference for the `xactions` npm package.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, api, reference, guides &amp; reference">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="XActions — API Reference — XActions">
+  <meta property="og:description" content="Complete function reference for the `xactions` npm package.">
+  <meta property="og:url" content="https://xactions.app/docs/guides/api-reference">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="XActions — API Reference — XActions">
+  <meta name="twitter:description" content="Complete function reference for the `xactions` npm package.">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/api-reference">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "XActions — API Reference | XActions",
+    "description": "Complete function reference for the `xactions` npm package.",
+    "url": "https://xactions.app/docs/guides/api-reference",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/api-reference",
+    "articleSection": "Guides & Reference",
+    "keywords": "xactions, twitter automation, x automation, free, open source, api, reference, guides & reference"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Guides & Reference", "item": "https://xactions.app/docs/guides" },
+      { "@type": "ListItem", "position": 4, "name": "XActions — API Reference", "item": "https://xactions.app/docs/guides/api-reference" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📖 XActions — API Reference</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides">Guides &amp; Reference</a> › XActions — API Reference
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Guides &amp; Reference</span>
+        <h1>XActions — API Reference</h1>
+<blockquote>
+<p>Complete function reference for the <code>xactions</code> npm package.</p>
+<pre><code class="language-bash">npm install xactions
+</code></pre>
+</blockquote>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#core-functions">Core Functions</a></li>
+<li><a href="#scraper-functions">Scraper Functions</a></li>
+<li><a href="#manager-modules">Manager Modules</a></li>
+<li><a href="#mcp-server">MCP Server</a></li>
+<li><a href="#cli-commands">CLI Commands</a></li>
+<li><a href="#browser-scripts">Browser Scripts</a></li>
+<li><a href="#types">Types</a></li>
+</ul>
+<h2>Core Functions</h2>
+<h3><code>createBrowser(options?)</code></h3>
+<p>Launch a Puppeteer browser with stealth mode enabled (avoids bot detection).</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>options.headless</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Run in headless mode</td>
+</tr>
+<tr>
+<td><code>options.proxy</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>HTTP(S) proxy URL</td>
+</tr>
+<tr>
+<td><code>options.userDataDir</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>Persistent browser profile directory</td>
+</tr>
+<tr>
+<td><code>options.args</code></td>
+<td><code>string[]</code></td>
+<td>—</td>
+<td>Additional Chrome flags</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;Browser&gt;</code></p>
+<pre><code class="language-javascript">// Headless (default)
+const browser = await createBrowser();
+
+// With visible browser
+const browser = await createBrowser({ headless: false });
+
+// With proxy
+const browser = await createBrowser({ proxy: &#39;http://user:pass@proxy:8080&#39; });
+</code></pre>
+<hr>
+<h3><code>createPage(browser)</code></h3>
+<p>Create a new page with stealth anti-detection configured.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>browser</code></td>
+<td><code>Browser</code></td>
+<td>Puppeteer browser instance</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;Page&gt;</code></p>
+<hr>
+<h2>Scraper Functions</h2>
+<h3><code>scrapeProfile(page, username)</code></h3>
+<p>Get a user&#39;s full profile data.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>page</code></td>
+<td><code>Page</code></td>
+<td>Puppeteer page</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td><code>string</code></td>
+<td>X username (without @)</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;Profile&gt;</code></p>
+<pre><code class="language-javascript">const profile = await scrapeProfile(page, &#39;nichxbt&#39;);
+// {
+//   name: &#39;nich&#39;,
+//   username: &#39;nichxbt&#39;,
+//   bio: &#39;...&#39;,
+//   followers: 1234,
+//   following: 567,
+//   tweets: 890,
+//   verified: false,
+//   location: &#39;...&#39;,
+//   website: &#39;...&#39;,
+//   joinDate: &#39;...&#39;,
+//   avatar: &#39;https://...&#39;,
+//   header: &#39;https://...&#39;
+// }
+</code></pre>
+<hr>
+<h3><code>scrapeFollowers(page, username, options?)</code></h3>
+<p>Get a list of accounts that follow a user.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>page</code></td>
+<td><code>Page</code></td>
+<td>—</td>
+<td>Puppeteer page</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>X username</td>
+</tr>
+<tr>
+<td><code>options.limit</code></td>
+<td><code>number</code></td>
+<td><code>100</code></td>
+<td>Max followers to return</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;User[]&gt;</code></p>
+<pre><code class="language-javascript">const followers = await scrapeFollowers(page, &#39;nichxbt&#39;, { limit: 500 });
+followers.forEach(f =&gt; console.log(`@${f.username} — ${f.bio}`));
+</code></pre>
+<hr>
+<h3><code>scrapeFollowing(page, username, options?)</code></h3>
+<p>Get a list of accounts a user follows.</p>
+<p><strong>Parameters:</strong> Same as <code>scrapeFollowers</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;User[]&gt;</code></p>
+<hr>
+<h3><code>scrapeTweets(page, username, options?)</code></h3>
+<p>Get a user&#39;s recent tweets.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>page</code></td>
+<td><code>Page</code></td>
+<td>—</td>
+<td>Puppeteer page</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>X username</td>
+</tr>
+<tr>
+<td><code>options.limit</code></td>
+<td><code>number</code></td>
+<td><code>20</code></td>
+<td>Max tweets to return</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;Tweet[]&gt;</code></p>
+<pre><code class="language-javascript">const tweets = await scrapeTweets(page, &#39;nichxbt&#39;, { limit: 50 });
+tweets.forEach(t =&gt; console.log(`${t.likes}❤️ ${t.text.slice(0, 80)}`));
+</code></pre>
+<hr>
+<h3><code>searchTweets(page, query, options?)</code></h3>
+<p>Search for tweets matching a query.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>page</code></td>
+<td><code>Page</code></td>
+<td>—</td>
+<td>Puppeteer page</td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>Search query (supports X search operators)</td>
+</tr>
+<tr>
+<td><code>options.limit</code></td>
+<td><code>number</code></td>
+<td><code>20</code></td>
+<td>Max results</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Promise&lt;Tweet[]&gt;</code></p>
+<pre><code class="language-javascript">// Basic search
+const tweets = await searchTweets(page, &#39;xactions&#39;, { limit: 100 });
+
+// Advanced search operators
+const viral = await searchTweets(page, &#39;AI tools min_faves:1000 lang:en&#39;, { limit: 50 });
+</code></pre>
+<hr>
+<h3><code>downloadVideo(page, tweetUrl)</code></h3>
+<p>Extract video download URLs from a tweet.</p>
+<p><strong>Returns:</strong> <code>Promise&lt;VideoResult&gt;</code></p>
+<pre><code class="language-javascript">const video = await downloadVideo(page, &#39;https://x.com/user/status/123456&#39;);
+console.log(video.variants[0].url); // Direct MP4 URL
+</code></pre>
+<hr>
+<h3><code>exportBookmarks(page, options?)</code></h3>
+<p>Export your saved bookmarks.</p>
+<p><strong>Returns:</strong> <code>Promise&lt;Bookmark[]&gt;</code></p>
+<hr>
+<h3><code>unrollThread(page, tweetUrl)</code></h3>
+<p>Unroll a thread into a single readable document.</p>
+<p><strong>Returns:</strong> <code>Promise&lt;Thread&gt;</code></p>
+<pre><code class="language-javascript">const thread = await unrollThread(page, &#39;https://x.com/user/status/123456&#39;);
+console.log(`Thread by @${thread.author}: ${thread.totalTweets} tweets`);
+console.log(thread.text); // Full thread as text
+</code></pre>
+<hr>
+<h2>Manager Modules</h2>
+<p>Manager modules are higher-level Puppeteer-based automation tools.</p>
+<pre><code class="language-javascript">import { dmManager, profileManager, engagementManager } from &#39;xactions&#39;;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>articlePublisher</code></td>
+<td>Publish long-form articles (Premium+)</td>
+</tr>
+<tr>
+<td><code>bookmarkManager</code></td>
+<td>Save, organize, export bookmarks</td>
+</tr>
+<tr>
+<td><code>businessTools</code></td>
+<td>Brand monitoring, competitor analysis</td>
+</tr>
+<tr>
+<td><code>creatorStudio</code></td>
+<td>Creator dashboard and analytics</td>
+</tr>
+<tr>
+<td><code>discoveryExplore</code></td>
+<td>Trending topics and explore page</td>
+</tr>
+<tr>
+<td><code>dmManager</code></td>
+<td>Send, read, export direct messages</td>
+</tr>
+<tr>
+<td><code>engagementManager</code></td>
+<td>Like, retweet, reply automation</td>
+</tr>
+<tr>
+<td><code>grokIntegration</code></td>
+<td>Query Grok AI</td>
+</tr>
+<tr>
+<td><code>notificationManager</code></td>
+<td>Read and manage notifications</td>
+</tr>
+<tr>
+<td><code>pollCreator</code></td>
+<td>Create polls</td>
+</tr>
+<tr>
+<td><code>postThread</code></td>
+<td>Post multi-tweet threads</td>
+</tr>
+<tr>
+<td><code>premiumManager</code></td>
+<td>Premium subscription features</td>
+</tr>
+<tr>
+<td><code>profileManager</code></td>
+<td>Update profile, settings, privacy</td>
+</tr>
+<tr>
+<td><code>schedulePosts</code></td>
+<td>Schedule future posts</td>
+</tr>
+<tr>
+<td><code>settingsManager</code></td>
+<td>Account settings and privacy</td>
+</tr>
+<tr>
+<td><code>spacesManager</code></td>
+<td>X Spaces integration</td>
+</tr>
+<tr>
+<td><code>tweetComposer</code></td>
+<td>Compose and post tweets</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>MCP Server</h2>
+<p>49+ tools for AI agent integration. See <a href="examples/mcp-server.md">MCP Server docs</a>.</p>
+<pre><code class="language-bash"># Start MCP server
+node src/mcp/server.js
+
+# Or via npx
+npx xactions-mcp
+</code></pre>
+<p><strong>Claude Desktop config:</strong></p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;xactions&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;xactions&quot;, &quot;--mcp&quot;],
+      &quot;env&quot;: {
+        &quot;XACTIONS_MODE&quot;: &quot;local&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<hr>
+<h2>CLI Commands</h2>
+<pre><code class="language-bash">npm install -g xactions
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>xactions login</code></td>
+<td>Authenticate with X</td>
+</tr>
+<tr>
+<td><code>xactions logout</code></td>
+<td>Clear saved credentials</td>
+</tr>
+<tr>
+<td><code>xactions profile &lt;user&gt;</code></td>
+<td>Get profile data</td>
+</tr>
+<tr>
+<td><code>xactions followers &lt;user&gt;</code></td>
+<td>List followers</td>
+</tr>
+<tr>
+<td><code>xactions following &lt;user&gt;</code></td>
+<td>List following</td>
+</tr>
+<tr>
+<td><code>xactions non-followers &lt;user&gt;</code></td>
+<td>Find non-followers</td>
+</tr>
+<tr>
+<td><code>xactions tweets &lt;user&gt;</code></td>
+<td>Get tweets</td>
+</tr>
+<tr>
+<td><code>xactions search &lt;query&gt;</code></td>
+<td>Search tweets</td>
+</tr>
+<tr>
+<td><code>xactions hashtag &lt;tag&gt;</code></td>
+<td>Scrape hashtag</td>
+</tr>
+<tr>
+<td><code>xactions thread &lt;url&gt;</code></td>
+<td>Unroll a thread</td>
+</tr>
+<tr>
+<td><code>xactions media &lt;user&gt;</code></td>
+<td>Scrape media</td>
+</tr>
+<tr>
+<td><code>xactions info</code></td>
+<td>Show version and config</td>
+</tr>
+</tbody></table>
+<p><strong>Common flags:</strong></p>
+<ul>
+<li><code>--limit N</code> — Maximum items</li>
+<li><code>--format json|csv</code> — Output format</li>
+<li><code>--output file.json</code> — Save to file</li>
+</ul>
+<hr>
+<h2>Browser Scripts</h2>
+<p>50+ scripts for pasting in the DevTools console. Listed via:</p>
+<pre><code class="language-javascript">import { browserScripts } from &#39;xactions&#39;;
+console.log(Object.keys(browserScripts));
+</code></pre>
+<p>See the <a href="../README.md#-complete-feature-list">full catalog in the README</a>.</p>
+<hr>
+<h2>Types</h2>
+<p>TypeScript declarations are included at <code>types/index.d.ts</code>.</p>
+<pre><code class="language-typescript">import type { Profile, User, Tweet, Thread, VideoResult } from &#39;xactions&#39;;
+</code></pre>
+<p>See <a href="../types/index.d.ts">types/index.d.ts</a> for all interfaces.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/getting-started">📖 Getting Started with XActions</a>
+        <a href="/docs/guides/usage">📖 Usage</a>
+        <a href="/docs/guides/automation">📖 XActions Automation Framework Guide</a>
+        <a href="/docs/guides/monitoring">📖 Monitoring Guide</a>
+        <a href="/docs/guides/cli-reference">📖 XActions CLI Reference</a>
+        <a href="/docs/guides/ai-api">📖 XActions AI API Documentation</a>
+        <a href="/docs/guides/deployment">📖 Deployment Guide</a>
+        <a href="/docs/guides/dom-selectors">📖 X/Twitter DOM Selector Reference</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

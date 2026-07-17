@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with XActions | XActions</title>
+  <meta name="description" content="XActions is the complete X/Twitter automation toolkit. Browser scripts, CLI, Node.js library, MCP server for AI agents, and a web dashboard — all without Twitte">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, getting, started, guides &amp; reference">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Getting Started with XActions — XActions">
+  <meta property="og:description" content="XActions is the complete X/Twitter automation toolkit. Browser scripts, CLI, Node.js library, MCP server for AI agents, and a web dashboard — all without Twitte">
+  <meta property="og:url" content="https://xactions.app/docs/guides/getting-started">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Getting Started with XActions — XActions">
+  <meta name="twitter:description" content="XActions is the complete X/Twitter automation toolkit. Browser scripts, CLI, Node.js library, MCP server for AI agents, and a web dashboard — all without Twitte">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/getting-started">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Getting Started with XActions | XActions",
+    "description": "XActions is the complete X/Twitter automation toolkit. Browser scripts, CLI, Node.js library, MCP server for AI agents, and a web dashboard — all without Twitte",
+    "url": "https://xactions.app/docs/guides/getting-started",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/getting-started",
+    "articleSection": "Guides & Reference",
+    "keywords": "xactions, twitter automation, x automation, free, open source, getting, started, guides & reference"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Guides & Reference", "item": "https://xactions.app/docs/guides" },
+      { "@type": "ListItem", "position": 4, "name": "Getting Started with XActions", "item": "https://xactions.app/docs/guides/getting-started" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📖 Getting Started with XActions</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides">Guides &amp; Reference</a> › Getting Started with XActions
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Guides &amp; Reference</span>
+        <h1>Getting Started with XActions</h1>
+<p>XActions is the complete X/Twitter automation toolkit. Browser scripts, CLI, Node.js library, MCP server for AI agents, and a web dashboard — all without Twitter API fees.</p>
+<h2>Choose Your Interface</h2>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Best For</th>
+<th>Setup Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Browser Scripts</strong></td>
+<td>Quick one-off tasks, free usage</td>
+<td>30 seconds</td>
+</tr>
+<tr>
+<td><strong>CLI</strong></td>
+<td>Power users, scripting, automation</td>
+<td>2 minutes</td>
+</tr>
+<tr>
+<td><strong>Node.js Library</strong></td>
+<td>Custom integrations, bots</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td><strong>MCP Server</strong></td>
+<td>AI agents (Claude, GPT, Cursor)</td>
+<td>3 minutes</td>
+</tr>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Visual monitoring, team use</td>
+<td>1 minute</td>
+</tr>
+<tr>
+<td><strong>Browser Extension</strong></td>
+<td>One-click automation from x.com</td>
+<td>1 minute</td>
+</tr>
+</tbody></table>
+<p>---|--------|<br>| Unfollow non-followers | <code>src/unfollowback.js</code> |<br>| Unfollow everyone | <code>src/unfollowEveryone.js</code> |<br>| Detect who unfollowed you | <code>src/detectUnfollowers.js</code> |<br>| Auto-like by keyword | <code>src/automation/autoLiker.js</code> |<br>| Scrape followers | <code>scripts/scrapeFollowers.js</code> |</p>
+<blockquote>
+<p><strong>Note:</strong> Scripts in <code>src/automation/</code> require pasting <code>src/automation/core.js</code> first.</p>
+</blockquote>
+<hr>
+<h2>Quick Start: CLI</h2>
+<pre><code class="language-bash">npm install -g xactions
+xactions login          # Saves your auth_token cookie
+xactions profile elonmusk --json
+xactions followers elonmusk --count 500 --output followers.csv
+xactions non-followers myhandle
+</code></pre>
+<p>See the full <a href="cli-reference.md">CLI Reference</a> for all 111 commands.</p>
+<hr>
+<h2>Quick Start: Node.js Library</h2>
+<pre><code class="language-bash">npm install xactions
+</code></pre>
+<pre><code class="language-js">import { scrapeProfile, scrapeFollowers, searchTweets } from &#39;xactions&#39;;
+
+const profile = await scrapeProfile(&#39;elonmusk&#39;, { cookie: process.env.X_COOKIE });
+const followers = await scrapeFollowers(&#39;elonmusk&#39;, { count: 100, cookie: process.env.X_COOKIE });
+const tweets = await searchTweets(&#39;javascript&#39;, { count: 50, cookie: process.env.X_COOKIE });
+</code></pre>
+<p>Multi-platform scraping:</p>
+<pre><code class="language-js">import { scrape } from &#39;xactions/scrapers&#39;;
+
+const profile = await scrape(&#39;bluesky&#39;, &#39;profile&#39;, &#39;user.bsky.social&#39;);
+const tweets = await scrape(&#39;mastodon&#39;, &#39;tweets&#39;, &#39;user@mastodon.social&#39;);
+</code></pre>
+<p>See the full <a href="api-reference.md">API Reference</a> and <a href="xactions-reference.md">XActions Reference</a>.</p>
+<hr>
+<h2>Quick Start: MCP Server (AI Agents)</h2>
+<p>Add XActions to Claude Desktop, Cursor, or any MCP-compatible client:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;xactions&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;xactions&quot;, &quot;mcp&quot;],
+      &quot;env&quot;: {
+        &quot;XACTIONS_SESSION_COOKIE&quot;: &quot;your_auth_token_here&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>Generate this config automatically:</p>
+<pre><code class="language-bash">xactions mcp-config
+</code></pre>
+<p>51+ MCP tools available — scraping, posting, engagement, analytics, streaming, and more. See <a href="mcp-setup.md">MCP Setup</a>.</p>
+<hr>
+<h2>Quick Start: Dashboard</h2>
+<ol>
+<li>Deploy the API server (see <a href="deployment.md">Deployment</a>)</li>
+<li>Open the dashboard at your deployment URL</li>
+<li>Connect your browser by pasting the bridge script into your x.com tab</li>
+<li>Run operations from the visual interface</li>
+</ol>
+<hr>
+<h2>Quick Start: Browser Extension</h2>
+<ol>
+<li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>)</li>
+<li>Enable <strong>Developer mode</strong></li>
+<li>Click <strong>Load unpacked</strong> → select the <code>extension/</code> folder</li>
+<li>Navigate to x.com — the extension icon activates automatically</li>
+</ol>
+<p>See <a href="extension.md">Extension Guide</a>.</p>
+<hr>
+<h2>Authentication</h2>
+<p>All interfaces need an X/Twitter session cookie (<code>auth_token</code>):</p>
+<ol>
+<li>Open <a href="https://x.com">x.com</a> and log in</li>
+<li>Open DevTools → Application → Cookies → <code>https://x.com</code></li>
+<li>Find the <code>auth_token</code> cookie and copy its value</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>How to Set</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CLI</td>
+<td><code>xactions login</code> (interactive prompt)</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>Pass <code>{ cookie: &#39;your_token&#39; }</code> to functions</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>Set <code>XACTIONS_SESSION_COOKIE</code> env var</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Pasted via bridge script</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>Reads automatically from x.com tab</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Rate Limits &amp; Safety</h2>
+<p>X/Twitter enforces aggressive rate limits. All XActions tools include built-in delays, but follow these guidelines:</p>
+<ul>
+<li><strong>Start small</strong> — test with 10-20 actions before scaling up</li>
+<li><strong>1-3 second minimum delays</strong> between actions (built into all scripts)</li>
+<li><strong>Batch large operations</strong> — do 200, wait 15-30 minutes, repeat</li>
+<li><strong>Don&#39;t run multiple scripts simultaneously</strong> on the same account</li>
+<li><strong>Keep your browser tab open</strong> while operations run (browser scripts only)</li>
+</ul>
+<hr>
+<h2>What&#39;s Next?</h2>
+<table>
+<thead>
+<tr>
+<th>Guide</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="cli-reference.md">CLI Reference</a></td>
+<td>All 111 CLI commands</td>
+</tr>
+<tr>
+<td><a href="api-reference.md">API Reference</a></td>
+<td>Node.js library functions</td>
+</tr>
+<tr>
+<td><a href="mcp-setup.md">MCP Setup</a></td>
+<td>AI agent integration</td>
+</tr>
+<tr>
+<td><a href="browser-scripts.md">Browser Scripts</a></td>
+<td>Complete script catalog</td>
+</tr>
+<tr>
+<td><a href="automation.md">Automation</a></td>
+<td>Advanced browser automation framework</td>
+</tr>
+<tr>
+<td><a href="analytics.md">Analytics</a></td>
+<td>Sentiment, reputation, history tracking</td>
+</tr>
+<tr>
+<td><a href="workflows.md">Workflows</a></td>
+<td>Automated multi-step workflows</td>
+</tr>
+<tr>
+<td><a href="streaming.md">Streaming</a></td>
+<td>Real-time tweet/follower/mention streams</td>
+</tr>
+<tr>
+<td><a href="social-graph.md">Social Graph</a></td>
+<td>Network analysis and visualization</td>
+</tr>
+<tr>
+<td><a href="plugins.md">Plugins</a></td>
+<td>Extend XActions with plugins</td>
+</tr>
+<tr>
+<td><a href="deployment.md">Deployment</a></td>
+<td>Deploy to Railway, Fly.io, Docker</td>
+</tr>
+<tr>
+<td><a href="troubleshooting.md">Troubleshooting</a></td>
+<td>Common issues and fixes</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>By <a href="https://x.com/nichxbt">@nichxbt</a> — <a href="https://github.com/nirholas/XActions">GitHub</a></em></p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/usage">📖 Usage</a>
+        <a href="/docs/guides/automation">📖 XActions Automation Framework Guide</a>
+        <a href="/docs/guides/monitoring">📖 Monitoring Guide</a>
+        <a href="/docs/guides/cli-reference">📖 XActions CLI Reference</a>
+        <a href="/docs/guides/ai-api">📖 XActions AI API Documentation</a>
+        <a href="/docs/guides/api-reference">📖 XActions — API Reference</a>
+        <a href="/docs/guides/deployment">📖 Deployment Guide</a>
+        <a href="/docs/guides/dom-selectors">📖 X/Twitter DOM Selector Reference</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

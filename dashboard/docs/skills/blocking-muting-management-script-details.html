@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blocking &amp; Muting Script Details | XActions</title>
+  <meta name="description" content="Scans your followers list and blocks accounts matching bot heuristics.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, blocking, muting, management, script, details, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Blocking &amp; Muting Script Details — XActions">
+  <meta property="og:description" content="Scans your followers list and blocks accounts matching bot heuristics.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/blocking-muting-management-script-details">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Blocking &amp; Muting Script Details — XActions">
+  <meta name="twitter:description" content="Scans your followers list and blocks accounts matching bot heuristics.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/blocking-muting-management-script-details">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Blocking & Muting Script Details | XActions",
+    "description": "Scans your followers list and blocks accounts matching bot heuristics.",
+    "url": "https://xactions.app/docs/skills/blocking-muting-management-script-details",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/blocking-muting-management-script-details",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, blocking, muting, management, script, details, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Blocking & Muting Script Details", "item": "https://xactions.app/docs/skills/blocking-muting-management-script-details" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Blocking &amp; Muting Script Details</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Blocking &amp; Muting Script Details
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Blocking &amp; Muting Script Details</h1>
+<h2>Contents</h2>
+<ul>
+<li><a href="#block-bots">Block Bots</a></li>
+<li><a href="#mass-block--unblock">Mass Block / Unblock</a></li>
+<li><a href="#mass-unmute">Mass Unmute</a></li>
+<li><a href="#mute-by-keywords">Mute by Keywords</a></li>
+<li><a href="#report-spam">Report Spam</a></li>
+<li><a href="#remove-followers">Remove Followers</a></li>
+</ul>
+<h2>Block Bots</h2>
+<p><strong>File:</strong> <code>src/blockBots.js</code></p>
+<p>Scans your followers list and blocks accounts matching bot heuristics.</p>
+<h3>Detection heuristics</h3>
+<ul>
+<li>Default/missing avatar → bot signal</li>
+<li>Random-string usernames (high digit-to-letter ratio) → bot signal</li>
+<li>Abnormally high follow ratio (following thousands, few followers) → bot signal</li>
+<li>No bio or generic template bio → bot signal</li>
+<li>Recently created accounts with high activity → bot signal</li>
+</ul>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to <code>x.com/YOUR_USERNAME/followers</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Review flagged accounts before confirming blocks</li>
+</ol>
+<h2>Mass Block / Unblock</h2>
+<p><strong>Files:</strong> <code>src/massBlock.js</code>, <code>src/massUnblock.js</code></p>
+<p>Block or unblock accounts from a configurable list of usernames.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  usernames: [&#39;spammer1&#39;, &#39;spammer2&#39;, &#39;bot_account&#39;],
+  delayMs: 1500,
+};
+</code></pre>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to any page on x.com</li>
+<li>Edit the username list in CONFIG</li>
+<li>Paste in DevTools console → Enter</li>
+<li>Script navigates to each profile and clicks block/unblock</li>
+</ol>
+<h2>Mass Unmute</h2>
+<p><strong>File:</strong> <code>src/massUnmute.js</code></p>
+<p>Unmute multiple previously muted accounts. Uses the same CONFIG pattern as Mass Unblock.</p>
+<h2>Mute by Keywords</h2>
+<p><strong>File:</strong> <code>src/muteByKeywords.js</code></p>
+<p>Scans your timeline for tweets containing specified keywords and mutes the authors.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  keywords: [&#39;crypto airdrop&#39;, &#39;follow for follow&#39;],
+  maxMutes: 50,
+};
+</code></pre>
+<p>Scrolls timeline, matches tweet text against keywords, and mutes matching authors.</p>
+<h2>Report Spam</h2>
+<p><strong>File:</strong> <code>src/reportSpam.js</code></p>
+<p>Reports accounts for spam or abuse through X&#39;s reporting flow. Use responsibly — reports are submitted to X.</p>
+<h2>Remove Followers</h2>
+<p><strong>File:</strong> <code>src/removeFollowers.js</code></p>
+<p>Removes followers without permanently blocking them. Uses the block → immediate unblock pattern: blocking causes them to unfollow, then unblocking restores your ability to interact normally.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  usernames: [&#39;unwanted_follower1&#39;, &#39;unwanted_follower2&#39;],
+  delayMs: 2000,
+};
+</code></pre>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

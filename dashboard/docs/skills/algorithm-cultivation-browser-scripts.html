@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser Scripts Reference | XActions</title>
+  <meta name="description" content="Three browser console scripts for algorithm cultivation, with different trade-offs.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, algorithm, cultivation, browser, scripts, reference, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Browser Scripts Reference — XActions">
+  <meta property="og:description" content="Three browser console scripts for algorithm cultivation, with different trade-offs.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/algorithm-cultivation-browser-scripts">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Browser Scripts Reference — XActions">
+  <meta name="twitter:description" content="Three browser console scripts for algorithm cultivation, with different trade-offs.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/algorithm-cultivation-browser-scripts">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Browser Scripts Reference | XActions",
+    "description": "Three browser console scripts for algorithm cultivation, with different trade-offs.",
+    "url": "https://xactions.app/docs/skills/algorithm-cultivation-browser-scripts",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/algorithm-cultivation-browser-scripts",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, algorithm, cultivation, browser, scripts, reference, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Browser Scripts Reference", "item": "https://xactions.app/docs/skills/algorithm-cultivation-browser-scripts" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Browser Scripts Reference</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Browser Scripts Reference
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Browser Scripts Reference</h1>
+<p>Three browser console scripts for algorithm cultivation, with different trade-offs.</p>
+<h2>algorithmBuilder.js (Full-featured)</h2>
+<p><strong>File:</strong> <code>src/automation/algorithmBuilder.js</code><br><strong>Requires:</strong> Paste <code>src/automation/core.js</code> first.</p>
+<p>969-line browser automation with LLM-powered comment generation.</p>
+<h3>Features</h3>
+<ul>
+<li>6 activity cycles: Search &amp; Engage, Browse Home, Target Account, Explore, Search People, Own Profile</li>
+<li>Weighted cycle selection with natural activity rotation</li>
+<li>LLM-powered comment generation (OpenRouter or any OpenAI-compatible endpoint)</li>
+<li>Session/break cycling for 24/7 operation</li>
+<li>Peak/off-peak hour awareness</li>
+<li>Per-session and per-day rate limits</li>
+<li>Full state persistence via localStorage</li>
+</ul>
+<h3>Configuration</h3>
+<ul>
+<li><code>NICHE_CONFIG.KEYWORDS</code> — search terms for your niche</li>
+<li><code>NICHE_CONFIG.PERSONA</code> — your niche identity (used for LLM persona)</li>
+<li><code>NICHE_CONFIG.TARGET_ACCOUNTS</code> — accounts to engage with</li>
+<li><code>NICHE_CONFIG.BIO_KEYWORDS</code> — only follow users matching these</li>
+<li><code>LLM_CONFIG.ENABLED</code> — enable AI-generated comments</li>
+<li><code>LLM_CONFIG.API_KEY</code> — your OpenRouter API key</li>
+<li><code>LLM_CONFIG.MODEL</code> — LLM model to use</li>
+<li><code>BEHAVIOR</code> — all timing, limits, and probability settings</li>
+</ul>
+<h3>Controls</h3>
+<ul>
+<li><code>window.stopAlgoBuilder()</code> — stop after current action</li>
+<li><code>window.algoStats()</code> — print all-time stats</li>
+<li><code>window.algoReset()</code> — clear state and start fresh</li>
+<li><code>window.algoConfig()</code> — show current configuration</li>
+</ul>
+<h2>thoughtLeaderCultivator.js (Standalone)</h2>
+<p><strong>File:</strong> <code>scripts/thoughtLeaderCultivator.js</code></p>
+<p>Zero dependencies. Paste directly into DevTools console on x.com.</p>
+<h3>Controls</h3>
+<ul>
+<li><code>stopCultivator()</code> — stop after current action</li>
+<li><code>cultivatorStatus()</code> — print current stats</li>
+<li><code>cultivatorReset()</code> — clear all tracking data</li>
+</ul>
+<h2>algorithmTrainer.js (Multi-niche)</h2>
+<p><strong>File:</strong> <code>src/automation/algorithmTrainer.js</code><br><strong>Requires:</strong> Paste <code>src/automation/core.js</code> first.</p>
+<p>Multi-niche rotation, intensity presets, cycle-based architecture.</p>
+<h3>Controls</h3>
+<ul>
+<li><code>stopTrainer()</code> — stop</li>
+<li><code>trainerStatus()</code> — status report</li>
+<li><code>trainerReset()</code> — clear data</li>
+</ul>
+<h2>Training Phases</h2>
+<p>All browser scripts cycle through these phases with randomized order:</p>
+<ol>
+<li><strong>Search Top</strong> — search a niche term, scroll top results, engage</li>
+<li><strong>Search Latest</strong> — same term, latest tab (catch fresh content)</li>
+<li><strong>Search People</strong> — follow qualifying accounts in the niche</li>
+<li><strong>Home Feed</strong> — scroll and engage to reinforce algorithm learning</li>
+<li><strong>Influencer Visit</strong> — visit niche leaders&#39; profiles with boosted engagement</li>
+<li><strong>Own Profile</strong> — visit own profile (active user signal)</li>
+<li><strong>Explore</strong> — browse trending topics (normalization behavior)</li>
+<li><strong>Idle</strong> — dwell period simulating human rest</li>
+</ol>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

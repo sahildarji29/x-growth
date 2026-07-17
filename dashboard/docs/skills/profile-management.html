@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Management | XActions</title>
+  <meta name="description" content="Browser console scripts for updating X/Twitter profile information.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, profile, management, agent skills">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Profile Management — XActions">
+  <meta property="og:description" content="Browser console scripts for updating X/Twitter profile information.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/profile-management">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Profile Management — XActions">
+  <meta name="twitter:description" content="Browser console scripts for updating X/Twitter profile information.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/profile-management">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Profile Management | XActions",
+    "description": "Browser console scripts for updating X/Twitter profile information.",
+    "url": "https://xactions.app/docs/skills/profile-management",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/profile-management",
+    "articleSection": "Agent Skills",
+    "keywords": "xactions, twitter automation, x automation, free, open source, profile, management, agent skills"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Agent Skills", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Profile Management", "item": "https://xactions.app/docs/skills/profile-management" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎯 Profile Management</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Agent Skills</a> › Profile Management
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Agent Skills</span>
+        <h1>Profile Management</h1>
+<p>Browser console scripts for updating X/Twitter profile information.</p>
+<h2>Script Selection</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Profile Manager</td>
+<td><code>src/profileManager.js</code></td>
+<td>Core profile management operations</td>
+</tr>
+<tr>
+<td>Update Profile</td>
+<td><code>src/updateProfile.js</code></td>
+<td>Update bio, name, location, website</td>
+</tr>
+<tr>
+<td>QR Code Sharing</td>
+<td><code>src/qrCodeSharing.js</code></td>
+<td>Generate and share profile QR codes</td>
+</tr>
+</tbody></table>
+<h2>Update Profile</h2>
+<p><strong>File:</strong> <code>src/updateProfile.js</code></p>
+<p>Programmatically updates profile fields: display name, bio, location, website, birth date.</p>
+<h3>How to Use</h3>
+<ol>
+<li>Navigate to <code>x.com/settings/profile</code></li>
+<li>Open DevTools (F12) -&gt; Console</li>
+<li>Paste the script -&gt; Enter</li>
+</ol>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  displayName: &#39;Your Name&#39;,
+  bio: &#39;Your new bio here&#39;,
+  location: &#39;City, Country&#39;,
+  website: &#39;https://example.com&#39;,
+};
+</code></pre>
+<h2>Profile Manager</h2>
+<p><strong>File:</strong> <code>src/profileManager.js</code></p>
+<p>Core module for reading and updating profile data. Used by other scripts that need profile context.</p>
+<h2>QR Code Sharing</h2>
+<p><strong>File:</strong> <code>src/qrCodeSharing.js</code></p>
+<p>Generates a shareable QR code for your X profile. Useful for in-person networking and cross-platform promotion.</p>
+<h2>DOM Selectors</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edit profile button</td>
+<td><code>[data-testid=&quot;editProfileButton&quot;]</code></td>
+</tr>
+<tr>
+<td>Avatar edit</td>
+<td><code>[data-testid=&quot;editProfileAvatar&quot;]</code></td>
+</tr>
+<tr>
+<td>Header edit</td>
+<td><code>[data-testid=&quot;editProfileHeader&quot;]</code></td>
+</tr>
+<tr>
+<td>Save button</td>
+<td><code>[data-testid=&quot;Profile_Save_Button&quot;]</code></td>
+</tr>
+<tr>
+<td>User name display</td>
+<td><code>[data-testid=&quot;UserName&quot;]</code></td>
+</tr>
+<tr>
+<td>User description</td>
+<td><code>[data-testid=&quot;UserDescription&quot;]</code></td>
+</tr>
+<tr>
+<td>User location</td>
+<td><code>[data-testid=&quot;UserLocation&quot;]</code></td>
+</tr>
+<tr>
+<td>User URL</td>
+<td><code>[data-testid=&quot;UserUrl&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Field Limits</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Limit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Display name</td>
+<td>50 characters</td>
+</tr>
+<tr>
+<td>Bio</td>
+<td>160 characters</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>30 characters</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>Valid URL</td>
+</tr>
+<tr>
+<td>Avatar</td>
+<td>Square image, 400x400px recommended</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>1500x500px recommended</td>
+</tr>
+</tbody></table>
+<h2>Strategy Guide</h2>
+<h3>Optimizing profile for conversions</h3>
+<ol>
+<li><strong>Display name</strong>: Full name + value proposition keyword (e.g., &quot;Jane Smith | AI Engineer&quot;)</li>
+<li><strong>Bio</strong>: Lead with what you do, who you serve, proof (numbers), and CTA</li>
+<li><strong>Location</strong>: Include if relevant to your niche (e.g., &quot;San Francisco, CA&quot; for tech)</li>
+<li><strong>Website</strong>: Link to your most important conversion page (not just homepage)</li>
+<li><strong>Avatar</strong>: Professional headshot, face visible, good lighting, contrasting background</li>
+<li><strong>Header</strong>: Banner showing your work, product, or personal brand tagline</li>
+</ol>
+<h3>Bio formula (160 chars max)</h3>
+<pre><code>{What you do} for {who you serve}
+{Proof/credentials}
+{CTA or link description}
+</code></pre>
+<p>Example: &quot;Building AI tools for indie hackers | 10K+ users | Free at example.com&quot;</p>
+<h3>Profile A/B testing</h3>
+<ol>
+<li>Use <code>src/updateProfile.js</code> to set version A</li>
+<li>Run for 1 week, track follower growth with <code>src/followerGrowthTracker.js</code></li>
+<li>Switch to version B with <code>src/updateProfile.js</code></li>
+<li>Compare growth rates after another week</li>
+<li>Keep the winning version</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>Profile updates take effect immediately after saving</li>
+<li>Avatar and header uploads require file input interaction</li>
+<li>Bio supports line breaks and emoji</li>
+<li>All scripts include dry-run mode by default</li>
+<li>Changes can be reverted by running the script again with old values</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/a2a-multi-agent">🎯 Skill: A2A Multi-Agent Orchestration</a>
+        <a href="/docs/skills/algorithm-cultivation">🎯 Algorithm Cultivation &amp; Thought Leadership</a>
+        <a href="/docs/skills/analytics-insights">🎯 Analytics &amp; Insights</a>
+        <a href="/docs/skills/articles-longform">🎯 Articles &amp; Longform</a>
+        <a href="/docs/skills/blocking-muting-management">🎯 Blocking &amp; Muting Management</a>
+        <a href="/docs/skills/bookmarks-management">🎯 Bookmarks Management</a>
+        <a href="/docs/skills/business-ads">🎯 Business &amp; Ads Tools</a>
+        <a href="/docs/skills/community-health-monitoring">🎯 Community Health Monitoring</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

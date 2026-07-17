@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scraper Details | XActions</title>
+  <meta name="description" content="Full setup for programmatic scraping:">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, twitter, scraping, scraper, details, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Scraper Details — XActions">
+  <meta property="og:description" content="Full setup for programmatic scraping:">
+  <meta property="og:url" content="https://xactions.app/docs/skills/twitter-scraping-scraper-details">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Scraper Details — XActions">
+  <meta name="twitter:description" content="Full setup for programmatic scraping:">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/twitter-scraping-scraper-details">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Scraper Details | XActions",
+    "description": "Full setup for programmatic scraping:",
+    "url": "https://xactions.app/docs/skills/twitter-scraping-scraper-details",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/twitter-scraping-scraper-details",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, twitter, scraping, scraper, details, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Scraper Details", "item": "https://xactions.app/docs/skills/twitter-scraping-scraper-details" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Scraper Details</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Scraper Details
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Scraper Details</h1>
+<h2>Contents</h2>
+<ul>
+<li><a href="#nodejs-setup">Node.js Setup</a></li>
+<li><a href="#return-shapes">Return Shapes</a></li>
+<li><a href="#video-downloader">Video Downloader</a></li>
+<li><a href="#bookmark-exporter">Bookmark Exporter</a></li>
+<li><a href="#thread-unroller">Thread Unroller</a></li>
+<li><a href="#viral-tweets-finder">Viral Tweets Finder</a></li>
+</ul>
+<h2>Node.js Setup</h2>
+<p>Full setup for programmatic scraping:</p>
+<pre><code class="language-javascript">import { createBrowser, createPage, loginWithCookie, scrapeProfile,
+  scrapeFollowers, scrapeFollowing, scrapeTweets, searchTweets,
+  scrapeHashtag, scrapeThread, scrapeMedia, exportToJSON, exportToCSV
+} from &#39;xactions&#39;;
+
+const browser = await createBrowser();
+const page = await createPage(browser);
+await loginWithCookie(page, AUTH_TOKEN);
+</code></pre>
+<p>Always call <code>browser.close()</code> when done.</p>
+<h2>Return Shapes</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>scrapeProfile(page, username)</code></td>
+<td><code>{ username, displayName, bio, followers, following, tweets, joined, location, website, verified }</code></td>
+</tr>
+<tr>
+<td><code>scrapeFollowers(page, username, {limit})</code></td>
+<td><code>[{ username, displayName, bio, followsYou }]</code></td>
+</tr>
+<tr>
+<td><code>scrapeFollowing(page, username, {limit})</code></td>
+<td><code>[{ username, displayName, bio, followsYou }]</code></td>
+</tr>
+<tr>
+<td><code>scrapeTweets(page, username, {limit})</code></td>
+<td><code>[{ text, likes, retweets, replies, timestamp, url }]</code></td>
+</tr>
+<tr>
+<td><code>searchTweets(page, query, {limit})</code></td>
+<td>Same as tweets</td>
+</tr>
+<tr>
+<td><code>scrapeHashtag(page, tag, {limit})</code></td>
+<td>Same as tweets</td>
+</tr>
+<tr>
+<td><code>scrapeThread(page, tweetUrl)</code></td>
+<td>Array of tweet objects from thread author only</td>
+</tr>
+<tr>
+<td><code>scrapeMedia(page, username, {limit})</code></td>
+<td>Media objects with URLs</td>
+</tr>
+<tr>
+<td><code>exportToJSON(data, path)</code> / <code>exportToCSV(data, path)</code></td>
+<td>Writes file</td>
+</tr>
+</tbody></table>
+<h2>Video Downloader</h2>
+<p><strong>File:</strong> <code>src/scrapers/videoDownloader.js</code></p>
+<p>Navigate to a tweet containing a video and paste this script. Extracts MP4 URLs for all available qualities and auto-downloads the best quality version.</p>
+<h3>How to use</h3>
+<ol>
+<li>Open the tweet with the video you want to download</li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Best quality MP4 auto-downloads; all quality URLs logged to console</li>
+</ol>
+<h2>Bookmark Exporter</h2>
+<p><strong>File:</strong> <code>src/scrapers/bookmarkExporter.js</code></p>
+<p>Exports all your bookmarks including text, engagement metrics, media URLs, and links. Supports both JSON and CSV export formats.</p>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to <code>x.com/i/bookmarks</code></li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Scrolls through all bookmarks and exports when done</li>
+</ol>
+<h2>Thread Unroller</h2>
+<p><strong>File:</strong> <code>src/scrapers/threadUnroller.js</code></p>
+<p>Saves a thread as text, markdown, or JSON. Only captures tweets from the original thread author (filters out replies from others).</p>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to any thread on x.com</li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Choose export format: text, markdown, or JSON</li>
+</ol>
+<h2>Viral Tweets Finder</h2>
+<p><strong>File:</strong> <code>src/scrapers/viralTweets.js</code></p>
+<p>Finds a user&#39;s top-performing tweets sorted by engagement. Configurable engagement thresholds to filter for truly viral content.</p>
+<h3>How to use</h3>
+<ol>
+<li>Navigate to the user&#39;s profile</li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+<li>Results sorted by engagement (likes + retweets + replies)</li>
+</ol>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/content-posting-script-configs">📚 Content Posting Script Configs</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Manager — Free X/Twitter Content Tools Tool | XActions</title>
+  <meta name="description" content="Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, bookmark, manager, content tools, bookmark manager twitter, twitter bookmark manager">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bookmark Manager — XActions">
+  <meta property="og:description" content="Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.">
+  <meta property="og:url" content="https://xactions.app/docs/bookmark-manager">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Bookmark Manager — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.">
+
+  <link rel="canonical" href="https://xactions.app/docs/bookmark-manager">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bookmark Manager — Free X/Twitter Content Tools Tool | XActions",
+    "description": "Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.",
+    "url": "https://xactions.app/docs/bookmark-manager",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/bookmark-manager",
+    "articleSection": "Content Tools",
+    "keywords": "xactions, twitter automation, x automation, free, bookmark, manager, content tools, bookmark manager twitter, twitter bookmark manager"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Bookmark Manager", "item": "https://xactions.app/docs/bookmark-manager" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Bookmark Manager",
+    "description": "Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Bookmark Manager script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Bookmark Manager</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Bookmark Manager
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Content Tools</span>
+        <h1>📚 Bookmark Manager</h1>
+<p>Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.</p>
+<hr>
+<h2>📋 What It Does</h2>
+<p>This script provides the following capabilities:</p>
+<ol>
+<li><strong>Automated operation</strong> — Runs directly in your browser console on x.com</li>
+<li><strong>Configurable settings</strong> — Customize behavior via the CONFIG object</li>
+<li><strong>Real-time progress</strong> — Shows live status updates with emoji-coded logs</li>
+<li><strong>Rate limiting</strong> — Built-in delays to respect X/Twitter&#39;s rate limits</li>
+<li><strong>Data export</strong> — Results exported as JSON/CSV for further analysis</li>
+</ol>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Full bookmark management: save, remove, organize, export, and search through your bookmarked tweets.</li>
+<li>Automate repetitive bookmarks tasks on X/Twitter</li>
+<li>Save time with one-click automation — no API keys needed</li>
+<li>Works in any modern browser (Chrome, Firefox, Edge, Safari)</li>
+</ul>
+<hr>
+<h2>⚠️ Important Notes</h2>
+<blockquote>
+<p><strong>Use responsibly!</strong> All automation should respect X/Twitter&#39;s Terms of Service. Use conservative settings and include breaks between sessions.</p>
+</blockquote>
+<ul>
+<li>This script runs in the <strong>browser DevTools console</strong> — not Node.js</li>
+<li>You must be <strong>logged in</strong> to x.com for the script to work</li>
+<li>Start with <strong>low limits</strong> and increase gradually</li>
+<li>Include <strong>random delays</strong> between actions to appear human</li>
+<li><strong>Don&#39;t run</strong> multiple automation scripts simultaneously</li>
+</ul>
+<hr>
+<h2>🌐 Browser Console Usage</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to <code>x.com/i/bookmarks</code></li>
+<li>Open browser console (<code>F12</code> → Console tab)</li>
+<li>Copy and paste the script from <a href="https://github.com/nirholas/XActions/blob/main/src/bookmarkManager.js"><code>src/bookmarkManager.js</code></a></li>
+<li>Press Enter to run</li>
+</ol>
+<pre><code class="language-javascript">// Quick start — copy the full script from:
+// src/bookmarkManager.js
+//
+// Or install via npm and use the CLI:
+// npm install -g xactions
+// xactions --help
+</code></pre>
+<hr>
+<h2>📖 Step-by-Step Tutorial</h2>
+<h3>Step 1: Navigate to the right page</h3>
+<p>Open your browser and go to <code>x.com/i/bookmarks</code>. Make sure you&#39;re logged in to your X/Twitter account.</p>
+<h3>Step 2: Open the browser console</h3>
+<ul>
+<li><strong>Chrome/Edge:</strong> Press <code>F12</code> or <code>Ctrl+Shift+J</code> (Mac: <code>Cmd+Option+J</code>)</li>
+<li><strong>Firefox:</strong> Press <code>F12</code> or <code>Ctrl+Shift+K</code></li>
+<li><strong>Safari:</strong> Enable Developer menu in Preferences → Advanced, then press <code>Cmd+Option+C</code></li>
+</ul>
+<h3>Step 3: Paste the script</h3>
+<p>Copy the entire script from <a href="https://github.com/nirholas/XActions/blob/main/src/bookmarkManager.js"><code>src/bookmarkManager.js</code></a> and paste it into the console.</p>
+<h3>Step 4: Customize the CONFIG (optional)</h3>
+<p>Before running, you can modify the <code>CONFIG</code> object at the top of the script to adjust behavior:</p>
+<pre><code class="language-javascript">const CONFIG = {
+  // Edit these values before running
+  // See Configuration table above for all options
+};
+</code></pre>
+<h3>Step 5: Run and monitor</h3>
+<p>Press <strong>Enter</strong> to run the script. Watch the console for real-time progress logs:</p>
+<ul>
+<li>✅ Green messages = success</li>
+<li>🔄 Blue messages = in progress</li>
+<li>⚠️ Yellow messages = warnings</li>
+<li>❌ Red messages = errors</li>
+</ul>
+<h3>Step 6: Export results</h3>
+<p>Most scripts automatically download results as JSON/CSV when complete. Check your Downloads folder.</p>
+<hr>
+<h2>🖥️ CLI Usage</h2>
+<p>You can also run this via the XActions CLI:</p>
+<pre><code class="language-bash"># Install XActions globally
+npm install -g xactions
+
+# Run via CLI
+xactions --help
+</code></pre>
+<hr>
+<h2>🤖 MCP Server Usage</h2>
+<p>Use with AI agents (Claude, Cursor, etc.) via the MCP server:</p>
+<pre><code class="language-bash"># Start MCP server
+npm run mcp
+</code></pre>
+<p>See the <a href="../mcp-setup.md">MCP Setup Guide</a> for integration with Claude Desktop, Cursor, and other AI tools.</p>
+<hr>
+<h2>📁 Source Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/nirholas/XActions/blob/main/src/bookmarkManager.js"><code>src/bookmarkManager.js</code></a></td>
+<td>Main script</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔗 Related Scripts</h2>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="manage-bookmarks.md">Manage Bookmarks</a></td>
+<td>Manage bookmarks via the browser UI</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>Author:</strong> nich (<a href="https://x.com/nichxbt">@nichxbt</a>) — <a href="https://github.com/nirholas/XActions">XActions on GitHub</a></p>
+</blockquote>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Bookmark Manager?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/bookmark-exporter">📚 Bookmark Exporter</a>
+        <a href="/docs/bookmark-organizer">📂 Bookmark Organizer</a>
+        <a href="/docs/bulk-delete-tweets">🗑️ Bulk Delete Tweets</a>
+        <a href="/docs/clear-all-bookmarks">🗑️ Clear All Bookmarks</a>
+        <a href="/docs/clear-all-reposts">🗑️ Clear All Reposts</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

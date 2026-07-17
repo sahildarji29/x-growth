@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributing to XActions ⚡ | XActions</title>
+  <meta name="description" content="Thank you for your interest in contributing to XActions — the complete X/Twitter automation platform!">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, contributing, project info">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Contributing to XActions ⚡ — XActions">
+  <meta property="og:description" content="Thank you for your interest in contributing to XActions — the complete X/Twitter automation platform!">
+  <meta property="og:url" content="https://xactions.app/docs/project/contributing">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Contributing to XActions ⚡ — XActions">
+  <meta name="twitter:description" content="Thank you for your interest in contributing to XActions — the complete X/Twitter automation platform!">
+
+  <link rel="canonical" href="https://xactions.app/docs/project/contributing">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Contributing to XActions ⚡ | XActions",
+    "description": "Thank you for your interest in contributing to XActions — the complete X/Twitter automation platform!",
+    "url": "https://xactions.app/docs/project/contributing",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/project/contributing",
+    "articleSection": "Project Info",
+    "keywords": "xactions, twitter automation, x automation, free, open source, contributing, project info"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Project Info", "item": "https://xactions.app/docs/project" },
+      { "@type": "ListItem", "position": 4, "name": "Contributing to XActions ⚡", "item": "https://xactions.app/docs/project/contributing" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📄 Contributing to XActions ⚡</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/project">Project Info</a> › Contributing to XActions ⚡
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Project Info</span>
+        <h1>Contributing to XActions ⚡</h1>
+<p>Thank you for your interest in contributing to <strong>XActions</strong> — the complete X/Twitter automation platform!</p>
+<p>Created by <a href="https://github.com/nirholas">nich</a> (<a href="https://x.com/nichxbt">@nichxbt</a>)</p>
+<h2>🚀 How to Contribute</h2>
+<h3>Getting Started</h3>
+<ol>
+<li><strong>Fork</strong> the repository at <a href="https://github.com/nirholas/xactions">github.com/nirholas/xactions</a></li>
+<li><strong>Clone</strong> your fork locally</li>
+<li><strong>Create a branch</strong> for your feature/fix: <code>git checkout -b feature/your-feature</code></li>
+<li><strong>Make changes</strong> and commit with clear messages</li>
+<li><strong>Push</strong> and open a Pull Request</li>
+</ol>
+<h3>Development Setup</h3>
+<pre><code class="language-bash"># Clone your fork
+git clone https://github.com/YOUR-USERNAME/xactions.git
+cd xactions
+
+# Install dependencies
+npm install
+
+# Set up environment
+cp .env.example .env
+
+# Initialize database
+npx prisma generate
+npx prisma db push
+
+# Start development
+npm run dev
+</code></pre>
+<h2>📝 Contribution Guidelines</h2>
+<h3>Code Standards</h3>
+<ul>
+<li>✅ <strong>Small, focused PRs</strong> — easier to review and merge</li>
+<li>✅ <strong>Clear documentation</strong> — comment your code</li>
+<li>✅ <strong>No secrets</strong> — never commit credentials or API keys</li>
+<li>✅ <strong>Test your changes</strong> — ensure nothing breaks</li>
+<li>✅ <strong>Follow existing patterns</strong> — consistency matters</li>
+</ul>
+<h3>Types of Contributions Welcome</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🐛 Bug Fixes</td>
+<td>Fix issues or unexpected behavior</td>
+</tr>
+<tr>
+<td>✨ New Features</td>
+<td>Add new automation capabilities</td>
+</tr>
+<tr>
+<td>📚 Documentation</td>
+<td>Improve docs, tutorials, examples</td>
+</tr>
+<tr>
+<td>🎨 UI/UX</td>
+<td>Enhance dashboard interface</td>
+</tr>
+<tr>
+<td>🧪 Tests</td>
+<td>Add or improve test coverage</td>
+</tr>
+<tr>
+<td>🌐 i18n</td>
+<td>Add translations</td>
+</tr>
+<tr>
+<td>🔧 Tooling</td>
+<td>Improve build, dev experience</td>
+</tr>
+</tbody></table>
+<h3>Pull Request Process</h3>
+<ol>
+<li>Update documentation if adding features</li>
+<li>Add entries to <code>docs/</code> for new functionality</li>
+<li>Ensure your code follows existing style</li>
+<li>Link related issues in PR description</li>
+<li>Wait for review — maintainers aim to respond within 48 hours</li>
+</ol>
+<h2>🏗️ Project Structure</h2>
+<pre><code>xactions/
+├── src/              # Core modules
+│   ├── automation/   # Automation features
+│   └── *.js          # Main scripts
+├── api/              # Backend API routes
+├── dashboard/        # Frontend UI
+├── docs/             # Documentation
+├── prisma/           # Database schema
+└── bin/              # CLI entry point
+</code></pre>
+<h2>🐛 Reporting Issues</h2>
+<p>When filing an issue, please include:</p>
+<ul>
+<li><strong>Clear title</strong> describing the problem</li>
+<li><strong>Steps to reproduce</strong> the issue</li>
+<li><strong>Expected vs actual</strong> behavior</li>
+<li><strong>Screenshots</strong> if applicable</li>
+<li><strong>Environment</strong> (browser, Node version, etc.)</li>
+</ul>
+<h2>💬 Questions?</h2>
+<ul>
+<li>Open a <a href="https://github.com/nirholas/xactions/issues">GitHub Issue</a></li>
+<li>Tweet <a href="https://x.com/nichxbt">@nichxbt</a></li>
+</ul>
+<h2>📄 License</h2>
+<p>By contributing, you agree that your contributions will be licensed under the MIT License.</p>
+<hr>
+<p><strong>Thank you for helping make XActions better!</strong> ⚡</p>
+<h2>Code of Conduct</h2>
+<p>Please read and follow our <a href="CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/project/changelog">📄 Changelog</a>
+        <a href="/docs/project/roadmap">📄 XActions Roadmap</a>
+        <a href="/docs/project/security">📄 Security Policy</a>
+        <a href="/docs/project/code_of_conduct">📄 Contributor Covenant Code of Conduct</a>
+        <a href="/docs/project/readme">📄 Quick start</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

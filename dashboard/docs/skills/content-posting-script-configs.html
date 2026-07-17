@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Posting Script Configs | XActions</title>
+  <meta name="description" content="Compose and post a connected thread of tweets.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, content, posting, script, configs, skill references">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Content Posting Script Configs — XActions">
+  <meta property="og:description" content="Compose and post a connected thread of tweets.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/content-posting-script-configs">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Content Posting Script Configs — XActions">
+  <meta name="twitter:description" content="Compose and post a connected thread of tweets.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/content-posting-script-configs">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Content Posting Script Configs | XActions",
+    "description": "Compose and post a connected thread of tweets.",
+    "url": "https://xactions.app/docs/skills/content-posting-script-configs",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/content-posting-script-configs",
+    "articleSection": "Skill References",
+    "keywords": "xactions, twitter automation, x automation, free, open source, content, posting, script, configs, skill references"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Skill References", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Content Posting Script Configs", "item": "https://xactions.app/docs/skills/content-posting-script-configs" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Content Posting Script Configs</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Skill References</a> › Content Posting Script Configs
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Skill References</span>
+        <h1>Content Posting Script Configs</h1>
+<h2>Contents</h2>
+<ul>
+<li><a href="#post-thread">Post Thread</a></li>
+<li><a href="#schedule-posts">Schedule Posts</a></li>
+<li><a href="#create-poll">Create Poll</a></li>
+<li><a href="#auto-repost">Auto Repost</a></li>
+</ul>
+<h2>Post Thread</h2>
+<p><strong>File:</strong> <code>src/postThread.js</code></p>
+<p>Compose and post a connected thread of tweets.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  thread: [
+    &#39;First tweet in the thread 🧵&#39;,
+    &#39;Second tweet continues...&#39;,
+    &#39;Final tweet wraps it up! 🎉&#39;,
+  ],
+  delayBetweenTweets: 2000,
+  dryRun: true,
+};
+</code></pre>
+<h3>How to use</h3>
+<ol>
+<li>Go to x.com</li>
+<li>Edit the <code>thread</code> array with your tweets</li>
+<li>Set <code>dryRun = false</code> to post</li>
+<li>Open DevTools (F12) → Console</li>
+<li>Paste the script → Enter</li>
+</ol>
+<h3>How it works</h3>
+<ol>
+<li>Opens the compose dialog</li>
+<li>Types the first tweet</li>
+<li>Clicks &quot;+&quot; to add each subsequent tweet</li>
+<li>Clicks &quot;Post all&quot; to publish the entire thread</li>
+</ol>
+<h3>Validation</h3>
+<ul>
+<li>Checks each tweet is ≤ 280 characters</li>
+<li>Shows character count per tweet in dry-run mode</li>
+</ul>
+<h2>Schedule Posts</h2>
+<p><strong>File:</strong> <code>src/schedulePosts.js</code></p>
+<p>Queue multiple posts for future publishing using X&#39;s native scheduling (Premium feature).</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  posts: [
+    { text: &#39;Morning post!&#39;, scheduledFor: &#39;2026-02-25T10:00:00&#39; },
+    { text: &#39;Afternoon post!&#39;, scheduledFor: &#39;2026-02-25T14:00:00&#39; },
+  ],
+};
+</code></pre>
+<p>Scheduling posts requires X Premium. The script uses X&#39;s built-in scheduler UI.</p>
+<h2>Create Poll</h2>
+<p><strong>File:</strong> <code>src/createPoll.js</code></p>
+<p>Create a poll with 2-4 options and configurable duration.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  question: &#39;What is your preferred language?&#39;,
+  options: [&#39;JavaScript&#39;, &#39;Python&#39;, &#39;Rust&#39;, &#39;Go&#39;],
+  durationDays: 1,
+  dryRun: true,
+};
+</code></pre>
+<h3>Validation</h3>
+<ul>
+<li>Enforces 2-4 options</li>
+<li>Each option max 25 characters</li>
+<li>Question max 280 characters</li>
+</ul>
+<h2>Auto Repost</h2>
+<p><strong>File:</strong> <code>src/autoRepost.js</code></p>
+<p>Automatically repost tweets matching keywords or from specific users.</p>
+<h3>Configuration</h3>
+<pre><code class="language-javascript">const CONFIG = {
+  keywords: [&#39;AI agents&#39;, &#39;open source&#39;],
+  fromUsers: [&#39;nichxbt&#39;],
+  maxReposts: 20,
+  skipReplies: true,
+  minLikes: 5,  // Only repost tweets with at least 5 likes
+};
+</code></pre>
+<h3>How it works</h3>
+<ol>
+<li>Scrolls your timeline or search results</li>
+<li>Matches tweets against keyword/user filters</li>
+<li>Clicks retweet → confirm on matching tweets</li>
+<li>Respects configurable delays and limits</li>
+</ol>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/algorithm-cultivation-algorithm-internals">📚 Algorithm Internals &amp; Architecture</a>
+        <a href="/docs/skills/algorithm-cultivation-browser-scripts">📚 Browser Scripts Reference</a>
+        <a href="/docs/skills/algorithm-cultivation-persona-engine">📚 Persona Engine Reference</a>
+        <a href="/docs/skills/analytics-insights-script-configs">📚 Analytics Script Configs</a>
+        <a href="/docs/skills/blocking-muting-management-script-details">📚 Blocking &amp; Muting Script Details</a>
+        <a href="/docs/skills/growth-automation-supporting-scripts">📚 Supporting Automation Scripts</a>
+        <a href="/docs/skills/twitter-scraping-scraper-details">📚 Scraper Details</a>
+        <a href="/docs/skills/unfollow-management-script-details">📚 Unfollow Management — Script Details</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

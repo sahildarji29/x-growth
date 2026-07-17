@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XActions Google Sheets Plugin | XActions</title>
+  <meta name="description" content="Export scraped X/Twitter data directly to Google Sheets — no copy-paste, no CSV import.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, src, plugins, google, sheets, plugin, extensions &amp; plugins">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="XActions Google Sheets Plugin — XActions">
+  <meta property="og:description" content="Export scraped X/Twitter data directly to Google Sheets — no copy-paste, no CSV import.">
+  <meta property="og:url" content="https://xactions.app/docs/extras/src-plugins-google-sheets">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="XActions Google Sheets Plugin — XActions">
+  <meta name="twitter:description" content="Export scraped X/Twitter data directly to Google Sheets — no copy-paste, no CSV import.">
+
+  <link rel="canonical" href="https://xactions.app/docs/extras/src-plugins-google-sheets">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "XActions Google Sheets Plugin | XActions",
+    "description": "Export scraped X/Twitter data directly to Google Sheets — no copy-paste, no CSV import.",
+    "url": "https://xactions.app/docs/extras/src-plugins-google-sheets",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/extras/src-plugins-google-sheets",
+    "articleSection": "Extensions & Plugins",
+    "keywords": "xactions, twitter automation, x automation, free, open source, src, plugins, google, sheets, plugin, extensions & plugins"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Extensions & Plugins", "item": "https://xactions.app/docs/extras" },
+      { "@type": "ListItem", "position": 4, "name": "XActions Google Sheets Plugin", "item": "https://xactions.app/docs/extras/src-plugins-google-sheets" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🔌 XActions Google Sheets Plugin</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/extras">Extensions &amp; Plugins</a> › XActions Google Sheets Plugin
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Extensions &amp; Plugins</span>
+        <h1>📊 XActions Google Sheets Plugin</h1>
+<blockquote>
+<p>Export scraped X/Twitter data directly to Google Sheets — no copy-paste, no CSV import.</p>
+</blockquote>
+<p><strong>Plugin:</strong> <code>xactions-plugin-google-sheets</code><br><strong>Author:</strong> nich (<a href="https://x.com/nichxbt">@nichxbt</a>)</p>
+<p>-----|-------------|----------|<br>| Service account (JSON string) | <code>GOOGLE_SERVICE_ACCOUNT_KEY</code> | Servers, CI/CD, automated exports |<br>| Service account (key file) | <code>GOOGLE_SERVICE_ACCOUNT_KEY_FILE</code> | Local development |<br>| OAuth2 access token | <code>GOOGLE_ACCESS_TOKEN</code> | Short-lived / user-facing apps |<br>| API key | <code>GOOGLE_API_KEY</code> | Read-only access to public sheets |</p>
+<p><strong>Recommended: Service account</strong></p>
+<ol>
+<li>Go to <a href="https://console.cloud.google.com/">Google Cloud Console</a> → APIs &amp; Services → Credentials</li>
+<li>Create a Service Account → Generate a JSON key</li>
+<li>Enable the Google Sheets API</li>
+<li>Share your target spreadsheet with the service account email (<code>...@...iam.gserviceaccount.com</code>)</li>
+<li>Set the env var:</li>
+</ol>
+<pre><code class="language-bash">export GOOGLE_SERVICE_ACCOUNT_KEY_FILE=&quot;./service-account-key.json&quot;
+</code></pre>
+<h3>3. Use it</h3>
+<pre><code class="language-javascript">import { exportToGoogleSheets } from &#39;xactions/plugins/google-sheets&#39;;
+
+// After scraping followers...
+const result = await exportToGoogleSheets(followers, {
+  spreadsheetId: &#39;YOUR_SPREADSHEET_ID&#39;,  // from the Sheet URL
+  sheetName: &#39;Followers&#39;,
+  mode: &#39;append&#39;,  // &#39;append&#39; | &#39;replace&#39; | &#39;new-sheet&#39;
+});
+
+console.log(`✅ Exported ${result.rowsWritten} rows → ${result.url}`);
+</code></pre>
+<hr>
+<h2>🖥️ CLI Usage</h2>
+<p>All scrape commands now support <code>--google-sheets</code>:</p>
+<pre><code class="language-bash"># Scrape followers and push directly to Google Sheets
+xactions followers @nichxbt --google-sheets YOUR_SPREADSHEET_ID --sheet-name Followers
+
+# Scrape tweets and append to a sheet
+xactions tweets @nichxbt -l 200 --google-sheets YOUR_SPREADSHEET_ID --sheet-name Tweets
+
+# Replace instead of append
+xactions following @nichxbt --google-sheets YOUR_SPREADSHEET_ID --sheet-mode replace
+</code></pre>
+<hr>
+<h2>🤖 MCP Tools (AI Agents)</h2>
+<p>The plugin registers three MCP tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_export_to_google_sheets</code></td>
+<td>Export data to an existing Google Sheet</td>
+</tr>
+<tr>
+<td><code>x_read_from_google_sheets</code></td>
+<td>Read data from a Google Sheet into objects</td>
+</tr>
+<tr>
+<td><code>x_create_google_spreadsheet</code></td>
+<td>Create a new spreadsheet and return its ID</td>
+</tr>
+</tbody></table>
+<p><strong>Example AI agent prompt:</strong></p>
+<blockquote>
+<p>&quot;Scrape @nichxbt&#39;s followers and export them to my Google Sheet 1BxiM...&quot;</p>
+</blockquote>
+<hr>
+<h2>🔌 REST API</h2>
+<p>When loaded as a plugin, these routes are available:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>POST</code></td>
+<td><code>/api/plugins/xactions-plugin-google-sheets/export</code></td>
+<td>Export data to a sheet</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/plugins/xactions-plugin-google-sheets/read</code></td>
+<td>Read data from a sheet</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/plugins/xactions-plugin-google-sheets/create</code></td>
+<td>Create a new spreadsheet</td>
+</tr>
+</tbody></table>
+<p><strong>Example:</strong></p>
+<pre><code class="language-bash">curl -X POST http://localhost:3000/api/plugins/xactions-plugin-google-sheets/export \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+    &quot;data&quot;: [{&quot;username&quot;: &quot;nichxbt&quot;, &quot;followers&quot;: 12500}],
+    &quot;spreadsheetId&quot;: &quot;YOUR_ID&quot;,
+    &quot;sheetName&quot;: &quot;Followers&quot;,
+    &quot;mode&quot;: &quot;append&quot;
+  }&#39;
+</code></pre>
+<hr>
+<h2>📖 API Reference</h2>
+<h3><code>exportToGoogleSheets(data, options)</code></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spreadsheetId</code></td>
+<td><code>string</code></td>
+<td><strong>required</strong></td>
+<td>Google Sheet ID from URL</td>
+</tr>
+<tr>
+<td><code>sheetName</code></td>
+<td><code>string</code></td>
+<td><code>&#39;Sheet1&#39;</code></td>
+<td>Target tab name</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><code>string</code></td>
+<td><code>&#39;append&#39;</code></td>
+<td><code>&#39;append&#39;</code>, <code>&#39;replace&#39;</code>, or <code>&#39;new-sheet&#39;</code></td>
+</tr>
+<tr>
+<td><code>columns</code></td>
+<td><code>string[]</code></td>
+<td>all keys</td>
+<td>Explicit column order</td>
+</tr>
+<tr>
+<td><code>includeHeaders</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Write header row</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>{ success, spreadsheetId, rowsWritten, columnsWritten, headers, url }</code></p>
+<h3><code>readFromGoogleSheets(options)</code></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>spreadsheetId</code></td>
+<td><code>string</code></td>
+<td><strong>required</strong></td>
+<td>Google Sheet ID</td>
+</tr>
+<tr>
+<td><code>sheetName</code></td>
+<td><code>string</code></td>
+<td><code>&#39;Sheet1&#39;</code></td>
+<td>Tab name</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td><code>string</code></td>
+<td>entire sheet</td>
+<td>Custom A1 range</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>Object[]</code> — array of objects keyed by header row</p>
+<h3><code>createSpreadsheet(options)</code></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td><code>&#39;XActions Export&#39;</code></td>
+<td>Spreadsheet title</td>
+</tr>
+<tr>
+<td><code>sheetNames</code></td>
+<td><code>string[]</code></td>
+<td><code>[&#39;Sheet1&#39;]</code></td>
+<td>Tabs to create</td>
+</tr>
+</tbody></table>
+<p><strong>Returns:</strong> <code>{ spreadsheetId, url, title, sheetNames }</code></p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/extras/extension">🔌 XActions Browser Extension</a>
+        <a href="/docs/extras/integrations-n8n">🔌 n8n-nodes-xactions</a>
+        <a href="/docs/extras/src-plugins-excel">🔌 � XActions Excel Plugin</a>
+        <a href="/docs/extras/src-plugins-template">🔌 xactions-plugin-example</a>
+        <a href="/docs/extras/examples">🔌 Examples</a>
+        <a href="/docs/extras/scripts">🔌 � Chrome DevTools Console Scripts</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

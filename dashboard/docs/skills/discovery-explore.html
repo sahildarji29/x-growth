@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery &amp; Explore | XActions</title>
+  <meta name="description" content="Browser console scripts and MCP tools for exploring trends, searching content, and discovering accounts on X/Twitter.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, discovery, explore, agent skills">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Discovery &amp; Explore — XActions">
+  <meta property="og:description" content="Browser console scripts and MCP tools for exploring trends, searching content, and discovering accounts on X/Twitter.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/discovery-explore">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Discovery &amp; Explore — XActions">
+  <meta name="twitter:description" content="Browser console scripts and MCP tools for exploring trends, searching content, and discovering accounts on X/Twitter.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/discovery-explore">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Discovery & Explore | XActions",
+    "description": "Browser console scripts and MCP tools for exploring trends, searching content, and discovering accounts on X/Twitter.",
+    "url": "https://xactions.app/docs/skills/discovery-explore",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/discovery-explore",
+    "articleSection": "Agent Skills",
+    "keywords": "xactions, twitter automation, x automation, free, open source, discovery, explore, agent skills"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Agent Skills", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Discovery & Explore", "item": "https://xactions.app/docs/skills/discovery-explore" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎯 Discovery &amp; Explore</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Agent Skills</a> › Discovery &amp; Explore
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Agent Skills</span>
+        <h1>Discovery &amp; Explore</h1>
+<p>Browser console scripts and MCP tools for exploring trends, searching content, and discovering accounts on X/Twitter.</p>
+<h2>Script Selection</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>File</th>
+<th>Navigate to</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monitor trending topics</td>
+<td><code>src/trendingTopicMonitor.js</code></td>
+<td><code>x.com/explore/tabs/trending</code></td>
+</tr>
+<tr>
+<td>Search tweets</td>
+<td><code>scripts/scrapeSearch.js</code></td>
+<td>Search results page</td>
+</tr>
+<tr>
+<td>Scrape hashtag</td>
+<td><code>scripts/scrapeHashtag.js</code></td>
+<td><code>x.com/hashtag/TAG</code></td>
+</tr>
+<tr>
+<td>Find viral tweets</td>
+<td><code>src/viralTweetDetector.js</code></td>
+<td>Any profile</td>
+</tr>
+<tr>
+<td>Keyword monitoring</td>
+<td><code>src/keywordMonitor.js</code></td>
+<td>Any page</td>
+</tr>
+<tr>
+<td>Scrape explore page</td>
+<td><code>src/exploreScraper.js</code></td>
+<td><code>x.com/explore</code></td>
+</tr>
+</tbody></table>
+<h2>MCP Tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_get_trends</code></td>
+<td>Current trending topics</td>
+</tr>
+<tr>
+<td><code>x_get_explore</code></td>
+<td>Explore page content</td>
+</tr>
+<tr>
+<td><code>x_search_tweets</code></td>
+<td>Full-text tweet search</td>
+</tr>
+</tbody></table>
+<h2>Trending Topic Monitor</h2>
+<p><strong>File:</strong> <code>src/trendingTopicMonitor.js</code></p>
+<p>Real-time trending topic scraper with niche classification.</p>
+<h3>Controls</h3>
+<ul>
+<li><code>XActions.scan()</code> -- Scrape current trends</li>
+<li><code>XActions.track()</code> -- Log trend snapshot with timestamp</li>
+<li><code>XActions.history()</code> -- Show all tracked snapshots</li>
+<li><code>XActions.forNiche(keyword)</code> -- Filter trends by niche keyword</li>
+<li><code>XActions.export()</code> -- Download trend data as JSON</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li>Categorizes trends by niche (tech, politics, entertainment, sports, crypto, etc.)</li>
+<li>Tracks trend velocity (rising/falling)</li>
+<li>Identifies trending hashtags vs organic trends</li>
+<li>Alerts on niche-relevant trends</li>
+</ul>
+<h2>Keyword Monitor</h2>
+<p><strong>File:</strong> <code>src/keywordMonitor.js</code></p>
+<p>Monitors X for mentions of specific keywords with sentiment classification.</p>
+<h3>Controls</h3>
+<ul>
+<li><code>XActions.setKeywords([&#39;keyword1&#39;, &#39;keyword2&#39;])</code> -- Configure keywords</li>
+<li><code>XActions.scan()</code> -- Run one search cycle</li>
+<li><code>XActions.autoScan(intervalMs)</code> -- Continuous monitoring</li>
+<li><code>XActions.stop()</code> -- Stop auto-scanning</li>
+<li><code>XActions.report()</code> -- Show summary with sentiment breakdown</li>
+<li><code>XActions.export()</code> -- Download results as JSON</li>
+</ul>
+<h2>Strategy Guide</h2>
+<h3>Trend-jacking workflow</h3>
+<ol>
+<li>Run <code>src/trendingTopicMonitor.js</code> -&gt; <code>XActions.forNiche(&#39;your_niche&#39;)</code></li>
+<li>Identify relevant trends with momentum</li>
+<li>Craft timely content using <code>src/threadComposer.js</code> or <code>src/contentRepurposer.js</code></li>
+<li>Post within the first 2 hours of trend emergence for maximum visibility</li>
+<li>Track performance with <code>src/tweetPerformance.js</code></li>
+</ol>
+<h3>Content ideation from search</h3>
+<ol>
+<li>Use <code>scripts/scrapeSearch.js</code> or <code>x_search_tweets</code> for niche keywords</li>
+<li>Analyze top results for content gaps</li>
+<li>Use <code>src/viralTweetDetector.js</code> on popular accounts in your niche</li>
+<li>Repurpose successful formats with <code>src/contentRepurposer.js</code></li>
+</ol>
+<h3>Building a discovery routine</h3>
+<ol>
+<li>Daily: <code>src/trendingTopicMonitor.js</code> -&gt; <code>XActions.track()</code> for trend log</li>
+<li>Weekly: Review <code>XActions.history()</code> for recurring themes</li>
+<li>Set <code>src/keywordMonitor.js</code> for brand/topic monitoring</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>Explore page content varies by region and account history</li>
+<li>Trends refresh every ~15 minutes on X</li>
+<li>Keyword monitor uses X search (subject to standard rate limits)</li>
+<li>Trending data is publicly accessible (no auth needed for viewing)</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/a2a-multi-agent">🎯 Skill: A2A Multi-Agent Orchestration</a>
+        <a href="/docs/skills/algorithm-cultivation">🎯 Algorithm Cultivation &amp; Thought Leadership</a>
+        <a href="/docs/skills/analytics-insights">🎯 Analytics &amp; Insights</a>
+        <a href="/docs/skills/articles-longform">🎯 Articles &amp; Longform</a>
+        <a href="/docs/skills/blocking-muting-management">🎯 Blocking &amp; Muting Management</a>
+        <a href="/docs/skills/bookmarks-management">🎯 Bookmarks Management</a>
+        <a href="/docs/skills/business-ads">🎯 Business &amp; Ads Tools</a>
+        <a href="/docs/skills/community-health-monitoring">🎯 Community Health Monitoring</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

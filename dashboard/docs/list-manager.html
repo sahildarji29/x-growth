@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Manager — Free X/Twitter Lists &amp; Communities Tool | XActions</title>
+  <meta name="description" content="Create and manage X/Twitter Lists — create lists, add members, and export member data.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, list, manager, lists &amp; communities, list manager twitter, twitter list manager">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="List Manager — XActions">
+  <meta property="og:description" content="Create and manage X/Twitter Lists — create lists, add members, and export member data.">
+  <meta property="og:url" content="https://xactions.app/docs/list-manager">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="List Manager — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Create and manage X/Twitter Lists — create lists, add members, and export member data.">
+
+  <link rel="canonical" href="https://xactions.app/docs/list-manager">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "List Manager — Free X/Twitter Lists & Communities Tool | XActions",
+    "description": "Create and manage X/Twitter Lists — create lists, add members, and export member data.",
+    "url": "https://xactions.app/docs/list-manager",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/list-manager",
+    "articleSection": "Lists & Communities",
+    "keywords": "xactions, twitter automation, x automation, free, list, manager, lists & communities, list manager twitter, twitter list manager"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "List Manager", "item": "https://xactions.app/docs/list-manager" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use List Manager",
+    "description": "Create and manage X/Twitter Lists — create lists, add members, and export member data.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions List Manager script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📝 List Manager</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › List Manager
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Lists &amp; Communities</span>
+        <h1>📋 List Manager</h1>
+<p>Create and manage X/Twitter Lists — create lists, add members, and export member data.</p>
+<hr>
+<h2>📋 What It Does</h2>
+<p>Provides three actions:</p>
+<ol>
+<li><strong>Create</strong> — Creates a new list with name and description</li>
+<li><strong>Add Members</strong> — Adds a list of usernames to an existing list</li>
+<li><strong>Export Members</strong> — Exports all members of a list as JSON</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<h3>Create a List</h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to <code>x.com/i/lists</code></li>
+<li>Set <code>action: &#39;create&#39;</code> in CONFIG</li>
+<li>Open console (F12) and paste <code>src/listManager.js</code></li>
+</ol>
+<h3>Add Members to a List</h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to the list page (<code>x.com/i/lists/&lt;listId&gt;</code>)</li>
+<li>Set <code>action: &#39;addMembers&#39;</code> in CONFIG</li>
+<li>Open console (F12) and paste <code>src/listManager.js</code></li>
+</ol>
+<h3>Export Members</h3>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to the list&#39;s members page</li>
+<li>Set <code>action: &#39;exportMembers&#39;</code></li>
+<li>Open console (F12) and paste <code>src/listManager.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  action: &#39;create&#39;, // &#39;create&#39;, &#39;addMembers&#39;, or &#39;exportMembers&#39;
+  listName: &#39;Web3 Builders&#39;,
+  listDescription: &#39;Developers building in web3&#39;,
+  isPrivate: false,
+  members: [&#39;user1&#39;, &#39;user2&#39;, &#39;user3&#39;],
+};
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/listManager.js</code> — Browser console list manager</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Creating lists requires being on the Lists page</li>
+<li>Adding members navigates to each user&#39;s profile, so it may be slow</li>
+<li>Exported member data downloads as a JSON file</li>
+<li>X limits how many lists you can create; use wisely</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try List Manager?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/join-communities">🏘️ Join Communities</a>
+        <a href="/docs/leave-all-communities">🚪 Leave All Communities</a>
+        <a href="/docs/manage-lists">📝 Manage Lists</a>
+        <a href="/docs/smart-unfollow">🧠 Smart Unfollow</a>
+        <a href="/docs/detect-unfollowers">🔍 Detect Unfollowers</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

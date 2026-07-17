@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xactions-plugin-example | XActions</title>
+  <meta name="description" content="Example XActions plugin — use as a template for building your own.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, src, plugins, template, xactions-plugin-example, extensions &amp; plugins">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="xactions-plugin-example — XActions">
+  <meta property="og:description" content="Example XActions plugin — use as a template for building your own.">
+  <meta property="og:url" content="https://xactions.app/docs/extras/src-plugins-template">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="xactions-plugin-example — XActions">
+  <meta name="twitter:description" content="Example XActions plugin — use as a template for building your own.">
+
+  <link rel="canonical" href="https://xactions.app/docs/extras/src-plugins-template">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "xactions-plugin-example | XActions",
+    "description": "Example XActions plugin — use as a template for building your own.",
+    "url": "https://xactions.app/docs/extras/src-plugins-template",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/extras/src-plugins-template",
+    "articleSection": "Extensions & Plugins",
+    "keywords": "xactions, twitter automation, x automation, free, open source, src, plugins, template, xactions-plugin-example, extensions & plugins"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Extensions & Plugins", "item": "https://xactions.app/docs/extras" },
+      { "@type": "ListItem", "position": 4, "name": "xactions-plugin-example", "item": "https://xactions.app/docs/extras/src-plugins-template" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🔌 xactions-plugin-example</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/extras">Extensions &amp; Plugins</a> › xactions-plugin-example
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Extensions &amp; Plugins</span>
+        <h1>xactions-plugin-example</h1>
+<blockquote>
+<p>Example XActions plugin — use as a template for building your own.</p>
+</blockquote>
+<h2>What It Does</h2>
+<p>This plugin demonstrates all the extension points available in the XActions plugin system:</p>
+<ul>
+<li><strong>Scraper</strong>: <code>scrapeTrendingTopics</code> — scrapes trending topics from X/Twitter Explore</li>
+<li><strong>MCP Tool</strong>: <code>x_get_trending_topics</code> — exposes the scraper to AI agents (Claude, GPT)</li>
+<li><strong>API Route</strong>: <code>GET /api/plugins/xactions-plugin-example/trending</code></li>
+<li><strong>Browser Action</strong>: <code>getTrending</code> — paste-and-run script for the console</li>
+<li><strong>Lifecycle Hooks</strong>: <code>onLoad</code>, <code>onUnload</code>, <code>beforeAction</code>, <code>afterAction</code></li>
+</ul>
+<h2>Creating Your Own Plugin</h2>
+<h3>1. Create a new npm package</h3>
+<pre><code class="language-bash">mkdir xactions-plugin-myplugin
+cd xactions-plugin-myplugin
+npm init -y
+</code></pre>
+<h3>2. Set the package name</h3>
+<p>Name it <code>xactions-plugin-*</code> or scope it as <code>@xactions/*</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;xactions-plugin-myplugin&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;index.js&quot;
+}
+</code></pre>
+<h3>3. Export the plugin interface</h3>
+<pre><code class="language-javascript">// index.js
+export default {
+  name: &#39;xactions-plugin-myplugin&#39;,
+  version: &#39;1.0.0&#39;,
+  description: &#39;My custom plugin&#39;,
+
+  // Puppeteer scraper functions
+  scrapers: [
+    {
+      name: &#39;myCustomScraper&#39;,
+      description: &#39;Scrapes something useful&#39;,
+      handler: async (page, options) =&gt; { /* ... */ },
+    },
+  ],
+
+  // MCP tools for AI agents
+  tools: [
+    {
+      name: &#39;x_my_custom_tool&#39;,
+      description: &#39;Does something useful via AI&#39;,
+      inputSchema: { type: &#39;object&#39;, properties: {}, required: [] },
+      handler: async (args, context) =&gt; { /* ... */ },
+    },
+  ],
+
+  // Express routes
+  routes: [
+    {
+      method: &#39;get&#39;,
+      path: &#39;/my-endpoint&#39;,
+      handler: (req, res) =&gt; res.json({ ok: true }),
+    },
+  ],
+
+  // Browser console actions
+  actions: [
+    {
+      name: &#39;myAction&#39;,
+      description: &#39;Does something on x.com&#39;,
+      script: &#39;(() =&gt; { console.log(&quot;hello from plugin&quot;); })()&#39;,
+    },
+  ],
+
+  // Lifecycle hooks
+  hooks: {
+    onLoad() { console.log(&#39;Plugin loaded&#39;); },
+    onUnload() { console.log(&#39;Plugin unloaded&#39;); },
+    beforeAction(ctx) { /* runs before any automation action */ },
+    afterAction(ctx) { /* runs after any automation action */ },
+  },
+};
+</code></pre>
+<h3>4. Install into XActions</h3>
+<pre><code class="language-bash"># From npm
+xactions plugin install xactions-plugin-myplugin
+
+# Or from a local directory
+xactions plugin install ./path/to/plugin
+</code></pre>
+<h3>5. Verify</h3>
+<pre><code class="language-bash">xactions plugin list
+</code></pre>
+<h2>Plugin Interface Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Export</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td><strong>Required.</strong> Unique plugin name</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>string</code></td>
+<td><strong>Required.</strong> Semver version</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>Human-readable description</td>
+</tr>
+<tr>
+<td><code>scrapers</code></td>
+<td><code>Array&lt;{ name, description, handler }&gt;</code></td>
+<td>Puppeteer scraper functions</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td><code>Array&lt;{ name, description, inputSchema, handler }&gt;</code></td>
+<td>MCP tool definitions</td>
+</tr>
+<tr>
+<td><code>routes</code></td>
+<td><code>Array&lt;{ method, path, handler }&gt;</code></td>
+<td>Express route handlers</td>
+</tr>
+<tr>
+<td><code>actions</code></td>
+<td><code>Array&lt;{ name, description, script }&gt;</code></td>
+<td>Browser console scripts</td>
+</tr>
+<tr>
+<td><code>hooks</code></td>
+<td><code>{ onLoad, onUnload, beforeAction, afterAction }</code></td>
+<td>Lifecycle hooks</td>
+</tr>
+</tbody></table>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/extras/extension">🔌 XActions Browser Extension</a>
+        <a href="/docs/extras/integrations-n8n">🔌 n8n-nodes-xactions</a>
+        <a href="/docs/extras/src-plugins-excel">🔌 � XActions Excel Plugin</a>
+        <a href="/docs/extras/src-plugins-google-sheets">🔌 XActions Google Sheets Plugin</a>
+        <a href="/docs/extras/examples">🔌 Examples</a>
+        <a href="/docs/extras/scripts">🔌 � Chrome DevTools Console Scripts</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

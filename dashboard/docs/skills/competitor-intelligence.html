@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitor Intelligence | XActions</title>
+  <meta name="description" content="MCP-powered workflow plus browser scripts for analyzing competitor X/Twitter accounts.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, competitor, intelligence, agent skills">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Competitor Intelligence — XActions">
+  <meta property="og:description" content="MCP-powered workflow plus browser scripts for analyzing competitor X/Twitter accounts.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/competitor-intelligence">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Competitor Intelligence — XActions">
+  <meta name="twitter:description" content="MCP-powered workflow plus browser scripts for analyzing competitor X/Twitter accounts.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/competitor-intelligence">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Competitor Intelligence | XActions",
+    "description": "MCP-powered workflow plus browser scripts for analyzing competitor X/Twitter accounts.",
+    "url": "https://xactions.app/docs/skills/competitor-intelligence",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/competitor-intelligence",
+    "articleSection": "Agent Skills",
+    "keywords": "xactions, twitter automation, x automation, free, open source, competitor, intelligence, agent skills"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Agent Skills", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Competitor Intelligence", "item": "https://xactions.app/docs/skills/competitor-intelligence" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎯 Competitor Intelligence</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Agent Skills</a> › Competitor Intelligence
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Agent Skills</span>
+        <h1>Competitor Intelligence</h1>
+<p>MCP-powered workflow plus browser scripts for analyzing competitor X/Twitter accounts.</p>
+<h2>MCP Tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x_get_profile</code></td>
+<td>Bio, follower/following counts, verified status</td>
+</tr>
+<tr>
+<td><code>x_get_tweets</code></td>
+<td>Recent posts with engagement metrics</td>
+</tr>
+<tr>
+<td><code>x_get_followers</code></td>
+<td>Follower list with bios</td>
+</tr>
+<tr>
+<td><code>x_get_following</code></td>
+<td>Following list for network analysis</td>
+</tr>
+<tr>
+<td><code>x_search_tweets</code></td>
+<td>Find mentions and replies</td>
+</tr>
+<tr>
+<td><code>x_competitor_analysis</code></td>
+<td>Automated comparison</td>
+</tr>
+</tbody></table>
+<h2>Browser Scripts</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Script</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Side-by-side competitor comparison</td>
+<td><code>src/competitorAnalysis.js</code></td>
+</tr>
+<tr>
+<td>Compare audience overlap</td>
+<td><code>src/audienceOverlap.js</code></td>
+</tr>
+<tr>
+<td>Analyze their audience demographics</td>
+<td><code>src/audienceDemographics.js</code></td>
+</tr>
+<tr>
+<td>Find their viral tweets</td>
+<td><code>src/viralTweetDetector.js</code></td>
+</tr>
+<tr>
+<td>Benchmark your engagement</td>
+<td><code>src/tweetPerformance.js</code></td>
+</tr>
+<tr>
+<td>Track their trending topics</td>
+<td><code>src/trendingTopicMonitor.js</code></td>
+</tr>
+</tbody></table>
+<h2>Analysis Workflow</h2>
+<ol>
+<li><strong>Collect profile</strong> -- <code>x_get_profile</code> for target username</li>
+<li><strong>Pull tweets</strong> -- <code>x_get_tweets</code> with <code>limit: 50</code>, note frequency and themes</li>
+<li><strong>Calculate engagement</strong> -- Per-tweet rate: <code>(likes + RTs + replies) / followers</code></li>
+<li><strong>Categorize content</strong> -- Original vs reply vs retweet vs thread</li>
+<li><strong>Audit audience</strong> -- <code>x_get_followers</code> with <code>limit: 100</code>, scan bios</li>
+<li><strong>Map network</strong> -- <code>x_get_following</code> for mutual connections and influencer relationships</li>
+<li><strong>Find overlap</strong> -- <code>src/audienceOverlap.js</code> to compare your followers with theirs</li>
+</ol>
+<h2>Output Template</h2>
+<pre><code>## Competitor Report: @{username}
+
+### Profile
+- Followers: {n} | Following: {n} | Ratio: {r}
+- Verified: {yes/no} | Joined: {date}
+
+### Content Strategy
+- Posts/week: {n} | Top topics: {t1}, {t2}, {t3}
+- Peak posting: {day} at {hour}
+- Avg engagement rate: {rate}%
+
+### Audience
+- Common industries: {list}
+- Follower size distribution: {breakdown}
+
+### Network
+- Notable follows: {list}
+- Audience overlap with you: {percentage}%
+</code></pre>
+<h2>Tips</h2>
+<ul>
+<li>Run competitor analysis quarterly for trends</li>
+<li>Use <code>src/audienceOverlap.js</code> to find collaboration opportunities</li>
+<li>Track competitors&#39; viral content for content inspiration</li>
+<li>Mirror successful content formats, not exact content</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/a2a-multi-agent">🎯 Skill: A2A Multi-Agent Orchestration</a>
+        <a href="/docs/skills/algorithm-cultivation">🎯 Algorithm Cultivation &amp; Thought Leadership</a>
+        <a href="/docs/skills/analytics-insights">🎯 Analytics &amp; Insights</a>
+        <a href="/docs/skills/articles-longform">🎯 Articles &amp; Longform</a>
+        <a href="/docs/skills/blocking-muting-management">🎯 Blocking &amp; Muting Management</a>
+        <a href="/docs/skills/bookmarks-management">🎯 Bookmarks Management</a>
+        <a href="/docs/skills/business-ads">🎯 Business &amp; Ads Tools</a>
+        <a href="/docs/skills/community-health-monitoring">🎯 Community Health Monitoring</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

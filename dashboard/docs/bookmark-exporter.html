@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Exporter — Free X/Twitter Content Tools Tool | XActions</title>
+  <meta name="description" content="Export all your X/Twitter bookmarks to JSON or CSV.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, bookmark, exporter, content tools, bookmark exporter twitter, twitter bookmark exporter">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bookmark Exporter — XActions">
+  <meta property="og:description" content="Export all your X/Twitter bookmarks to JSON or CSV.">
+  <meta property="og:url" content="https://xactions.app/docs/bookmark-exporter">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Bookmark Exporter — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Export all your X/Twitter bookmarks to JSON or CSV.">
+
+  <link rel="canonical" href="https://xactions.app/docs/bookmark-exporter">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bookmark Exporter — Free X/Twitter Content Tools Tool | XActions",
+    "description": "Export all your X/Twitter bookmarks to JSON or CSV.",
+    "url": "https://xactions.app/docs/bookmark-exporter",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/bookmark-exporter",
+    "articleSection": "Content Tools",
+    "keywords": "xactions, twitter automation, x automation, free, bookmark, exporter, content tools, bookmark exporter twitter, twitter bookmark exporter"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Bookmark Exporter", "item": "https://xactions.app/docs/bookmark-exporter" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Bookmark Exporter",
+    "description": "Export all your X/Twitter bookmarks to JSON or CSV.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Bookmark Exporter script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>📚 Bookmark Exporter</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Bookmark Exporter
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Content Tools</span>
+        <h1>📚 Bookmark Exporter</h1>
+<p>Export all your X/Twitter bookmarks to JSON or CSV.</p>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Goes through your bookmarks page</li>
+<li>Extracts all bookmark data</li>
+<li>Includes engagement metrics</li>
+<li>Exports to JSON and/or CSV</li>
+</ol>
+<h2>🌐 Browser Console Script</h2>
+<pre><code class="language-javascript">// Go to: x.com/i/bookmarks
+// Open Console (Ctrl+Shift+J) and paste the script from:
+// src/scrapers/bookmarkExporter.js
+</code></pre>
+<h2>⚙️ Configuration</h2>
+<pre><code class="language-javascript">const CONFIG = {
+  MAX_BOOKMARKS: 1000,    // Max bookmarks to export
+  SCROLL_DELAY: 1500,     // Delay between scrolls
+  FORMAT: &#39;both&#39;,         // &#39;json&#39;, &#39;csv&#39;, &#39;both&#39;
+};
+</code></pre>
+<h2>📊 Output</h2>
+<p>Each bookmark includes:</p>
+<ul>
+<li>Tweet text</li>
+<li>Author handle and display name</li>
+<li>Tweet URL</li>
+<li>Timestamp</li>
+<li>Likes, retweets, replies, views</li>
+<li>Image URLs</li>
+<li>External links</li>
+</ul>
+<h2>📁 Files Downloaded</h2>
+<ul>
+<li><code>bookmarks_[timestamp].json</code> - Full data</li>
+<li><code>bookmarks_[timestamp].csv</code> - Spreadsheet format</li>
+</ul>
+<h2>💡 Use Cases</h2>
+<ul>
+<li>Backup your bookmarks</li>
+<li>Search bookmarks in a spreadsheet</li>
+<li>Build a content library</li>
+<li>Migrate to another tool</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Works only on your own bookmarks</li>
+<li>May take a while for large collections</li>
+<li>X doesn&#39;t provide an official export, so this fills that gap!</li>
+</ul>
+<hr>
+<p><em>Part of <a href="https://github.com/nirholas/XActions">XActions</a> by <a href="https://x.com/nichxbt">@nichxbt</a></em></p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Bookmark Exporter?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/bookmark-manager">📚 Bookmark Manager</a>
+        <a href="/docs/bookmark-organizer">📂 Bookmark Organizer</a>
+        <a href="/docs/bulk-delete-tweets">🗑️ Bulk Delete Tweets</a>
+        <a href="/docs/clear-all-bookmarks">🗑️ Clear All Bookmarks</a>
+        <a href="/docs/clear-all-reposts">🗑️ Clear All Reposts</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

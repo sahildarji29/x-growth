@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adding New Features | XActions</title>
+  <meta name="description" content="1. Create the script in `src/` following browser-script-patterns.md">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, contributing, features, adding, developer guides">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Adding New Features — XActions">
+  <meta property="og:description" content="1. Create the script in `src/` following browser-script-patterns.md">
+  <meta property="og:url" content="https://xactions.app/docs/guides/developer/contributing-features">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Adding New Features — XActions">
+  <meta name="twitter:description" content="1. Create the script in `src/` following browser-script-patterns.md">
+
+  <link rel="canonical" href="https://xactions.app/docs/guides/developer/contributing-features">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Adding New Features | XActions",
+    "description": "1. Create the script in `src/` following browser-script-patterns.md",
+    "url": "https://xactions.app/docs/guides/developer/contributing-features",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/guides/developer/contributing-features",
+    "articleSection": "Developer Guides",
+    "keywords": "xactions, twitter automation, x automation, free, open source, contributing, features, adding, developer guides"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Developer Guides", "item": "https://xactions.app/docs/guides/developer" },
+      { "@type": "ListItem", "position": 4, "name": "Adding New Features", "item": "https://xactions.app/docs/guides/developer/contributing-features" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🛠️ Adding New Features</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/guides/developer">Developer Guides</a> › Adding New Features
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Developer Guides</span>
+        <h1>Adding New Features</h1>
+<h2>Checklist</h2>
+<ol>
+<li>Create the script in <code>src/</code> following <a href="browser-script-patterns.md">browser-script-patterns.md</a></li>
+<li>Add documentation in <code>docs/examples/your-feature.md</code></li>
+<li>Update <code>README.md</code> — add to examples and feature matrix</li>
+<li>If it belongs to an existing skill category, update that <code>skills/*/SKILL.md</code></li>
+<li>If it&#39;s a new category, create a new <code>skills/your-category/SKILL.md</code> with YAML frontmatter</li>
+</ol>
+<h2>Documentation Template</h2>
+<pre><code class="language-markdown"># Feature Name
+
+Brief description.
+
+## What It Does
+
+1. Step one
+2. Step two
+
+## Browser Console Script
+
+Navigate to: x.com/relevant/page
+Paste in DevTools console.
+
+## Notes
+
+- Important caveats
+</code></pre>
+<h2>SKILL.md Frontmatter Template</h2>
+<pre><code class="language-yaml">
+</code></pre>
+<h2>Code Style</h2>
+<ul>
+<li><code>const</code> over <code>let</code>, async/await over raw promises</li>
+<li>Descriptive <code>console.log</code> with emojis for visibility</li>
+<li>Comment complex selectors</li>
+<li>Author credit: <code>// by nichxbt</code></li>
+<li>Use <code>data-testid</code> selectors when available (see <a href="selectors.md">selectors.md</a>)</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/guides/developer/browser-script-patterns">🛠️ Browser Script Patterns</a>
+        <a href="/docs/guides/developer/selectors">🛠️ X/Twitter DOM Selectors Reference</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

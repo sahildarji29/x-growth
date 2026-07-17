@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Monetization — Free X/Twitter Business Tool | XActions</title>
+  <meta name="description" content="Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, creator, monetization, business, creator monetization twitter, twitter creator monetization">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Creator Monetization — XActions">
+  <meta property="og:description" content="Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.">
+  <meta property="og:url" content="https://xactions.app/docs/creator-monetization">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Creator Monetization — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.">
+
+  <link rel="canonical" href="https://xactions.app/docs/creator-monetization">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Creator Monetization — Free X/Twitter Business Tool | XActions",
+    "description": "Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.",
+    "url": "https://xactions.app/docs/creator-monetization",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/creator-monetization",
+    "articleSection": "Business",
+    "keywords": "xactions, twitter automation, x automation, free, creator, monetization, business, creator monetization twitter, twitter creator monetization"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Creator Monetization", "item": "https://xactions.app/docs/creator-monetization" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Creator Monetization",
+    "description": "Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Creator Monetization script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>💰 Creator Monetization</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Creator Monetization
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Business</span>
+        <h1>💰 Creator Monetization</h1>
+<p>Tools for X/Twitter creator monetization — analytics, revenue tracking, subscriptions, and tips.</p>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Scrapes creator analytics dashboard</li>
+<li>Tracks revenue sharing earnings</li>
+<li>Monitors subscriber metrics</li>
+<li>Exports engagement data for brand deals</li>
+</ol>
+<h2>🌐 Browser Console Script</h2>
+<pre><code class="language-javascript">// Go to: x.com/i/monetization or x.com/i/account_analytics
+// Paste scripts/scrapeAnalytics.js
+</code></pre>
+<h3>Quick Revenue Check</h3>
+<pre><code class="language-javascript">(() =&gt; {
+  const metrics = {};
+  document.querySelectorAll(&#39;[role=&quot;listitem&quot;]&#39;).forEach(el =&gt; {
+    const text = el.textContent?.trim();
+    if (text &amp;&amp; text.length &lt; 200) {
+      const parts = text.split(&#39;\n&#39;).filter(Boolean);
+      if (parts.length &gt;= 2) metrics[parts[0].trim()] = parts[1].trim();
+    }
+  });
+  console.log(&#39;💰 Revenue metrics:&#39;, metrics);
+})();
+</code></pre>
+<h2>📦 Node.js Module</h2>
+<pre><code class="language-javascript">import { getAccountAnalytics, getRevenue, getSubscribers } from &#39;xactions&#39;;
+
+// Get analytics overview
+const analytics = await getAccountAnalytics(page);
+console.log(analytics.impressions, analytics.engagement);
+
+// Check revenue
+const revenue = await getRevenue(page);
+console.log(`Earned: $${revenue.total}`);
+
+// Get subscribers list
+const subs = await getSubscribers(page);
+console.log(`Active subscribers: ${subs.length}`);
+</code></pre>
+<h2>🔧 MCP Server</h2>
+<pre><code>Tool: x_creator_analytics
+Input: { &quot;period&quot;: &quot;28d&quot; }
+
+Tool: x_creator_revenue
+Input: {}
+</code></pre>
+<h2>📊 Monetization Features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Requirement</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Revenue Sharing</td>
+<td>Premium + 500 followers + 5M impressions</td>
+<td>Ad revenue from replies</td>
+</tr>
+<tr>
+<td>Subscriptions</td>
+<td>Premium + eligible account</td>
+<td>Monthly paid subscriptions</td>
+</tr>
+<tr>
+<td>Tips</td>
+<td>Any account</td>
+<td>Receive tips via Stripe/crypto</td>
+</tr>
+<tr>
+<td>Super Follows</td>
+<td>Invite-only → Premium</td>
+<td>Exclusive content for subscribers</td>
+</tr>
+<tr>
+<td>X Money</td>
+<td>Coming 2026</td>
+<td>Integrated wallet, P2P payments</td>
+</tr>
+</tbody></table>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Revenue sharing requires Stripe account in supported countries</li>
+<li>Payout minimum is $10 (subject to change)</li>
+<li>Analytics data may lag by 24-48 hours</li>
+<li>X Money (2026) will enable in-app purchases and P2P transfers</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Creator Monetization?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/business-ads">💼 Business Ads</a>
+        <a href="/docs/business-analytics">💼 Business Analytics</a>
+        <a href="/docs/business-tools">💼 Business Tools</a>
+        <a href="/docs/creator-studio">🎨 Creator Studio</a>
+        <a href="/docs/smart-unfollow">🧠 Smart Unfollow</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

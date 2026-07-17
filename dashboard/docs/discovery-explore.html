@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery &amp; Explore — Free X/Twitter Discovery Tool | XActions</title>
+  <meta name="description" content="Scrape trends, explore feed, topics, and advanced search on X/Twitter.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, discovery, explore, discovery explore twitter, twitter discovery explore">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Discovery &amp; Explore — XActions">
+  <meta property="og:description" content="Scrape trends, explore feed, topics, and advanced search on X/Twitter.">
+  <meta property="og:url" content="https://xactions.app/docs/discovery-explore">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Discovery &amp; Explore — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Scrape trends, explore feed, topics, and advanced search on X/Twitter.">
+
+  <link rel="canonical" href="https://xactions.app/docs/discovery-explore">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Discovery & Explore — Free X/Twitter Discovery Tool | XActions",
+    "description": "Scrape trends, explore feed, topics, and advanced search on X/Twitter.",
+    "url": "https://xactions.app/docs/discovery-explore",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/discovery-explore",
+    "articleSection": "Discovery",
+    "keywords": "xactions, twitter automation, x automation, free, discovery, explore, discovery explore twitter, twitter discovery explore"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Discovery & Explore", "item": "https://xactions.app/docs/discovery-explore" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Discovery &amp; Explore",
+    "description": "Scrape trends, explore feed, topics, and advanced search on X/Twitter.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Discovery &amp; Explore script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🔍 Discovery &amp; Explore</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Discovery &amp; Explore
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Discovery</span>
+        <h1>🔍 Discovery &amp; Explore</h1>
+<p>Scrape trends, explore feed, topics, and advanced search on X/Twitter.</p>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Scrapes trending topics with post counts</li>
+<li>Exports explore feed content</li>
+<li>Follows/unfollows topics</li>
+<li>Performs advanced search with filters</li>
+</ol>
+<h2>🌐 Browser Console Script</h2>
+<pre><code class="language-javascript">// Go to: x.com/explore
+// Paste scripts/scrapeExplore.js
+</code></pre>
+<h3>Quick Trends Scrape</h3>
+<pre><code class="language-javascript">(() =&gt; {
+  const trends = [];
+  document.querySelectorAll(&#39;[data-testid=&quot;trend&quot;]&#39;).forEach((el, i) =&gt; {
+    const spans = el.querySelectorAll(&#39;[dir=&quot;ltr&quot;] span&#39;);
+    trends.push({
+      rank: i + 1,
+      name: spans[0]?.textContent || &#39;&#39;,
+    });
+  });
+  console.table(trends);
+})();
+</code></pre>
+<h2>📦 Node.js Module</h2>
+<pre><code class="language-javascript">import { getTrends, searchTweets, advancedSearch, getExploreFeed } from &#39;xactions&#39;;
+
+// Get current trends
+const trends = await getTrends(page);
+
+// Basic search
+const results = await searchTweets(page, &#39;AI agents&#39;);
+
+// Advanced search with filters
+const filtered = await advancedSearch(page, {
+  query: &#39;typescript&#39;,
+  from: &#39;nichxbt&#39;,
+  minLikes: 10,
+  since: &#39;2026-01-01&#39;,
+  filter: &#39;links&#39;,
+});
+
+// Get explore feed
+const feed = await getExploreFeed(page, { category: &#39;technology&#39; });
+</code></pre>
+<h2>🔧 MCP Server</h2>
+<pre><code>Tool: x_search_tweets
+Input: { &quot;query&quot;: &quot;AI agents&quot;, &quot;limit&quot;: 50 }
+
+Tool: x_get_trends
+Input: { &quot;category&quot;: &quot;technology&quot; }
+</code></pre>
+<h2>🔎 Advanced Search Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>from:</code></td>
+<td><code>from:nichxbt</code></td>
+<td>Posts from user</td>
+</tr>
+<tr>
+<td><code>to:</code></td>
+<td><code>to:nichxbt</code></td>
+<td>Replies to user</td>
+</tr>
+<tr>
+<td><code>since:</code></td>
+<td><code>since:2026-01-01</code></td>
+<td>Posts after date</td>
+</tr>
+<tr>
+<td><code>until:</code></td>
+<td><code>until:2026-02-01</code></td>
+<td>Posts before date</td>
+</tr>
+<tr>
+<td><code>min_faves:</code></td>
+<td><code>min_faves:100</code></td>
+<td>Minimum likes</td>
+</tr>
+<tr>
+<td><code>min_retweets:</code></td>
+<td><code>min_retweets:50</code></td>
+<td>Minimum reposts</td>
+</tr>
+<tr>
+<td><code>filter:links</code></td>
+<td></td>
+<td>Only posts with links</td>
+</tr>
+<tr>
+<td><code>filter:media</code></td>
+<td></td>
+<td>Only posts with media</td>
+</tr>
+<tr>
+<td><code>-filter:replies</code></td>
+<td></td>
+<td>Exclude replies</td>
+</tr>
+<tr>
+<td><code>lang:</code></td>
+<td><code>lang:en</code></td>
+<td>Posts in language</td>
+</tr>
+</tbody></table>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Trends refresh every ~15 minutes</li>
+<li>Explore categories: For You, Trending, News, Sports, Entertainment</li>
+<li>Grok summaries appear in Explore (2025+) for trending topics</li>
+<li>Advanced search operators can be combined</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Discovery &amp; Explore?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/smart-unfollow">🧠 Smart Unfollow</a>
+        <a href="/docs/detect-unfollowers">🔍 Detect Unfollowers</a>
+        <a href="/docs/video-downloader">🎬 Video Downloader</a>
+        <a href="/docs/followers-scraping">📋 Followers Scraping</a>
+        <a href="/docs/auto-liker">❤️ Auto Liker</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

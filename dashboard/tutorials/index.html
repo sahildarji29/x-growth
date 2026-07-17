@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X/Twitter Automation Tutorials — Step-by-Step Guides | XActions</title>
+  <meta name="description" content="Complete tutorials for XActions X/Twitter automation. Learn to mass unfollow, scrape data, automate engagement, and more with copy-paste-ready scripts.">
+  <meta name="keywords" content="twitter automation tutorial, twitter bot tutorial, mass unfollow tutorial, twitter scraper guide, how to automate twitter, twitter automation scripts, xactions tutorials, twitter growth guide, mcp server tutorial, twitter browser scripts">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="X/Twitter Automation Tutorials — Step-by-Step Guides">
+  <meta property="og:description" content="Learn X/Twitter automation with copy-paste-ready scripts. Mass unfollow, scrapers, auto-liker, MCP server & more.">
+  <meta property="og:url" content="https://xactions.app/tutorials">
+  <meta property="og:site_name" content="XActions">
+  <meta property="og:image" content="https://xactions.app/og-tutorials.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:creator" content="@nichxbt">
+  <meta name="twitter:title" content="X/Twitter Automation Tutorials | XActions">
+  <meta name="twitter:description" content="Step-by-step guides for mass unfollow, scrapers, auto-liker, MCP server & more. Free, copy-paste-ready.">
+  <meta name="twitter:image" content="https://xactions.app/og-tutorials.png">
+
+  <link rel="canonical" href="https://xactions.app/tutorials">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "XActions Tutorials",
+    "description": "Complete tutorials for X/Twitter automation with XActions",
+    "url": "https://xactions.app/tutorials",
+    "hasPart": [
+      { "@type": "WebPage", "name": "Unfollow Tutorials", "url": "https://xactions.app/tutorials/unfollow" },
+      { "@type": "WebPage", "name": "Scraper Tutorials", "url": "https://xactions.app/tutorials/scrapers" },
+      { "@type": "WebPage", "name": "Automation Tutorials", "url": "https://xactions.app/tutorials/automation" },
+      { "@type": "WebPage", "name": "Community Tutorials", "url": "https://xactions.app/tutorials/communities" },
+      { "@type": "WebPage", "name": "MCP Server Tutorial", "url": "https://xactions.app/tutorials/mcp" },
+      { "@type": "WebPage", "name": "Monitoring Tutorials", "url": "https://xactions.app/tutorials/monitoring" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Tutorials", "item": "https://xactions.app/tutorials" }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/css/common.css">
+  <style>
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #16181c;
+      --bg-tertiary: #202327;
+      --bg-hover: #1d1f23;
+      --accent: #1d9bf0;
+      --accent-hover: #1a8cd8;
+      --accent-light: rgba(29, 155, 240, 0.1);
+      --text-primary: #e7e9ea;
+      --text-secondary: #8b8f94;
+      --text-link: #1d9bf0;
+      --border: #2f3336;
+      --success: #00ba7c;
+      --warning: #ffad1f;
+      --error: #f4212e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .layout {
+      display: flex;
+      max-width: 1300px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar-left {
+      width: 275px;
+      padding: 0 12px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+    }
+
+    .logo {
+      padding: 12px;
+      margin-bottom: 4px;
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 800;
+      padding: 12px;
+      border-radius: 9999px;
+      transition: background 0.2s;
+    }
+
+    .logo a:hover { background: var(--accent-light); }
+
+    nav { flex: 1; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-bottom: 4px;
+    }
+
+    .nav-item:hover { background: var(--bg-tertiary); }
+    .nav-item.active { font-weight: 700; }
+    .nav-icon { font-size: 1.5rem; width: 28px; text-align: center; }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      max-width: 900px;
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
+    }
+
+    .main-header {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .main-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .main-header p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .free-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #7856ff 100%);
+      padding: 12px 16px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Tutorial Cards */
+    .tutorials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .tutorial-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .tutorial-card:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .tutorial-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .tutorial-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .tutorial-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .tutorial-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .feature-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Quick Reference */
+    .quick-ref {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quick-ref h2 {
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ref-table th, .ref-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ref-table th {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .ref-table code {
+      background: var(--bg-tertiary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* Search */
+    .search-box {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .search-input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: -1px;
+      border-color: var(--accent);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-left { display: none; }
+      .tutorials-grid { grid-template-columns: 1fr; }
+    }
+    /* Skip Navigation */
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-nav:focus {
+      top: 16px;
+    }
+
+    /* Visible focus styles */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+      <div class="free-banner">
+        🎉 100% Free & Open Source — No API fees, no subscriptions!
+      </div>
+
+      <header class="main-header">
+        <h1>📚 XActions Tutorial Hub</h1>
+        <p>Complete guides with copy-paste-ready code for every feature</p>
+      </header>
+
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="🔍 Search tutorials..." id="searchInput" onkeyup="filterTutorials()" aria-label="Search tutorials">
+      </div>
+
+      <!-- Tutorial Cards -->
+      <div class="tutorials-grid" id="tutorialsGrid">
+        <a href="/tutorials/unfollow" class="tutorial-card" data-keywords="unfollow mass bulk everyone non-followers">
+          <div class="tutorial-icon">👋</div>
+          <h3 class="tutorial-title">Unfollow Tutorials</h3>
+          <p class="tutorial-desc">Mass unfollow everyone, remove non-followers, smart unfollow with whitelist, detect who unfollowed you.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Unfollow Everyone</span>
+            <span class="feature-tag">Non-Followers</span>
+            <span class="feature-tag">Detect Unfollowers</span>
+          </div>
+        </a>
+
+        <a href="/tutorials/scrapers" class="tutorial-card" data-keywords="scrape followers following tweets likes video download">
+          <div class="tutorial-icon">🔍</div>
+          <h3 class="tutorial-title">Scraper Tutorials</h3>
+          <p class="tutorial-desc">Scrape followers, following lists, tweets, likes, hashtags. Download videos, unroll threads.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Followers</span>
+            <span class="feature-tag">Videos</span>
+            <span class="feature-tag">Threads</span>
+          </div>
+        </a>
+
+        <a href="/tutorials/automation" class="tutorial-card" data-keywords="auto liker commenter engagement follow">
+          <div class="tutorial-icon">🤖</div>
+          <h3 class="tutorial-title">Automation Tutorials</h3>
+          <p class="tutorial-desc">Auto-like tweets, auto-comment, follow engagers, keyword-based following, growth automation.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Auto-Liker</span>
+            <span class="feature-tag">Auto-Comment</span>
+            <span class="feature-tag">Engagement</span>
+          </div>
+        </a>
+
+        <a href="/tutorials/monitoring" class="tutorial-card" data-keywords="monitor track detect unfollowers alerts notifications">
+          <div class="tutorial-icon">👁️</div>
+          <h3 class="tutorial-title">Monitoring Tutorials</h3>
+          <p class="tutorial-desc">Monitor any account, detect unfollowers, get new follower alerts, continuous tracking.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Track Accounts</span>
+            <span class="feature-tag">Alerts</span>
+            <span class="feature-tag">Unfollower Detection</span>
+          </div>
+        </a>
+
+        <a href="/tutorials/communities" class="tutorial-card" data-keywords="communities leave exit quit groups">
+          <div class="tutorial-icon">🏘️</div>
+          <h3 class="tutorial-title">Communities Tutorials</h3>
+          <p class="tutorial-desc">Leave all X Communities at once, manage community memberships automatically.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Leave All</span>
+            <span class="feature-tag">Batch Exit</span>
+          </div>
+        </a>
+
+        <a href="/tutorials/mcp" class="tutorial-card" data-keywords="mcp ai claude gpt agent llm">
+          <div class="tutorial-icon">🧠</div>
+          <h3 class="tutorial-title">MCP Server Setup</h3>
+          <p class="tutorial-desc">Set up XActions as an MCP server for AI agents. Works with Claude Desktop, GPT, and more.</p>
+          <div class="tutorial-features">
+            <span class="feature-tag">Claude</span>
+            <span class="feature-tag">AI Agents</span>
+            <span class="feature-tag">Automation</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="quick-ref">
+        <h2>⚡ Quick Reference</h2>
+        <table class="ref-table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Method</th>
+              <th>Difficulty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Unfollow everyone</td>
+              <td><code>Browser Console</code></td>
+              <td>🟢 Easy</td>
+            </tr>
+            <tr>
+              <td>Unfollow non-followers</td>
+              <td><code>Browser Console</code></td>
+              <td>🟢 Easy</td>
+            </tr>
+            <tr>
+              <td>Detect unfollowers</td>
+              <td><code>Browser Console</code></td>
+              <td>🟢 Easy</td>
+            </tr>
+            <tr>
+              <td>Scrape followers list</td>
+              <td><code>Browser / Node.js</code></td>
+              <td>🟢 Easy</td>
+            </tr>
+            <tr>
+              <td>Download videos</td>
+              <td><code>Browser Console</code></td>
+              <td>🟢 Easy</td>
+            </tr>
+            <tr>
+              <td>Auto-like tweets</td>
+              <td><code>Browser Console</code></td>
+              <td>🟡 Medium</td>
+            </tr>
+            <tr>
+              <td>Auto-comment</td>
+              <td><code>Browser Console</code></td>
+              <td>🟡 Medium</td>
+            </tr>
+            <tr>
+              <td>MCP Server setup</td>
+              <td><code>Node.js / CLI</code></td>
+              <td>🟡 Medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footer -->
+      <footer style="padding: 24px; text-align: center; color: var(--text-secondary); border-top: 1px solid var(--border);">
+        <p>Made with ❤️ by <a href="https://x.com/nichxbt" style="color: var(--accent);">@nichxbt</a></p>
+        <p style="margin-top: 8px;">
+          <a href="https://github.com/nirholas/XActions" style="color: var(--text-secondary);">GitHub</a> · 
+          <a href="/docs" style="color: var(--text-secondary);">Documentation</a> ·
+          <a href="/privacy" style="color: var(--text-secondary);">Privacy</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function filterTutorials() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.tutorial-card');
+      
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const keywords = card.dataset.keywords?.toLowerCase() || '';
+        const match = text.includes(query) || keywords.includes(query);
+        card.style.display = match ? 'block' : 'none';
+      });
+    }
+  </script>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

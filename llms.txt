@@ -1,0 +1,26 @@
+# XActions
+
+> ⚡ The Complete X/Twitter Automation Toolkit — Scrapers, MCP server for AI agents (Claude/GPT), CLI, browser scripts. No API fees. Open source. By nichxbt.
+
+XActions automates X/Twitter without needing API access. It provides 60+ browser scripts, a Puppeteer-based scraping engine, an MCP server for AI agents, a CLI tool, and a full Express.js web dashboard with PostgreSQL backend.
+
+## Links
+
+- Repository: https://github.com/nirholas/XActions
+- Author: https://github.com/nirholas
+- Full documentation for LLMs: https://raw.githubusercontent.com/nirholas/XActions/main/llms-full.txt
+
+## Key Capabilities
+
+- Scrape profiles, followers, tweets, media, bookmarks (Twitter, Bluesky, Mastodon, Threads)
+- Mass unfollow, detect unfollowers, follower monitoring
+- Auto-like, auto-follow, keyword-based growth automation
+- Post tweets, threads, polls, schedule content
+- MCP server for Claude Desktop and AI agent integration
+- Algorithm cultivation / thought leader training
+- Agent-to-Agent (A2A) protocol support
+- Browser extension (Chrome/Edge)
+
+## Tech Stack
+
+- Node.js >= 18, ESM modules, Express.js, Puppeteer, Prisma (PostgreSQL), Bull (Redis), Vitest, Socket.io, Stripe

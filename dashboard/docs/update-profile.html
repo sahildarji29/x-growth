@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Profile — Free X/Twitter Account Management Tool | XActions</title>
+  <meta name="description" content="Update your X/Twitter display name, bio, location, and website from the browser console.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, update, profile, account management, update profile twitter, twitter update profile">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Update Profile — XActions">
+  <meta property="og:description" content="Update your X/Twitter display name, bio, location, and website from the browser console.">
+  <meta property="og:url" content="https://xactions.app/docs/update-profile">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Update Profile — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Update your X/Twitter display name, bio, location, and website from the browser console.">
+
+  <link rel="canonical" href="https://xactions.app/docs/update-profile">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Update Profile — Free X/Twitter Account Management Tool | XActions",
+    "description": "Update your X/Twitter display name, bio, location, and website from the browser console.",
+    "url": "https://xactions.app/docs/update-profile",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/update-profile",
+    "articleSection": "Account Management",
+    "keywords": "xactions, twitter automation, x automation, free, update, profile, account management, update profile twitter, twitter update profile"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Update Profile", "item": "https://xactions.app/docs/update-profile" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use Update Profile",
+    "description": "Update your X/Twitter display name, bio, location, and website from the browser console.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions Update Profile script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>✏️ Update Profile</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › Update Profile
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Account Management</span>
+        <h1>✏️ Update Profile</h1>
+<p>Update your X/Twitter display name, bio, location, and website from the browser console.</p>
+<hr>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Opens the Edit Profile dialog</li>
+<li>Clears and fills in updated values for:<ul>
+<li>Display name</li>
+<li>Bio</li>
+<li>Location</li>
+<li>Website</li>
+</ul>
+</li>
+<li>Clicks Save to apply changes</li>
+</ol>
+<hr>
+<h2>🌐 Browser Console Script</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Go to your profile page (<code>x.com/yourusername</code>)</li>
+<li>Edit CONFIG with your new info</li>
+<li>Open console (F12) and paste <code>src/updateProfile.js</code></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<pre><code class="language-javascript">const CONFIG = {
+  displayName: &#39;nichxbt&#39;,
+  bio: &#39;⚡ Building XActions — the complete X automation toolkit. Open source.&#39;,
+  location: &#39;San Francisco, CA&#39;,
+  website: &#39;https://xactions.app&#39;,
+};
+</code></pre>
+<hr>
+<h2>📁 Files</h2>
+<ul>
+<li><code>src/updateProfile.js</code> — Browser console profile updater</li>
+<li><code>scripts/twitter/update-bio.js</code> — Extended DevTools version</li>
+</ul>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Leave any field as <code>null</code> to keep its current value</li>
+<li>Bio has a 160-character limit enforced by X</li>
+<li>Display name has a 50-character limit</li>
+<li>The script validates lengths before submitting</li>
+<li>Must be on your own profile page to access Edit Profile</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try Update Profile?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/backup-account">💾 Backup Account</a>
+        <a href="/docs/download-account-data">📥 Download Account Data</a>
+        <a href="/docs/edit-profile">✏️ Edit Profile</a>
+        <a href="/docs/manage-settings">⚙️ Manage Settings</a>
+        <a href="/docs/multi-account">👥 Multi Account</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

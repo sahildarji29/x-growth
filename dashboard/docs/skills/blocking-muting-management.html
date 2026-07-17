@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blocking &amp; Muting Management | XActions</title>
+  <meta name="description" content="Browser console scripts for blocking, unblocking, muting, and managing unwanted accounts on X/Twitter.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, open source, blocking, muting, management, agent skills">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Blocking &amp; Muting Management — XActions">
+  <meta property="og:description" content="Browser console scripts for blocking, unblocking, muting, and managing unwanted accounts on X/Twitter.">
+  <meta property="og:url" content="https://xactions.app/docs/skills/blocking-muting-management">
+  <meta property="og:site_name" content="XActions">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="Blocking &amp; Muting Management — XActions">
+  <meta name="twitter:description" content="Browser console scripts for blocking, unblocking, muting, and managing unwanted accounts on X/Twitter.">
+
+  <link rel="canonical" href="https://xactions.app/docs/skills/blocking-muting-management">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Blocking & Muting Management | XActions",
+    "description": "Browser console scripts for blocking, unblocking, muting, and managing unwanted accounts on X/Twitter.",
+    "url": "https://xactions.app/docs/skills/blocking-muting-management",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-25",
+    "dateModified": "2026-02-25",
+    "mainEntityOfPage": "https://xactions.app/docs/skills/blocking-muting-management",
+    "articleSection": "Agent Skills",
+    "keywords": "xactions, twitter automation, x automation, free, open source, blocking, muting, management, agent skills"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "Agent Skills", "item": "https://xactions.app/docs/skills" },
+      { "@type": "ListItem", "position": 4, "name": "Blocking & Muting Management", "item": "https://xactions.app/docs/skills/blocking-muting-management" }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎯 Blocking &amp; Muting Management</h1>
+        <div class="breadcrumb">
+          <a href="https://xactions.app">Home</a> › <a href="https://xactions.app/docs">Docs</a> › <a href="https://xactions.app/docs/skills">Agent Skills</a> › Blocking &amp; Muting Management
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Agent Skills</span>
+        <h1>Blocking &amp; Muting Management</h1>
+<p>Browser console scripts for blocking, unblocking, muting, and managing unwanted accounts on X/Twitter.</p>
+<h2>Script Selection</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>File</th>
+<th>Navigate to</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Block multiple accounts</td>
+<td><code>src/massBlock.js</code></td>
+<td>Any page on x.com</td>
+</tr>
+<tr>
+<td>Unblock all blocked accounts</td>
+<td><code>src/massUnblock.js</code></td>
+<td><code>x.com/settings/blocked/all</code></td>
+</tr>
+<tr>
+<td>Unmute all muted accounts</td>
+<td><code>src/massUnmute.js</code></td>
+<td><code>x.com/settings/muted/all</code></td>
+</tr>
+<tr>
+<td>Detect and block bots</td>
+<td><code>src/blockBots.js</code></td>
+<td><code>x.com/USERNAME/followers</code></td>
+</tr>
+<tr>
+<td>Mute users by keywords</td>
+<td><code>src/muteByKeywords.js</code></td>
+<td>Timeline or search results</td>
+</tr>
+<tr>
+<td>Manage muted words</td>
+<td><code>src/manageMutedWords.js</code></td>
+<td>Any page</td>
+</tr>
+<tr>
+<td>Report spam</td>
+<td><code>src/reportSpam.js</code></td>
+<td>Target account profile</td>
+</tr>
+<tr>
+<td>Remove followers (soft-block)</td>
+<td><code>src/removeFollowers.js</code></td>
+<td><code>x.com/USERNAME/followers</code></td>
+</tr>
+</tbody></table>
+<h2>Script Details</h2>
+<h3>massBlock.js</h3>
+<p>Blocks a list of usernames by navigating to each profile and clicking Block. Configurable delay between blocks. Tracks progress and exports block list.</p>
+<p><strong>Controls:</strong> <code>window.XActions.pause()</code>, <code>.resume()</code>, <code>.abort()</code></p>
+<h3>massUnblock.js</h3>
+<p>Navigates to blocked accounts page and clicks Unblock on each. Scrolls for more. Progress tracking with auto JSON export.</p>
+<h3>massUnmute.js</h3>
+<p>Same pattern as massUnblock but for muted accounts. Navigate to <code>x.com/settings/muted/all</code> first.</p>
+<h3>blockBots.js</h3>
+<p>Scans your followers using heuristics to detect bot accounts:</p>
+<ul>
+<li>Default avatar / no profile picture</li>
+<li>Very low follower count with high following count</li>
+<li>Account age &lt; 30 days with high activity</li>
+<li>Bio contains spam keywords</li>
+<li>No tweets or only retweets</li>
+</ul>
+<p>Flags accounts as suspicious before blocking. Review mode available.</p>
+<h3>muteByKeywords.js</h3>
+<p>Scans timeline or search results for tweets containing specific keywords. Mutes the authors. Configurable keyword list.</p>
+<h3>manageMutedWords.js</h3>
+<p>Bulk-adds words/phrases to X&#39;s muted words list. Navigates to settings and adds each word programmatically.</p>
+<h3>removeFollowers.js</h3>
+<p>Removes followers using the block-then-immediately-unblock method. They stop following you without being permanently blocked. Processes one-by-one with safety delays.</p>
+<p><strong>Controls:</strong> <code>window.XActions.pause()</code>, <code>.resume()</code>, <code>.abort()</code></p>
+<h2>DOM Selectors</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Selector</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Block option</td>
+<td><code>[data-testid=&quot;block&quot;]</code></td>
+</tr>
+<tr>
+<td>Unblock button</td>
+<td><code>[data-testid=&quot;unblock&quot;]</code> or <code>[data-testid$=&quot;-unblock&quot;]</code></td>
+</tr>
+<tr>
+<td>Confirmation</td>
+<td><code>[data-testid=&quot;confirmationSheetConfirm&quot;]</code></td>
+</tr>
+<tr>
+<td>User actions menu</td>
+<td><code>[data-testid=&quot;userActions&quot;]</code></td>
+</tr>
+<tr>
+<td>User cell</td>
+<td><code>[data-testid=&quot;UserCell&quot;]</code></td>
+</tr>
+<tr>
+<td>Mute option</td>
+<td><code>[data-testid=&quot;mute&quot;]</code></td>
+</tr>
+</tbody></table>
+<h2>Rate Limiting &amp; Safety</h2>
+<ul>
+<li>1-2s delays between block/unblock/mute actions</li>
+<li>Bot detection uses heuristics — review flagged accounts before blocking</li>
+<li>X may restrict after ~100 blocks in quick succession</li>
+<li>Soft-block (block+unblock) is the safest way to remove followers</li>
+</ul>
+<h2>Strategy Guide</h2>
+<h3>Cleaning up after a bot attack</h3>
+<ol>
+<li>Run <code>src/blockBots.js</code> on your followers page</li>
+<li>Review flagged accounts in the console output</li>
+<li>Let the script block confirmed bots</li>
+<li>Run <code>src/auditFollowers.js</code> to verify remaining follower quality</li>
+</ol>
+<h3>Mass cleanup of muted/blocked accounts</h3>
+<ol>
+<li>Run <code>src/massUnblock.js</code> on <code>x.com/settings/blocked/all</code> to clear block list</li>
+<li>Run <code>src/massUnmute.js</code> on <code>x.com/settings/muted/all</code> to clear mute list</li>
+<li>Set up fresh keyword mutes with <code>src/manageMutedWords.js</code></li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>Block/unblock operations are final — X doesn&#39;t have a bulk undo</li>
+<li>Soft-block (removeFollowers) is invisible to the removed user</li>
+<li>Bot detection heuristics may flag legitimate new accounts — always review</li>
+</ul>
+
+
+        <div class="cta-box">
+          <h3>⚡ Explore XActions</h3>
+          <p>100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/docs">Browse All Documentation</a>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 In This Section</h3>
+                <a href="/docs/skills/a2a-multi-agent">🎯 Skill: A2A Multi-Agent Orchestration</a>
+        <a href="/docs/skills/algorithm-cultivation">🎯 Algorithm Cultivation &amp; Thought Leadership</a>
+        <a href="/docs/skills/analytics-insights">🎯 Analytics &amp; Insights</a>
+        <a href="/docs/skills/articles-longform">🎯 Articles &amp; Longform</a>
+        <a href="/docs/skills/bookmarks-management">🎯 Bookmarks Management</a>
+        <a href="/docs/skills/business-ads">🎯 Business &amp; Ads Tools</a>
+        <a href="/docs/skills/community-health-monitoring">🎯 Community Health Monitoring</a>
+        <a href="/docs/skills/community-management">🎯 Community Management</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/docs">All Documentation</a>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

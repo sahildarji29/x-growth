@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Video Downloader — Free X/Twitter Content Tools Tool | XActions</title>
+  <meta name="description" content="Download any video from X/Twitter posts directly to your device.">
+  <meta name="keywords" content="xactions, twitter automation, x automation, free, video, downloader, content tools, video downloader twitter, twitter video downloader">
+  <meta name="author" content="nich (@nichxbt)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="X Video Downloader — XActions">
+  <meta property="og:description" content="Download any video from X/Twitter posts directly to your device.">
+  <meta property="og:url" content="https://xactions.app/docs/video-downloader">
+  <meta property="og:site_name" content="XActions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@nichxbt">
+  <meta name="twitter:title" content="X Video Downloader — Free X/Twitter Tool">
+  <meta name="twitter:description" content="Download any video from X/Twitter posts directly to your device.">
+
+  <link rel="canonical" href="https://xactions.app/docs/video-downloader">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Structured Data - TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "X Video Downloader — Free X/Twitter Content Tools Tool | XActions",
+    "description": "Download any video from X/Twitter posts directly to your device.",
+    "url": "https://xactions.app/docs/video-downloader",
+    "author": { "@type": "Person", "name": "nich", "url": "https://x.com/nichxbt" },
+    "publisher": { "@type": "Organization", "name": "XActions", "url": "https://xactions.app" },
+    "datePublished": "2026-02-24",
+    "dateModified": "2026-02-24",
+    "mainEntityOfPage": "https://xactions.app/docs/video-downloader",
+    "articleSection": "Content Tools",
+    "keywords": "xactions, twitter automation, x automation, free, video, downloader, content tools, video downloader twitter, twitter video downloader"
+  }
+  </script>
+  <!-- Structured Data - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://xactions.app" },
+      { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://xactions.app/docs" },
+      { "@type": "ListItem", "position": 3, "name": "X Video Downloader", "item": "https://xactions.app/docs/video-downloader" }
+    ]
+  }
+  </script>
+  <!-- Structured Data - HowTo (for automation guides) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use X Video Downloader",
+    "description": "Download any video from X/Twitter posts directly to your device.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open x.com", "text": "Navigate to x.com in your browser and log in to your account." },
+      { "@type": "HowToStep", "name": "Open DevTools Console", "text": "Press F12 or Ctrl+Shift+J to open the browser developer console." },
+      { "@type": "HowToStep", "name": "Paste the script", "text": "Copy the XActions X Video Downloader script and paste it into the console." },
+      { "@type": "HowToStep", "name": "Run and monitor", "text": "Press Enter to run. The script shows real-time progress with emoji logs." }
+    ],
+    "tool": { "@type": "HowToTool", "name": "XActions" },
+    "totalTime": "PT2M"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/docs.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar-left" aria-label="Main navigation"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <h1>🎬 X Video Downloader</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> › <a href="/docs">Docs</a> › X Video Downloader
+        </div>
+      </header>
+
+      <article class="article">
+        <span class="cat-badge">Content Tools</span>
+        <h1>🎬 X Video Downloader</h1>
+<p>Download any video from X/Twitter posts directly to your device.</p>
+<h2>📋 What It Does</h2>
+<ol>
+<li>Searches page data for all video URLs</li>
+<li>Sets up network interceptor to capture streams</li>
+<li>Finds all available video qualities</li>
+<li>Auto-selects highest quality</li>
+<li>Downloads as MP4 (or opens in new tab)</li>
+<li>Copies URL to clipboard</li>
+</ol>
+<h2>🌐 Browser Console Script</h2>
+<pre><code class="language-javascript">// Go to: x.com/user/status/123456 (any tweet with a video)
+// IMPORTANT: Click PLAY on the video first!
+// Open Console (Ctrl+Shift+J) and paste the script from:
+// src/scrapers/videoDownloader.js
+</code></pre>
+<h2>⚙️ Configuration</h2>
+<pre><code class="language-javascript">const CONFIG = {
+  QUALITY: &#39;highest&#39;,      // &#39;highest&#39;, &#39;lowest&#39;, &#39;all&#39;
+  AUTO_DOWNLOAD: true,     // Auto-download best quality
+  SHOW_ALL_QUALITIES: true // Show all available resolutions
+};
+</code></pre>
+<h2>📁 Output</h2>
+<ul>
+<li>MP4 file downloaded to your device</li>
+<li>URL copied to clipboard</li>
+<li><code>window.xVideo.best</code> - Best quality URL</li>
+<li><code>window.xVideo.all</code> - All available qualities</li>
+<li><code>window.xVideo.author</code> - Tweet author</li>
+<li><code>window.xVideo.tweetId</code> - Tweet ID</li>
+</ul>
+<h2>💡 Tips</h2>
+<ol>
+<li><strong>Click play on the video first</strong> - This loads the video URL</li>
+<li><strong>Run the script</strong> - It will find and download</li>
+<li><strong>If first run fails</strong>, it sets up an interceptor - just run again</li>
+<li><strong>Multiple qualities</strong> - Script shows all, picks the best</li>
+</ol>
+<h2>⚠️ Notes</h2>
+<ul>
+<li>Works on tweets with native X/Twitter videos</li>
+<li>GIFs on X are actually videos - this works on them too</li>
+<li>May not work on embedded YouTube/external videos</li>
+<li>Some videos open in new tab due to CORS - just right-click → Save Video As</li>
+</ul>
+<h2>🔧 Troubleshooting</h2>
+<p><strong>&quot;No video found&quot;</strong></p>
+<ul>
+<li>Make sure you&#39;re on a tweet page (x.com/user/status/123)</li>
+<li>Click play on the video first</li>
+<li>Run the script again (interceptor is now active)</li>
+</ul>
+<p><strong>&quot;CORS blocked / Opens in new tab&quot;</strong></p>
+<ul>
+<li>This is normal for cross-origin videos</li>
+<li>Right-click the video → Save Video As</li>
+</ul>
+<p><strong>Download doesn&#39;t start</strong></p>
+<ul>
+<li>Right-click the URL in console → Open in new tab</li>
+<li>Then right-click → Save Video As</li>
+</ul>
+<hr>
+<p><em>Part of <a href="https://github.com/nirholas/XActions">XActions</a> by <a href="https://x.com/nichxbt">@nichxbt</a></em></p>
+
+
+        <div class="cta-box">
+          <h3>⚡ Ready to try X Video Downloader?</h3>
+          <p>XActions is 100% free and open-source. No API keys, no fees, no signup.</p>
+          <a href="/features">Browse All Scripts</a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Sidebar Right -->
+    <aside class="sidebar-right">
+      <div class="sidebar-card">
+        <h3>📖 Related Docs</h3>
+                <a href="/docs/bookmark-exporter">📚 Bookmark Exporter</a>
+        <a href="/docs/bookmark-manager">📚 Bookmark Manager</a>
+        <a href="/docs/bookmark-organizer">📂 Bookmark Organizer</a>
+        <a href="/docs/bulk-delete-tweets">🗑️ Bulk Delete Tweets</a>
+        <a href="/docs/clear-all-bookmarks">🗑️ Clear All Bookmarks</a>
+      </div>
+      <div class="sidebar-card">
+        <h3>🔗 Quick Links</h3>
+        <a href="/features">All 43+ Features</a>
+        <a href="/tutorials">Tutorials</a>
+        <a href="/ai">AI Integration</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation Hub</a>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub Repository</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>XActions</h4>
+        <p>100% Free & Open Source X/Twitter Automation</p>
+        <p>Created by <a href="https://x.com/nichxbt" rel="noopener">@nichxbt</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/run">Run Scripts</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/automations">Automations</a>
+        <a href="/analytics">Analytics</a>
+      </div>
+      <div class="footer-section">
+        <h4>AI & Developers</h4>
+        <a href="/ai">AI Integration</a>
+        <a href="/ai-api">AI API (x402)</a>
+        <a href="/mcp">MCP Server</a>
+        <a href="/docs">Documentation</a>
+        <a href="/tutorials">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Community</h4>
+        <a href="https://github.com/nirholas/XActions" rel="noopener">GitHub</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024-2026 XActions. MIT License. No API fees. No limits.</p>
+    </div>
+  </footer>
+<script src="/js/sidebar.js"></script>
+</body>
+</html>
