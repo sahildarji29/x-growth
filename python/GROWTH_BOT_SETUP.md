@@ -3,13 +3,34 @@
 Each teammate runs their own copy against their own X account. Nothing is shared
 between accounts — every user has their own `.env`, persona files, and session.
 
-## 1. Install
+## TL;DR
 
 ```bash
 cd python
-pip install -r xeepy/requirements.txt
-python -m playwright install chromium
+cp .env.example .env      # fill in Groq key, your handle, keywords
+make install              # installs deps + Chromium, then opens the login window
+# edit config/persona_*.md to sound like you
+make run
 ```
+
+The rest of this doc explains each step.
+
+## 1. Install (deps + browser + login)
+
+```bash
+cd python
+make install
+```
+
+`make install` installs Python dependencies, installs the Chromium browser, and opens
+a real browser window for you to log in to X. Once you're logged in, your session is
+**saved automatically** to `data/session.json` — no manual cookie handling. Re-run
+`make login` any time the session expires.
+
+> The login step needs a graphical display. On a headless server, run `make login` on
+> a machine with a desktop and copy `data/session.json` over.
+
+Individual steps: `make deps`, `make browser`, `make login`, `make help`.
 
 ## 2. Configure `.env`
 
@@ -72,16 +93,17 @@ COMMENT_DELAY_MIN=90 COMMENT_DELAY_MAX=150        # seconds between comments
 ## 6. Run
 
 ```bash
-python growth_bot.py
-# CLI flags override .env when you want a one-off, e.g.:
-python growth_bot.py --comments 100 --likes 80 --follows 30
-python growth_bot.py --dry-run          # generate but don't post (test persona)
+make run          # start the bot
+make dry          # test run — generate but don't post (verify your persona)
+make stop         # stop it
+make status       # today's safety usage (likes/comments/follows/posts)
 ```
 
-Check daily safety usage anytime:
+`make run` is just `python growth_bot.py`; CLI flags still override `.env` for one-offs:
 
 ```bash
-python -m xeepy.safety_monitor --status
+python growth_bot.py --comments 100 --likes 80 --follows 30
+python growth_bot.py --dry-run
 ```
 
 ## Notes

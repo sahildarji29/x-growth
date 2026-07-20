@@ -33,7 +33,7 @@ fill in your details, and run.
   - [2. Your persona](#2-your-persona)
   - [3. Targeting & scoring](#3-targeting--scoring)
   - [4. Volumes, posts & pacing](#4-volumes-posts--pacing)
-- [First run (login)](#first-run-login)
+- [Login & session](#login--session)
 - [Usage](#usage)
 - [Monitoring](#monitoring)
 - [Safety](#safety)
@@ -73,6 +73,9 @@ All writes are paced with human-like delays and capped by persistent daily safet
 
 ## Installation
 
+The Growth Bot lives in the `python/` directory and ships with a `Makefile` that does
+the entire setup in one command.
+
 ```bash
 # 1. Get the code
 git clone <your-repo-url>
@@ -82,12 +85,36 @@ cd <cloned-repo>/python      # the Growth Bot lives in the python/ directory
 python -m venv .venv
 source .venv/bin/activate           # Windows: .venv\Scripts\activate
 
-# 3. Install dependencies
-pip install -r xeepy/requirements.txt
+# 3. Configure your account & persona (see "Configuration" below)
+cp .env.example .env                 # then edit .env  (Groq key, your handle, keywords…)
 
-# 4. Install the Playwright browser
-python -m playwright install chromium
+# 4. One-command setup
+make install
 ```
+
+`make install` runs three steps for you:
+
+1. **Installs Python dependencies** (`pip install -r xeepy/requirements.txt`)
+2. **Installs the Chromium browser** (`python -m playwright install chromium`)
+3. **Opens Chromium for login** — a real browser window opens; log in to X normally
+   (username, password, 2FA/passkey — whatever your account uses). The moment you're
+   logged in, the bot **automatically saves your session** to `data/session.json` and
+   closes the window. You never have to log in again.
+
+> 🖥️ The login step opens a real browser, so run `make install` on a machine with a
+> **graphical display**. On a headless server, run `make login` on your laptop and copy
+> the resulting `data/session.json` to the server, or use X-forwarding/`xvfb`.
+
+Individual steps are available too:
+
+```bash
+make deps        # dependencies only
+make browser     # Chromium only
+make login       # (re)open the login window and refresh the saved session
+make help        # list all commands
+```
+
+After `make install` finishes, edit your persona files (next section) and run `make run`.
 
 ---
 
@@ -177,32 +204,44 @@ FOLLOW_DELAY_MAX=12
 
 ---
 
-## First run (login)
+## Login & session
 
-The bot drives a real browser using a saved session. On the very first run it needs to
-log in and save that session to `data/session.json`.
+Login is handled for you by `make install` (step 3) — or `make login` any time you need
+to refresh it. It opens Chromium, waits while you sign in, then **automatically writes**
+`data/session.json`. The bot reuses that session on every run (headless), so it never
+logs in again. If the session ever expires, just run `make login` again.
 
-Run once with the browser **visible** so you can complete any login/2FA prompts:
+Want to test your persona before going live? Do a dry run — it generates comments/posts
+but **doesn't post anything**:
 
 ```bash
-python growth_bot.py --no-headless --dry-run
+make dry        # == python growth_bot.py --dry-run --no-headless
 ```
-
-`--dry-run` generates comments/posts but **doesn't actually post them** — perfect for
-verifying your persona sounds right and login works. Once `data/session.json` exists,
-future runs reuse it and can run headless.
 
 ---
 
 ## Usage
 
 ```bash
-# Normal run — uses all values from .env
-python growth_bot.py
+# Start the bot (uses all values from .env)
+make run
 
-# One-off overrides (CLI wins over .env)
+# Test run — generate but don't post (verify your persona)
+make dry
+
+# Stop it
+make stop
+
+# Today's safety usage (likes/comments/follows/posts vs. caps)
+make status
+```
+
+Prefer the raw command? `make run` is just `python growth_bot.py`. CLI flags override
+`.env` for one-offs:
+
+```bash
 python growth_bot.py --comments 100 --likes 80 --follows 30
-python growth_bot.py --dry-run            # generate but don't post (test persona)
+python growth_bot.py --dry-run            # generate but don't post
 python growth_bot.py --no-headless        # watch the browser
 python growth_bot.py --model llama-3.1-8b-instant   # faster, cheaper model
 ```
@@ -216,7 +255,7 @@ setsid nohup python growth_bot.py >> logs/growth_bot.log 2>&1 < /dev/null &
 **Stop it:**
 
 ```bash
-pkill -f "python growth_bot.py"
+make stop      # or: pkill -f "python growth_bot.py"
 ```
 
 Progress (likes/comments/follows/posts) is preserved sensibly across restarts — the
@@ -283,12 +322,14 @@ Run each from its own directory so the paths resolve independently.
 | Symptom | Fix |
 |---|---|
 | `GROQ_API_KEY not set` | Add your `gsk_...` key to `.env`. |
-| Login/2FA needed | Run `python growth_bot.py --no-headless` and complete it once; `data/session.json` is then reused. |
+| Session expired / logged out | Run `make login` to reopen Chromium and refresh `data/session.json`. |
+| `No session found. Run: make login` | You haven't logged in yet — run `make login` (or `make install`). |
+| Login window won't open (headless server) | Run `make login` on a machine with a display, then copy `data/session.json` to the server. |
 | `no tweets loaded` warnings | Transient — X was slow or the search was empty; the next cycle retries automatically. |
 | `Groq rate limit hit … trying next fallback` | Normal — the bot auto-falls back across models; no action needed. |
 | Comments seem too rare | Lower `COMMENT_SCORE_THRESHOLD`, or broaden `SCORE_HIGH` / `SCORE_MEDIUM` / `TARGET_KEYWORDS`. |
 | Too many original posts | Lower `POSTS_PER_DAY_MIN/MAX` and `SAFETY_MAX_POSTS_DAY`. |
-| `playwright … Executable doesn't exist` | Run `python -m playwright install chromium`. |
+| `playwright … Executable doesn't exist` | Run `make browser` (installs Chromium). |
 
 ---
 
