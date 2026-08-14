@@ -444,22 +444,41 @@ class TwitterBot:
         self._page = None
         self._seen_ids: set[str] = set()
 
+    # Fallback only. The real UA is written by setup_login.py next to the session
+    # file; replaying a session under a *different* platform/UA than the one that
+    # created it is a bot signal (UA says macOS, Client Hints say Linux).
+    DEFAULT_UA = (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+    )
+
+    def _user_agent(self) -> str:
+        ua_file = self.session_file.parent / "user_agent.txt"
+        if ua_file.exists():
+            ua = ua_file.read_text(encoding="utf-8").strip()
+            if ua:
+                return ua
+        return self.DEFAULT_UA
+
     async def start(self) -> None:
         from playwright.async_api import async_playwright
         self._pw = await async_playwright().start()
-        self._browser = await self._pw.chromium.launch(
-            headless=self.headless,
-            args=["--disable-blink-features=AutomationControlled"],
-        )
+        launch_opts = {
+            "headless": self.headless,
+            "args": ["--disable-blink-features=AutomationControlled"],
+        }
+        try:
+            # Real Chrome matches the browser that created the session; the
+            # bundled Chromium has different brands/codecs and is flagged more often.
+            self._browser = await self._pw.chromium.launch(channel="chrome", **launch_opts)
+        except Exception:
+            logger.warning("Google Chrome not available — falling back to bundled Chromium.")
+            self._browser = await self._pw.chromium.launch(**launch_opts)
         ctx_opts = {}
         if self.session_file.exists():
             ctx_opts["storage_state"] = str(self.session_file)
         self._context = await self._browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            ),
+            user_agent=self._user_agent(),
             # 900px avoids Twitter's two-column layout (triggers at ~1024px)
             # which opens a detail panel on click that then overlays the feed
             viewport={"width": 900, "height": 900},

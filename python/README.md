@@ -108,11 +108,17 @@ make install
 Individual steps are available too:
 
 ```bash
-make deps        # dependencies only
-make browser     # Chromium only
-make login       # (re)open the login window and refresh the saved session
-make help        # list all commands
+make deps          # dependencies only
+make browser       # Chromium only
+make login         # (re)open the login window and refresh the saved session
+make login-cookies # no browser — paste auth_token + ct0 from a logged-in browser
+make help          # list all commands
 ```
+
+`make login` drives your **locally installed Google Chrome**. Playwright's bundled
+Chromium is fingerprinted as automation by X's login flow and gets answered with
+*"We've temporarily limited your login. Please try again later."* — if that happens
+anyway, fall back to `make login-cookies`.
 
 After `make install` finishes, edit your persona files (next section) and run `make run`.
 
@@ -207,7 +213,7 @@ FOLLOW_DELAY_MAX=12
 ## Login & session
 
 Login is handled for you by `make install` (step 3) — or `make login` any time you need
-to refresh it. It opens Chromium, waits while you sign in, then **automatically writes**
+to refresh it. It opens your real Chrome, waits while you sign in, then **automatically writes**
 `data/session.json`. The bot reuses that session on every run (headless), so it never
 logs in again. If the session ever expires, just run `make login` again.
 
@@ -322,9 +328,10 @@ Run each from its own directory so the paths resolve independently.
 | Symptom | Fix |
 |---|---|
 | `GROQ_API_KEY not set` | Add your `gsk_...` key to `.env`. |
-| Session expired / logged out | Run `make login` to reopen Chromium and refresh `data/session.json`. |
+| Session expired / logged out | Run `make login` to reopen the browser and refresh `data/session.json`. |
 | `No session found. Run: make login` | You haven't logged in yet — run `make login` (or `make install`). |
-| Login window won't open (headless server) | Run `make login` on a machine with a display, then copy `data/session.json` to the server. |
+| Login window won't open (headless server) | Run `make login-cookies`, or run `make login` on a machine with a display and copy `data/session.json` to the server. |
+| `We've temporarily limited your login` on the login screen | X flagged the automated browser. `make login` now uses your real Chrome; if it still happens, wait ~30–60 min (the limit is per IP/account) or use `make login-cookies`. |
 | `no tweets loaded` warnings | Transient — X was slow or the search was empty; the next cycle retries automatically. |
 | `Groq rate limit hit … trying next fallback` | Normal — the bot auto-falls back across models; no action needed. |
 | Comments seem too rare | Lower `COMMENT_SCORE_THRESHOLD`, or broaden `SCORE_HIGH` / `SCORE_MEDIUM` / `TARGET_KEYWORDS`. |

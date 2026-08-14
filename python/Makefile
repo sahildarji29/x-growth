@@ -9,7 +9,7 @@
 
 PY ?= python
 
-.PHONY: help install deps browser login run dry stop status clean
+.PHONY: help install deps browser login login-cookies run dry stop status clean
 
 # Default target
 help:
@@ -18,7 +18,9 @@ help:
 	@echo "  make install   One-shot setup: deps + browser + X login (do this first)"
 	@echo "  make deps      Install Python dependencies only"
 	@echo "  make browser   Install the Chromium browser only"
-	@echo "  make login     Open Chromium to log in to X and save the session"
+	@echo "  make login     Open your real Chrome to log in to X and save the session"
+	@echo "  make login-cookies  No browser: paste auth_token + ct0 from a logged-in browser"
+	@echo "                      (use this if X answers 'We've temporarily limited your login')"
 	@echo ""
 	@echo "  make run       Start the Growth Bot"
 	@echo "  make dry       Test run — generates but does NOT post (verify your persona)"
@@ -45,6 +47,10 @@ browser:
 login:
 	@echo "🔐 Launching login…"
 	$(PY) setup_login.py
+
+# Fallback when X rate-limits the automated browser on the login screen.
+login-cookies:
+	$(PY) setup_login.py --cookies
 
 # ── Run / manage ─────────────────────────────────────────────────────────────
 run:

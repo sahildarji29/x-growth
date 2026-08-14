@@ -27,10 +27,18 @@ a real browser window for you to log in to X. Once you're logged in, your sessio
 **saved automatically** to `data/session.json` — no manual cookie handling. Re-run
 `make login` any time the session expires.
 
-> The login step needs a graphical display. On a headless server, run `make login` on
-> a machine with a desktop and copy `data/session.json` over.
+The login window is **your locally installed Google Chrome** (not Playwright's bundled
+Chromium), because X rate-limits the bundled build on its login screen. If you see
+*"We've temporarily limited your login"*, use the cookie import instead:
 
-Individual steps: `make deps`, `make browser`, `make login`, `make help`.
+```bash
+make login-cookies   # paste auth_token + ct0 from a browser you're already logged into
+```
+
+> The login step needs a graphical display. On a headless server, use `make login-cookies`,
+> or run `make login` on a machine with a desktop and copy `data/session.json` over.
+
+Individual steps: `make deps`, `make browser`, `make login`, `make login-cookies`, `make help`.
 
 ## 2. Configure `.env`
 
