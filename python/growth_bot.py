@@ -849,16 +849,29 @@ class CommentGenerator:
         self._dry_run = dry_run
         self._provider = None
         if not dry_run:
-            mod = _load_module(
-                "xeepy.ai.providers.groq_provider",
-                "xeepy/ai/providers/groq_provider.py",
-            )
-            self._provider = mod.GroqProvider(model=model, timeout_s=timeout_s)
+            provider = os.environ.get("LLM_PROVIDER", "groq").strip().lower()
+            if provider == "openrouter":
+                mod = _load_module(
+                    "xeepy.ai.providers.openrouter_provider",
+                    "xeepy/ai/providers/openrouter_provider.py",
+                )
+                # OpenRouter picks its model from OPENROUTER_MODEL, not GROQ_MODEL
+                self._provider = mod.OpenRouterProvider(timeout_s=timeout_s)
+            elif provider == "groq":
+                mod = _load_module(
+                    "xeepy.ai.providers.groq_provider",
+                    "xeepy/ai/providers/groq_provider.py",
+                )
+                self._provider = mod.GroqProvider(model=model, timeout_s=timeout_s)
+            else:
+                raise ValueError(
+                    f"Unknown LLM_PROVIDER '{provider}'. Use 'groq' or 'openrouter'."
+                )
         self._started = False
 
     async def start(self) -> None:
         if self._dry_run:
-            logger.info("CommentGenerator: dry-run mode — Groq skipped.")
+            logger.info("CommentGenerator: dry-run mode — LLM skipped.")
             return
         await self._provider.start()
         self._started = True
@@ -1148,7 +1161,7 @@ class GrowthBot:
         )
         await self.twitter.start()
 
-        # Start comment generator (Groq API)
+        # Start comment generator (LLM_PROVIDER: groq or openrouter)
         self.claude = CommentGenerator(
             timeout_s=cfg.groq_timeout_s,
             dry_run=cfg.dry_run,
