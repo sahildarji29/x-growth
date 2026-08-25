@@ -99,6 +99,29 @@ class RateLimiter:
             
             return delay
     
+    def required_wait(self) -> float:
+        """
+        How long acquire() would need to wait right now, WITHOUT sleeping.
+
+        Lets callers defer an action (and keep doing other work) instead of
+        blocking the event loop for a long pacing wait. Slight approximation:
+        returns the largest single window wait, without acquire()'s jitter.
+        """
+        now = time.time()
+        wait = max(0.0, self.state.cooldown_until - now)
+
+        minute_ago = now - 60
+        recent_minute = [t for t in self.state.requests if t > minute_ago]
+        if len(recent_minute) >= self.max_per_minute:
+            wait = max(wait, 60 - (now - min(recent_minute)))
+
+        hour_ago = now - 3600
+        recent_hour = [t for t in self.state.requests if t > hour_ago]
+        if len(recent_hour) >= self.max_per_hour:
+            wait = max(wait, 3600 - (now - min(recent_hour)))
+
+        return wait
+
     def _clean_old_requests(self, now: float) -> None:
         """Remove requests older than 1 hour from tracking."""
         hour_ago = now - 3600
@@ -176,6 +199,10 @@ class ActionRateLimiter:
         """Acquire permission for specific action type."""
         limiter = self.get(action_type)
         return await limiter.acquire(weight)
+
+    def required_wait(self, action_type: str) -> float:
+        """How long acquire() would wait for this action type, without sleeping."""
+        return self.get(action_type).required_wait()
     
     def get_all_stats(self) -> dict:
         """Get stats for all action types."""
