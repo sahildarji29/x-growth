@@ -7,10 +7,11 @@ Free tier: 14,400 requests/day per model, separate token quota per model.
 Get a free API key at: https://console.groq.com
 Set: GROQ_API_KEY=gsk_... in your .env file.
 
-Fallback chain (each model has its own daily token quota):
-  llama-3.3-70b-versatile  — best quality (~100k TPD)
-  llama-3.1-8b-instant     — fastest, higher limit (~500k TPD)
-  gemma2-9b-it             — alternative, good quality (~500k TPD)
+Fallback chain (each model has its own daily token quota; verified available
+August 2026 — Groq decommissioned the older Llama/Gemma models, check
+https://console.groq.com/docs/models when these 404):
+  openai/gpt-oss-120b  — best quality
+  openai/gpt-oss-20b   — smaller/faster
 """
 
 from __future__ import annotations
@@ -33,12 +34,11 @@ class GroqProvider:
     Generate text via Groq's API with automatic model fallback on rate limits.
     """
 
-    DEFAULT_MODEL = "llama-3.3-70b-versatile"
+    DEFAULT_MODEL = "openai/gpt-oss-120b"
 
     FALLBACK_MODELS = [
-        "llama-3.3-70b-versatile",
-        "llama-3.1-8b-instant",
-        "gemma2-9b-it",
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
     ]
 
     def __init__(
@@ -57,7 +57,7 @@ class GroqProvider:
                 "and add GROQ_API_KEY=gsk_... to your .env file."
             )
         # If a custom model is set, put it first in the chain then append the rest
-        primary = model or self.DEFAULT_MODEL
+        primary = model or os.environ.get("GROQ_MODEL") or self.DEFAULT_MODEL
         rest = [m for m in self.FALLBACK_MODELS if m != primary]
         self._models = [primary] + rest
 
@@ -99,24 +99,36 @@ class GroqProvider:
 
         for model in self._models:
             try:
+                kwargs = dict(extra)
+                if model.startswith("openai/gpt-oss"):
+                    # Reasoning models: keep hidden reasoning short so the small
+                    # max_tokens budget is spent on the visible reply.
+                    kwargs["extra_body"] = {"reasoning_effort": "low"}
                 resp = await self._client.chat.completions.create(
                     model=model,
                     messages=messages,
                     max_tokens=max_tokens,
                     temperature=0.9,
                     timeout=self._timeout,
-                    **extra,
+                    **kwargs,
                 )
                 text = resp.choices[0].message.content
-                if model != self._models[0]:
-                    logger.debug(f"Groq fallback model used: {model}")
-                return text.strip() if text else None
+                if not text or not text.strip():
+                    # Reasoning models can spend the whole budget thinking and
+                    # return empty content — treat like a failure, not a reply.
+                    logger.warning(f"Groq empty response from {model} — trying next fallback")
+                    continue
+                fallback = " (fallback)" if model != self._models[0] else ""
+                logger.info(f"✅ LLM reply via groq / {model}{fallback}")
+                return text.strip()
             except RateLimitError:
                 logger.warning(f"Groq rate limit hit on {model} — trying next fallback")
                 continue
             except Exception as e:
-                logger.error(f"Groq error on {model}: {e}")
-                return None
+                # e.g. 404 model_not_found when Groq decommissions a model —
+                # never let one dead model kill the whole chain.
+                logger.warning(f"Groq error on {model}: {e} — trying next fallback")
+                continue
 
-        logger.error("Groq: all models exhausted (rate limited). Skipping comment.")
+        logger.error("Groq: all models exhausted (rate limited or errored). Skipping comment.")
         return None

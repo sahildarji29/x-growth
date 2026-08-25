@@ -849,14 +849,34 @@ class CommentGenerator:
         self._dry_run = dry_run
         self._provider = None
         if not dry_run:
+            # `model` is the generic override (LLM_MODEL env or --model flag).
+            # When None, each provider reads its own *_MODEL env var, then its
+            # built-in default. Dynamic mode always uses the per-provider envs.
             provider = os.environ.get("LLM_PROVIDER", "groq").strip().lower()
             if provider == "openrouter":
                 mod = _load_module(
                     "xeepy.ai.providers.openrouter_provider",
                     "xeepy/ai/providers/openrouter_provider.py",
                 )
-                # OpenRouter picks its model from OPENROUTER_MODEL, not GROQ_MODEL
-                self._provider = mod.OpenRouterProvider(timeout_s=timeout_s)
+                self._provider = mod.OpenRouterProvider(model=model, timeout_s=timeout_s)
+            elif provider == "mistral":
+                mod = _load_module(
+                    "xeepy.ai.providers.mistral_provider",
+                    "xeepy/ai/providers/mistral_provider.py",
+                )
+                self._provider = mod.MistralProvider(model=model, timeout_s=timeout_s)
+            elif provider == "dynamic":
+                mod = _load_module(
+                    "xeepy.ai.providers.dynamic_provider",
+                    "xeepy/ai/providers/dynamic_provider.py",
+                )
+                # Rotates groq → openrouter → mistral on rate limits/failures
+                if model:
+                    logger.warning(
+                        "LLM_MODEL/--model is ignored in dynamic mode — set "
+                        "GROQ_MODEL / OPENROUTER_MODEL / MISTRAL_MODEL per provider instead."
+                    )
+                self._provider = mod.DynamicProvider(timeout_s=timeout_s)
             elif provider == "groq":
                 mod = _load_module(
                     "xeepy.ai.providers.groq_provider",
@@ -865,7 +885,8 @@ class CommentGenerator:
                 self._provider = mod.GroqProvider(model=model, timeout_s=timeout_s)
             else:
                 raise ValueError(
-                    f"Unknown LLM_PROVIDER '{provider}'. Use 'groq' or 'openrouter'."
+                    f"Unknown LLM_PROVIDER '{provider}'. "
+                    "Use 'groq', 'openrouter', 'mistral', or 'dynamic'."
                 )
         self._started = False
 
@@ -1125,8 +1146,19 @@ class BotConfig:
     like_delay_max: int = field(default_factory=lambda: _env_int("LIKE_DELAY_MAX", 8))
     follow_delay_min: int = field(default_factory=lambda: _env_int("FOLLOW_DELAY_MIN", 5))
     follow_delay_max: int = field(default_factory=lambda: _env_int("FOLLOW_DELAY_MAX", 12))
-    groq_timeout_s: int = field(default_factory=lambda: _env_int("GROQ_TIMEOUT_S", 30))
-    groq_model: str = field(default_factory=lambda: os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    # Provider-neutral LLM settings (apply to groq, openrouter, mistral, dynamic).
+    # LLM_TIMEOUT_S is preferred; legacy GROQ_TIMEOUT_S is still honored.
+    llm_timeout_s: int = field(
+        default_factory=lambda: _env_int("LLM_TIMEOUT_S", _env_int("GROQ_TIMEOUT_S", 30))
+    )
+    # Optional model override for the selected provider. When unset, each
+    # provider reads its own env var (GROQ_MODEL / OPENROUTER_MODEL /
+    # MISTRAL_MODEL) and falls back to its built-in default. Dynamic mode
+    # always uses the per-provider env vars, never this override.
+    llm_model: Optional[str] = field(default_factory=lambda: os.environ.get("LLM_MODEL") or None)
+    # Longest pacing wait the bot will sit through for an original post before
+    # deferring the slot and continuing other engagement (seconds).
+    post_wait_max_s: int = field(default_factory=lambda: _env_int("POST_WAIT_MAX_S", 180))
     dry_run: bool = False
     headless: bool = True
     fast_mode: bool = False           # skip human delays (for testing only)
@@ -1161,11 +1193,11 @@ class GrowthBot:
         )
         await self.twitter.start()
 
-        # Start comment generator (LLM_PROVIDER: groq or openrouter)
+        # Start comment generator (LLM_PROVIDER: groq, openrouter, mistral, or dynamic)
         self.claude = CommentGenerator(
-            timeout_s=cfg.groq_timeout_s,
+            timeout_s=cfg.llm_timeout_s,
             dry_run=cfg.dry_run,
-            model=cfg.groq_model,
+            model=cfg.llm_model,
         )
         await self.claude.start()
 
@@ -1348,8 +1380,17 @@ class GrowthBot:
             return
 
         # ActionRateLimiter is a secondary guard against clustering; SafetyMonitor.record
-        # below is the authoritative hard daily cap.
+        # below is the authoritative hard daily cap. A long pacing wait must not
+        # freeze the whole engagement loop — defer the post slot instead (it stays
+        # due, so it's retried on the next loop pass once the window frees up).
         if self._action_limiter:
+            wait = self._action_limiter.required_wait("post")
+            if wait > cfg.post_wait_max_s:
+                logger.info(
+                    f"Original post deferred — pacing needs {wait / 60:.0f} more min "
+                    f"(> {cfg.post_wait_max_s}s cap); continuing other engagement meanwhile"
+                )
+                return
             await self._action_limiter.acquire("post")
 
         if self.safety and not await self.safety.record("post", note=f"slot {idx + 1}/{state['target']}"):
@@ -1413,7 +1454,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--follows", type=int, default=None,
                    help="Max follows per run (default: MAX_FOLLOWS env or 150)")
     p.add_argument("--model", default=None,
-                   help="Groq model (default: GROQ_MODEL env or llama-3.3-70b-versatile)")
+                   help="Model override for the selected LLM provider (default: LLM_MODEL env, "
+                        "else the provider's own *_MODEL env / built-in default; ignored in dynamic mode)")
     p.add_argument("--comment-delay", type=int, default=None,
                    help="Min seconds between comments (default: COMMENT_DELAY_MIN env or 90)")
     p.add_argument("--fast", action="store_true",
@@ -1443,7 +1485,7 @@ async def main() -> None:
     if args.follows is not None:
         overrides["max_follows"] = args.follows
     if args.model is not None:
-        overrides["groq_model"] = args.model
+        overrides["llm_model"] = args.model
     if args.comment_delay is not None:
         overrides["comment_delay_min"] = args.comment_delay
         overrides["comment_delay_max"] = args.comment_delay + 60
