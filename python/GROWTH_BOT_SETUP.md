@@ -114,6 +114,38 @@ python growth_bot.py --comments 100 --likes 80 --follows 30
 python growth_bot.py --dry-run
 ```
 
+## 7. Watch it live (dashboard)
+
+```bash
+./live.sh --comments 300 --likes 150 --follows 75   # bot + dashboard in ONE command
+# or: make live ARGS="--comments 300 --likes 150 --follows 75"
+```
+
+`live.sh` starts the dashboard in the background (or reuses one already
+running), runs the bot in the foreground with your flags, and one Ctrl+C stops
+both. To run only the dashboard (e.g. to review a past run):
+
+```bash
+make dashboard    # → http://127.0.0.1:8787
+``` It's an interactive web
+UI showing what the agent is doing in real time:
+
+- **Now line + status pill** — the bot's current action (reading a tweet,
+  writing a reply, waiting out pacing) and whether it's live, idle, or stopped.
+- **Stat tiles** — comments/likes/follows with progress meters toward your
+  daily targets, plus posts, skips, and errors.
+- **Actions per 10 minutes** — a stacked timeline of the last 3 hours (hover
+  for exact counts; the Table button shows the same data as text).
+- **Activity feed** — every action as it happens, with the tweet it engaged
+  with and the exact reply text; filterable by type, pausable.
+
+Events come from `data/activity.jsonl` (written by the bot, self-trimming), so
+the dashboard survives refreshes and can be opened after the fact to review a
+run. The server binds to `127.0.0.1` only by default — use
+`python dashboard.py --host 0.0.0.0` deliberately if you need it on your LAN,
+and be aware the feed contains your account activity. Assumptions: Python
+>= 3.9, no extra dependencies (standard library only).
+
 ## Notes
 
 - The bot only comments on posts it can add genuine value to; it returns an

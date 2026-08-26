@@ -73,6 +73,10 @@ def _load_module(name: str, rel_path: str):
     spec.loader.exec_module(mod)
     return mod
 
+# ── activity feed (structured events for the live dashboard) ────────────────
+# Lightweight, dependency-free; emit() never raises. See dashboard.py.
+emit_activity = _load_module("xeepy.activity_feed", "xeepy/activity_feed.py").emit
+
 # ── paths ──────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).parent
 DATA_DIR = Path(os.environ.get("XEEPY_DATA_DIR", ROOT / "data"))
@@ -236,7 +240,12 @@ Use contractions: I'm, we're, it's, don't, can't, wouldn't. Fragments are fine. 
 FORBIDDEN WORDS
 ────────────────────────────────────
 
-Never use: game changer, revolutionary, unlock, leverage, synergy, cutting-edge, supercharge, fascinating, indeed, certainly, absolutely, moreover, furthermore, it's worth noting, here's why, let that sink in, this changes everything, thrilled, delighted, excited to announce.
+Never use: game changer, revolutionary, unlock, leverage, synergy, cutting-edge, supercharge, fascinating, indeed, certainly, absolutely, moreover, furthermore, it's worth noting, here's why, let that sink in, this changes everything, thrilled, delighted, excited to announce, delve, a testament to, kudos, couldn't agree more, great point, this resonates, paradigm shift, food for thought.
+
+PUNCTUATION — this instantly exposes AI writing:
+- NEVER use an em dash (—) or en dash (–). Use a comma, a period, or start a new sentence.
+- No semicolons. No curly/smart quotes — straight ' and " only. No "…" character (type ... if needed).
+- No markdown, no bold, no bullet points. Plain text like a person typing on their phone.
 
 ────────────────────────────────────
 REPUTATION FILTER
@@ -275,7 +284,9 @@ Do NOT promote LaraCopilot, LaraSpec, or any product by name unless the requeste
 
 Never repeat the ideas or phrasing of your own recent posts (listed in the prompt) — say something genuinely different each time.
 
-Never use: game changer, revolutionary, unlock, leverage, synergy, cutting-edge, supercharge, fascinating, indeed, certainly, absolutely, moreover, furthermore, it's worth noting, here's why, let that sink in, this changes everything, thrilled, delighted, excited to announce.
+Never use: game changer, revolutionary, unlock, leverage, synergy, cutting-edge, supercharge, fascinating, indeed, certainly, absolutely, moreover, furthermore, it's worth noting, here's why, let that sink in, this changes everything, thrilled, delighted, excited to announce, delve, a testament to, kudos, paradigm shift, food for thought.
+
+Punctuation rules (AI tells — breaking these exposes the account): never use an em dash (—) or en dash (–), use a comma or a period instead. No semicolons. Straight quotes only, never curly quotes. Never the "…" character.
 
 Output: plain text only. No quotes. No markdown. Just the tweet text."""
 
@@ -838,6 +849,42 @@ class TwitterBot:
             pass
 
 
+# ── humanizer — strip typographic AI fingerprints before posting ────────────
+# LLMs produce em dashes, curly quotes and the "…" character constantly; real
+# people typing on a phone or keyboard almost never do. These are rewritten
+# (not rejected) so a good reply isn't thrown away over punctuation. Phrasing
+# that can't be safely rewritten is still rejected by the ai_phrases gate.
+_INVISIBLE_CHARS = re.compile("[\u200b\u200c\u200d\u2060\ufeff]")
+
+
+def _humanize(text: str) -> str:
+    """Rewrite characters and formatting that fingerprint text as AI-generated."""
+    t = _INVISIBLE_CHARS.sub("", text)
+    t = t.replace("\u00a0", " ")  # non-breaking space → normal space
+    # Smart quotes/apostrophes → straight (what a real keyboard types)
+    t = (
+        t.replace("‘", "'").replace("’", "'")
+         .replace("“", '"').replace("”", '"')
+    )
+    # Single-char ellipsis → typed dots
+    t = t.replace("…", "...")
+    # Digit ranges keep a plain hyphen: 5–10 → 5-10
+    t = re.sub(r"(?<=\d)\s*[–—]\s*(?=\d)", "-", t)
+    # Em/en dash as a clause break — the single biggest AI tell — → comma
+    t = re.sub(r"\s*[–—]+\s*", ", ", t)
+    # Markdown emphasis the model sometimes leaks (**bold**, *italic*, __bold__)
+    t = re.sub(r"\*{1,2}([^*\n]+)\*{1,2}", r"\1", t)
+    t = re.sub(r"_{2}([^_\n]+)_{2}", r"\1", t)
+    # Clean punctuation artifacts left by the rewrites above
+    t = re.sub(r",{2,}", ",", t)          # ",," → ","
+    t = re.sub(r",\s*([.!?])", r"\1", t)  # ",." → "."
+    t = re.sub(r"\s+([,.!?])", r"\1", t)  # "word ," → "word,"
+    t = re.sub(r" {2,}", " ", t)
+    t = re.sub(r"^[,\s]+", "", t)         # dash at start left a leading comma
+    t = re.sub(r"[,\s]+$", "", t)
+    return t.strip()
+
+
 # ── Comment generator (wraps ClaudeSessionProvider) ─────────────────────────
 class CommentGenerator:
     def __init__(
@@ -982,6 +1029,10 @@ class CommentGenerator:
         if text is None:
             return None
 
+        # Rewrite typographic AI fingerprints (em dashes, curly quotes, "…")
+        # so the gates below run on the text that would actually be posted.
+        text = _humanize(text)
+
         # Quality gates
         # Strip numbered list prefix
         text = re.sub(r"^\d+[\.\)]\s*", "", text)
@@ -1010,7 +1061,13 @@ class CommentGenerator:
             r"the (evolving|ever.evolving) (landscape|world)|"
             r"significant(ly)? implications|worth exploring|nuances? (here|of)|"
             r"this is a (great|fascinating|interesting)|"
-            r"i (completely|totally|fully) agree)\b",
+            r"i (completely|totally|fully) agree|"
+            r"delve|a testament to|underscores the|kudos|commendable|"
+            r"the intersection of|couldn'?t agree more|great point|"
+            r"this resonates|resonates with me|game.chang(er|ing)|"
+            r"paradigm shift|exciting times|food for thought|"
+            r"spot.on analysis|well articulated|"
+            r"navigating the|in today'?s (fast.paced|digital|ai))\b",
             re.IGNORECASE,
         )
         if ai_phrases.search(text):
@@ -1046,7 +1103,7 @@ class CommentGenerator:
         if not raw:
             return None
 
-        text = raw.strip()
+        text = _humanize(raw.strip())
         text = re.sub(r"^\d+[\.\)]\s*", "", text)
         text = re.sub(r"\s*#\w+", "", text).strip()
         text = re.sub(r'^["\'""\s]+|["\'""\s]+$', "", text).strip()
@@ -1174,6 +1231,24 @@ class GrowthBot:
         self._action_limiter = None
         self._stop = False
 
+    def _emit(self, event: str, **data) -> None:
+        """Publish one dashboard event with a stats snapshot attached."""
+        s, cfg = self.stats, self.config
+        emit_activity(
+            event,
+            stats={
+                "likes": s.likes, "comments": s.comments, "follows": s.follows,
+                "posts": s.posts, "skipped": s.skipped, "errors": s.errors,
+                "started_at": s.started_at,
+            },
+            targets={
+                "likes": cfg.max_likes, "comments": cfg.max_comments,
+                "follows": cfg.max_follows,
+            },
+            dry_run=cfg.dry_run,
+            **data,
+        )
+
     async def run(self) -> None:
         cfg = self.config
         LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -1184,6 +1259,7 @@ class GrowthBot:
             f"Growth bot starting — target: {cfg.max_comments} comments, "
             f"{cfg.max_likes} likes, {cfg.max_follows} follows"
         )
+        self._emit("bot_start", msg="Growth bot starting")
 
         # Start Twitter browser
         self.twitter = TwitterBot(
@@ -1220,6 +1296,7 @@ class GrowthBot:
             if self.safety:
                 self.safety.close()
 
+        self._emit("bot_stop", msg=f"Bot finished. {self.stats.report()}")
         logger.info(f"Bot finished. {self.stats.report()}")
 
     async def _main_loop(self) -> None:
@@ -1234,10 +1311,12 @@ class GrowthBot:
 
             if self._daily_targets_met():
                 logger.info(f"Daily targets met. {self.stats.report()}")
+                self._emit("status", msg="Daily targets met — stopping")
                 break
 
             cycle += 1
             logger.info(f"--- Cycle {cycle} | {self.stats.report()}")
+            self._emit("cycle", n=cycle)
 
             authors_to_follow: list[str] = []
 
@@ -1248,6 +1327,7 @@ class GrowthBot:
             # handles are destroyed by page.goto and every action fails with
             # "Cannot find context with specified id".
             if cycle % 3 == 0:
+                self._emit("status", msg="Browsing home feed")
                 tweets = await self.twitter.get_home_tweets(limit=20)
                 if tweets:
                     await self._process_batch(cfg, cycle, tweets, authors_to_follow)
@@ -1265,6 +1345,7 @@ class GrowthBot:
                     if self._stop or self._daily_targets_met():
                         break
                     logger.info(f"Searching: '{kw}'")
+                    self._emit("search", keyword=kw)
                     batch = await self.twitter.search_tweets(kw, limit=20)
                     if batch:
                         got_any = True
@@ -1285,6 +1366,7 @@ class GrowthBot:
                 ok = await self.twitter.follow_user(author)
                 if ok:
                     self.stats.follows += 1
+                    self._emit("follow", author=author)
                     await asyncio.sleep(random.uniform(cfg.follow_delay_min, cfg.follow_delay_max))
 
             # ORIGINAL POST — randomized daily count, spread across active hours
@@ -1310,6 +1392,7 @@ class GrowthBot:
             f"Cycle {cycle} batch: {len(scores)} tweets scored, {accepted} accepted "
             f"(>={COMMENT_SCORE_THRESHOLD}), {len(scores) - accepted} rejected"
         )
+        self._emit("batch", scored=len(scores), accepted=accepted)
 
         random.shuffle(tweets)
 
@@ -1338,6 +1421,7 @@ class GrowthBot:
                 if ok:
                     self.stats.likes += 1
                     logger.info(f"Liked @{tweet.author}: {tweet.text[:50]}")
+                    self._emit("like", author=tweet.author, tweet=tweet.text[:140])
                     await asyncio.sleep(random.uniform(cfg.like_delay_min, cfg.like_delay_max))
 
             # COMMENT (AI-generated) — only for tweets scoring >= COMMENT_SCORE_THRESHOLD
@@ -1349,8 +1433,13 @@ class GrowthBot:
                         f"@{tweet.author}: {tweet.text[:50]}"
                     )
                     self.stats.skipped += 1
+                    self._emit(
+                        "skip", reason=f"low score ({tweet_score})",
+                        author=tweet.author, tweet=tweet.text[:140],
+                    )
                     continue
                 logger.debug(f"Tweet accepted (score={tweet_score}, reasons={score_reasons})")
+                self._emit("thinking", author=tweet.author, tweet=tweet.text[:140])
                 comment = await self.claude.generate(tweet)
                 if comment and el:
                     ok = await self.twitter.comment(el, comment)
@@ -1359,18 +1448,28 @@ class GrowthBot:
                         logger.info(
                             f"Commented on @{tweet.author}: \"{comment[:60]}...\""
                         )
+                        self._emit(
+                            "comment", author=tweet.author,
+                            tweet=tweet.text[:140], text=comment,
+                        )
                         # Queue follow only for users we actually commented on
                         if self.stats.follows < cfg.max_follows and tweet.author:
                             authors_to_follow.append(tweet.author)
                         if not cfg.fast_mode:
                             delay = random.uniform(cfg.comment_delay_min, cfg.comment_delay_max)
                             logger.debug(f"Waiting {delay:.0f}s before next comment...")
+                            self._emit("wait", seconds=round(delay), reason="pacing between comments")
                             await asyncio.sleep(delay)
                     else:
                         self.stats.errors += 1
+                        self._emit("error", action="comment", author=tweet.author)
                 elif comment is None:
                     self.stats.skipped += 1
                     logger.debug("Claude skipped this tweet.")
+                    self._emit(
+                        "skip", reason="LLM declined (no value to add)",
+                        author=tweet.author, tweet=tweet.text[:140],
+                    )
 
     async def _maybe_post_original(self, cfg: BotConfig) -> None:
         """Post an original (non-reply) tweet if today's randomized schedule has one due."""
@@ -1416,9 +1515,14 @@ class GrowthBot:
                 f"Posted original tweet ({state['posted_count']}/{state['target']}): "
                 f"\"{text[:60]}...\""
             )
+            self._emit(
+                "post", text=text,
+                slot=f"{state['posted_count']}/{state['target']}",
+            )
             await asyncio.sleep(random.uniform(cfg.comment_delay_min, cfg.comment_delay_max))
         else:
             self.stats.errors += 1
+            self._emit("error", action="post")
 
     def _in_active_hours(self) -> bool:
         return True  # runs 24/7 until stopped
