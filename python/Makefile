@@ -9,7 +9,7 @@
 
 PY ?= python
 
-.PHONY: help install deps browser login login-cookies run dry stop status clean
+.PHONY: help install deps browser login login-cookies live run dry stop status dashboard clean
 
 # Default target
 help:
@@ -22,10 +22,12 @@ help:
 	@echo "  make login-cookies  No browser: paste auth_token + ct0 from a logged-in browser"
 	@echo "                      (use this if X answers 'We've temporarily limited your login')"
 	@echo ""
+	@echo "  make live      Start Growth Bot + HUD dashboard together (one Ctrl+C stops both)"
 	@echo "  make run       Start the Growth Bot"
 	@echo "  make dry       Test run — generates but does NOT post (verify your persona)"
 	@echo "  make stop      Stop a running Growth Bot"
 	@echo "  make status    Show today's safety usage (likes/comments/follows/posts)"
+	@echo "  make dashboard Live web dashboard — watch the bot work (http://127.0.0.1:8787)"
 	@echo ""
 	@echo "First run:  cp .env.example .env  →  edit .env  →  make install  →  make run"
 
@@ -53,6 +55,12 @@ login-cookies:
 	$(PY) setup_login.py --cookies
 
 # ── Run / manage ─────────────────────────────────────────────────────────────
+# Bot + HUD in one go. Pass bot flags via ARGS: make live ARGS="--comments 300"
+live:
+	@if [ ! -f .env ]; then echo "❌ No .env found. Run: cp .env.example .env  and fill it in."; exit 1; fi
+	@if [ ! -f data/session.json ]; then echo "❌ No session found. Run: make login"; exit 1; fi
+	./live.sh $(ARGS)
+
 run:
 	@if [ ! -f .env ]; then echo "❌ No .env found. Run: cp .env.example .env  and fill it in."; exit 1; fi
 	@if [ ! -f data/session.json ]; then echo "❌ No session found. Run: make login"; exit 1; fi
@@ -66,6 +74,9 @@ stop:
 
 status:
 	$(PY) -m xeepy.safety_monitor --status
+
+dashboard:
+	$(PY) dashboard.py
 
 clean:
 	rm -rf .pytest_cache/ .ruff_cache/ .mypy_cache/
